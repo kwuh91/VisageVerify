@@ -11,6 +11,14 @@
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
 		1179D84D2C41F4680081539C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D84C2C41F4680081539C /* Preview Assets.xcassets */; };
+		1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8562C41FCC40081539C /* InitialScreen.swift */; };
+		1179D85B2C41FE490081539C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D85A2C41FE490081539C /* Icon.swift */; };
+		1179D85D2C42020E0081539C /* AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D85C2C42020E0081539C /* AppName.swift */; };
+		1179D8602C420B210081539C /* ArsenalSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1179D85F2C420B210081539C /* ArsenalSC-Regular.ttf */; };
+		1179D86B2C420B550081539C /* BonaNovaSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1179D86A2C420B550081539C /* BonaNovaSC-Regular.ttf */; };
+		1179D86E2C4218060081539C /* Slogan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86D2C4218060081539C /* Slogan.swift */; };
+		1179D8702C4218850081539C /* PrettyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86F2C4218850081539C /* PrettyText.swift */; };
+		1179D87D2C422EB10081539C /* Fireflies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87C2C422EB10081539C /* Fireflies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,15 @@
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1179D8492C41F4680081539C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1179D84C2C41F4680081539C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1179D8562C41FCC40081539C /* InitialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreen.swift; sourceTree = "<group>"; };
+		1179D85A2C41FE490081539C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		1179D85C2C42020E0081539C /* AppName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppName.swift; sourceTree = "<group>"; };
+		1179D85F2C420B210081539C /* ArsenalSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ArsenalSC-Regular.ttf"; sourceTree = "<group>"; };
+		1179D86A2C420B550081539C /* BonaNovaSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BonaNovaSC-Regular.ttf"; sourceTree = "<group>"; };
+		1179D86C2C420BE40081539C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1179D86D2C4218060081539C /* Slogan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slogan.swift; sourceTree = "<group>"; };
+		1179D86F2C4218850081539C /* PrettyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyText.swift; sourceTree = "<group>"; };
+		1179D87C2C422EB10081539C /* Fireflies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireflies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,10 @@
 		1179D8442C41F4670081539C /* VisageVerify */ = {
 			isa = PBXGroup;
 			children = (
+				1179D86C2C420BE40081539C /* Info.plist */,
+				1179D85E2C420AE30081539C /* Fonts */,
+				1179D8582C41FE270081539C /* Views */,
+				1179D8532C41FB370081539C /* Screens */,
 				1179D8452C41F4670081539C /* VisageVerifyApp.swift */,
 				1179D8472C41F4670081539C /* ContentView.swift */,
 				1179D8492C41F4680081539C /* Assets.xcassets */,
@@ -65,6 +86,51 @@
 				1179D84C2C41F4680081539C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1179D8532C41FB370081539C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1179D8562C41FCC40081539C /* InitialScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1179D8582C41FE270081539C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1179D8712C4222F70081539C /* BackGround */,
+				1179D8592C41FE340081539C /* Helper */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1179D8592C41FE340081539C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1179D85A2C41FE490081539C /* Icon.swift */,
+				1179D85C2C42020E0081539C /* AppName.swift */,
+				1179D86D2C4218060081539C /* Slogan.swift */,
+				1179D86F2C4218850081539C /* PrettyText.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		1179D85E2C420AE30081539C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1179D86A2C420B550081539C /* BonaNovaSC-Regular.ttf */,
+				1179D85F2C420B210081539C /* ArsenalSC-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1179D8712C4222F70081539C /* BackGround */ = {
+			isa = PBXGroup;
+			children = (
+				1179D87C2C422EB10081539C /* Fireflies.swift */,
+			);
+			path = BackGround;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +192,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1179D84D2C41F4680081539C /* Preview Assets.xcassets in Resources */,
+				1179D8602C420B210081539C /* ArsenalSC-Regular.ttf in Resources */,
 				1179D84A2C41F4680081539C /* Assets.xcassets in Resources */,
+				1179D86B2C420B550081539C /* BonaNovaSC-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +205,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
+				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
+				1179D85B2C41FE490081539C /* Icon.swift in Sources */,
+				1179D8702C4218850081539C /* PrettyText.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
+				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
+				1179D87D2C422EB10081539C /* Fireflies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +349,7 @@
 				DEVELOPMENT_TEAM = 85NFQH89VR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VisageVerify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +379,7 @@
 				DEVELOPMENT_TEAM = 85NFQH89VR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VisageVerify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
