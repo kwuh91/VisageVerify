@@ -18,8 +18,9 @@
 		1179D86B2C420B550081539C /* BonaNovaSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1179D86A2C420B550081539C /* BonaNovaSC-Regular.ttf */; };
 		1179D86E2C4218060081539C /* Slogan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86D2C4218060081539C /* Slogan.swift */; };
 		1179D8702C4218850081539C /* PrettyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86F2C4218850081539C /* PrettyText.swift */; };
-		1179D87D2C422EB10081539C /* Fireflies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87C2C422EB10081539C /* Fireflies.swift */; };
-		1179D87F2C42D83A0081539C /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87E2C42D83A0081539C /* Gradient.swift */; };
+		1179D87D2C422EB10081539C /* FirefliesGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87C2C422EB10081539C /* FirefliesGPT.swift */; };
+		1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87E2C42D83A0081539C /* Fireflies.swift */; };
+		1179D8812C430C330081539C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8802C430C330081539C /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +37,9 @@
 		1179D86C2C420BE40081539C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1179D86D2C4218060081539C /* Slogan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slogan.swift; sourceTree = "<group>"; };
 		1179D86F2C4218850081539C /* PrettyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyText.swift; sourceTree = "<group>"; };
-		1179D87C2C422EB10081539C /* Fireflies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireflies.swift; sourceTree = "<group>"; };
-		1179D87E2C42D83A0081539C /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		1179D87C2C422EB10081539C /* FirefliesGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirefliesGPT.swift; sourceTree = "<group>"; };
+		1179D87E2C42D83A0081539C /* Fireflies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireflies.swift; sourceTree = "<group>"; };
+		1179D8802C430C330081539C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +132,9 @@
 		1179D8712C4222F70081539C /* Background */ = {
 			isa = PBXGroup;
 			children = (
-				1179D87C2C422EB10081539C /* Fireflies.swift */,
-				1179D87E2C42D83A0081539C /* Gradient.swift */,
+				1179D87C2C422EB10081539C /* FirefliesGPT.swift */,
+				1179D87E2C42D83A0081539C /* Fireflies.swift */,
+				1179D8802C430C330081539C /* Theme.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -215,8 +218,9 @@
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
-				1179D87D2C422EB10081539C /* Fireflies.swift in Sources */,
-				1179D87F2C42D83A0081539C /* Gradient.swift in Sources */,
+				1179D8812C430C330081539C /* Theme.swift in Sources */,
+				1179D87D2C422EB10081539C /* FirefliesGPT.swift in Sources */,
+				1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
