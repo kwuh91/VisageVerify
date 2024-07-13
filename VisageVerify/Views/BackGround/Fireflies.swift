@@ -47,9 +47,6 @@ struct FireflyView: View {
             // set the rotation
             .rotationEffect(.init(degrees: move ? firefly.rotationStart : firefly.rotationStart + 360))
         
-            // set the animation
-            .animation(Animation.linear(duration: firefly.duration).repeatForever(autoreverses: false))
-        
             // set the limits
             .frame(maxWidth:  .infinity,
                    maxHeight: .infinity)
@@ -62,7 +59,15 @@ struct FireflyView: View {
         
             // update move variable
             .onAppear {
-                move.toggle()
+                // set the animation
+                withAnimation(
+                    Animation.easeInOut(
+                        duration: firefly.duration
+                    ).repeatForever(autoreverses: true)
+                ){
+                    move.toggle()
+                }
+                
             }
     }
 }
@@ -144,5 +149,5 @@ struct FloatingFireflies: View {
 
 #Preview {
     // Dot(initialPosition: CGPoint(x: 100, y: 100))
-    FloatingFireflies(quantity: 50)
+    FloatingFireflies(quantity: 70)
 }
