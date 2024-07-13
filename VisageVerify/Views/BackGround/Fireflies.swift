@@ -12,6 +12,7 @@ struct Firefly: Identifiable {
     let id = UUID()
     
     let color:            Color
+    let shadowColor:      Color
     let rotationStart:    Double
     let rotationDuration: Double
     let scale:            Double
@@ -61,6 +62,8 @@ struct FireflyView: View {
         
             // set the initial opacity
             .opacity(glowOpacity)
+        
+            .shadow(color: firefly.shadowColor, radius: 10)
         
             // start all the animations
             .onAppear {
@@ -161,6 +164,7 @@ struct FloatingFireflies: View {
             
             let firefly = Firefly(
                 color:            Theme.FireflyTheme(forScheme: scheme),
+                shadowColor:      Theme.shadowTheme(forScheme: scheme),
                 rotationStart:    Double.random(in: 0...300),
                 rotationDuration: Double.random(in: 10...50),
                 scale:            Double.random(in: 1...3),

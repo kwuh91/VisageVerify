@@ -65,4 +65,20 @@ struct Theme {
                 return darkFireflyColors.randomElement()!
         }
     }
+    
+    // define shadow color
+    static func shadowTheme(forScheme scheme: ColorScheme) -> Color {
+        let light = Color(red: 255/255, green: 252/255, blue: 242/255) // bone color
+        let dark  = Color(red: 37/255,  green: 36/255,  blue: 34/255)  // blackish
+        
+        // choose bg based on a device theme
+        switch scheme {
+            case .light:
+                return dark
+            case .dark:
+                return light
+            @unknown default:
+                return light
+        }
+    }
 }
