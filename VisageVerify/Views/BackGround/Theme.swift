@@ -24,12 +24,6 @@ struct Theme {
         }
     }
     
-//    // define background color
-//    static var generalBackground: Color {
-//        // Color(red: 64/255, green: 61/255, blue: 57/255) // grayish
-//        Color(red: 37/255, green: 36/255, blue: 34/255)    // blackish
-//    }
-    
     // define firefly color
     static func FireflyTheme(forScheme scheme: ColorScheme) -> Color {
         // used both in dark and light themes
@@ -38,8 +32,8 @@ struct Theme {
         // colors for dark theme
         let bone      = Color(red: 255/255, green: 252/255, blue: 242/255) // bone color
         let dirtyBone = Color(red: 204/255, green: 197/255, blue: 185/255) // dirty bone color
-//        let bone      = Color(.red)    // debug
-//        let dirtyBone = Color(.purple) // debug
+        // let bone      = Color(.red)    // debug
+        // let dirtyBone = Color(.purple) // debug
         
         // array with colors for dark theme (dots are light and bg is dark)
         // bone is: 3x as rare, dirty bone: 2x and orange: 1x
@@ -48,8 +42,8 @@ struct Theme {
         // colors for light theme
         let grayish  = Color(red: 64/255, green: 61/255, blue: 57/255) // grayish
         let blackish = Color(red: 37/255, green: 36/255, blue: 34/255) // blackish
-//        let grayish  = Color(.green)  // debug
-//        let blackish = Color(.yellow) // debug
+        // let grayish  = Color(.green)  // debug
+        // let blackish = Color(.yellow) // debug
         
         // array with colors for light theme (dots are dark and bg is light)
         // blackish is: 3x as rare, grayish: 2x and orange: 1x

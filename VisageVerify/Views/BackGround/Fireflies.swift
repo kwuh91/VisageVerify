@@ -13,7 +13,7 @@ struct Firefly: Identifiable {
     
     let color:            Color
     let rotationStart:    Double
-    let movementDuration: Double
+    let rotationDuration: Double
     let scale:            Double
     let scaleDuration:    Double
     let glow:             Double
@@ -44,16 +44,22 @@ struct FireflyView: View {
             .offset(provider.offset)
         
             // set the rotation
-            .rotationEffect(.init(degrees: move ? firefly.rotationStart : firefly.rotationStart + 360))
+            .rotationEffect(
+                .init(
+                    degrees: move ?
+                    firefly.rotationStart :
+                    firefly.rotationStart + 360
+                )
+            )
         
             // set the limits
             .frame(maxWidth:  .infinity,
                    maxHeight: .infinity)
             
-            // set the position
+            // set the initial position
             .position(firefly.initialPosition)
         
-            // set the opacity
+            // set the initial opacity
             .opacity(glowOpacity)
         
             // start all the animations
@@ -66,7 +72,7 @@ struct FireflyView: View {
         // set the rotation animation
         withAnimation(
             Animation.easeOut(
-                duration: firefly.movementDuration
+                duration: firefly.rotationDuration
             ).repeatForever(autoreverses: true)
         ){
             move.toggle()
@@ -94,7 +100,7 @@ struct FireflyView: View {
 
 // class for randomizing position
 class FireflyProvider: ObservableObject {
-    let offset: CGSize
+    let offset:           CGSize
     let frameHeightRatio: CGFloat
     
     init() {
@@ -102,7 +108,6 @@ class FireflyProvider: ObservableObject {
         frameHeightRatio = CGFloat.random(in: 10..<30)
         
         // find a random offset
-        // TODO: change later?
         offset = CGSize(
             width: CGFloat.random(
                 in: -UIScreen.main.bounds.width/5..<UIScreen.main.bounds.width/5
@@ -125,7 +130,6 @@ struct FloatingFireflies: View {
     var body: some View {
         ZStack {
             // background color
-            // Color.white
             Theme.generalBackground(forScheme: scheme)
             
             // put fireflies on screen
@@ -156,14 +160,14 @@ struct FloatingFireflies: View {
             )
             
             let firefly = Firefly(
-                color: Theme.FireflyTheme(forScheme: scheme),
-                rotationStart: Double.random(in: 0...300),
-                movementDuration: Double.random(in: 10...50),
-                scale: Double.random(in: 1...3),
-                scaleDuration: Double.random(in: 10...50),
-                glow: Double.random(in: 0...1),
-                glowDuration: Double.random(in: 5...20),
-                initialPosition: initialPosition
+                color:            Theme.FireflyTheme(forScheme: scheme),
+                rotationStart:    Double.random(in: 0...300),
+                rotationDuration: Double.random(in: 10...50),
+                scale:            Double.random(in: 1...3),
+                scaleDuration:    Double.random(in: 10...50),
+                glow:             Double.random(in: 0...1),
+                glowDuration:     Double.random(in: 5...20),
+                initialPosition:  initialPosition
             )
 
             fireflies.append(firefly)
