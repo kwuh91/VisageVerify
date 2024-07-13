@@ -33,7 +33,7 @@ struct Theme {
     // define firefly color
     static func FireflyTheme(forScheme scheme: ColorScheme) -> Color {
         // used both in dark and light themes
-        let orange = Color(red: 235/255, green: 94/255, blue: 40/255, opacity: 0.71) // orange color
+        let orange = Color(red: 235/255, green: 94/255, blue: 40/255, opacity: 0.91) // orange color
         
         // colors for dark theme
         let bone      = Color(red: 255/255, green: 252/255, blue: 242/255) // bone color
@@ -46,8 +46,8 @@ struct Theme {
         let darkFireflyColors: [Color] = [bone, bone, bone, dirtyBone, dirtyBone, orange]
         
         // colors for light theme
-        let grayish  = Color(red: 64/255, green: 61/255, blue: 57/255, opacity: 0.91) // grayish
-        let blackish = Color(red: 37/255, green: 36/255, blue: 34/255, opacity: 0.81) // blackish
+        let grayish  = Color(red: 64/255, green: 61/255, blue: 57/255) // grayish
+        let blackish = Color(red: 37/255, green: 36/255, blue: 34/255) // blackish
 //        let grayish  = Color(.green)  // debug
 //        let blackish = Color(.yellow) // debug
         

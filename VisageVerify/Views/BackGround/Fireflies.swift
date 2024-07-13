@@ -9,14 +9,13 @@ import SwiftUI
 
 // a model for a firefly
 struct Firefly: Identifiable {
-    // sets random offset and height ratio
-    @StateObject var provider = FireflyProvider()
-    
     let id = UUID()
     
     //TODO: change to let?
-    var color: Color
-    var initialPosition: CGPoint // CGPoint(x: 10.0, y: 10.0)
+    let color: Color
+    let rotationStart: Double
+    let duration: Double
+    let initialPosition: CGPoint // CGPoint(x: 10.0, y: 10.0)
     
     // var endPosition:   CGPoint
     // var color:         Color
@@ -27,7 +26,11 @@ struct Firefly: Identifiable {
 
 // a view for a firefly model
 struct FireflyView: View {
+    // sets random offset and height ratio
+    @StateObject var provider = FireflyProvider()
+    
     @State var firefly: Firefly
+    @State var move = false
     
     var body: some View {
         Circle()
@@ -36,10 +39,16 @@ struct FireflyView: View {
         
             // set the size
             .frame(height:
-                    UIScreen.main.bounds.height / firefly.provider.frameHeightRatio)
+                    UIScreen.main.bounds.height / provider.frameHeightRatio)
             
             // set the offset
-            .offset(firefly.provider.offset)
+            .offset(provider.offset)
+        
+            // set the rotation
+            .rotationEffect(.init(degrees: move ? firefly.rotationStart : firefly.rotationStart + 360))
+        
+            // set the animation
+            .animation(Animation.linear(duration: firefly.duration).repeatForever(autoreverses: false))
         
             // set the limits
             .frame(maxWidth:  .infinity,
@@ -47,6 +56,14 @@ struct FireflyView: View {
             
             // set the position
             .position(firefly.initialPosition)
+        
+            // opacity ?
+            //.opacity(0.8)
+        
+            // update move variable
+            .onAppear {
+                move.toggle()
+            }
     }
 }
 
@@ -60,7 +77,7 @@ class FireflyProvider: ObservableObject {
         frameHeightRatio = CGFloat.random(in: 10..<30)
         
         // find a random offset
-        // change later
+        // TODO: change later?
         offset = CGSize(
             width: CGFloat.random(
                 in: -UIScreen.main.bounds.width/5..<UIScreen.main.bounds.width/5
@@ -115,6 +132,8 @@ struct FloatingFireflies: View {
             
             let firefly = Firefly(
                 color: Theme.FireflyTheme(forScheme: scheme),
+                rotationStart: Double.random(in: 0...300),
+                duration: Double.random(in: 10...50),
                 initialPosition: initialPosition
             )
 
