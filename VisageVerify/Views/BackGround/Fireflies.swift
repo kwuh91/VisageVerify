@@ -11,17 +11,14 @@ import SwiftUI
 struct Firefly: Identifiable {
     let id = UUID()
     
-    //TODO: change to let?
-    let color: Color
-    let rotationStart: Double
-    let duration: Double
-    let initialPosition: CGPoint // CGPoint(x: 10.0, y: 10.0)
-    
-    // var endPosition:   CGPoint
-    // var color:         Color
-    // var scale:         CGFloat
-    // var opacity:       Double
-    // var speed:         Double
+    let color:            Color
+    let rotationStart:    Double
+    let movementDuration: Double
+    let scale:            Double
+    let scaleDuration:    Double
+    let glow:             Double
+    let glowDuration:     Double
+    let initialPosition:  CGPoint // CGPoint(x: 10.0, y: 10.0)
 }
 
 // a view for a firefly model
@@ -29,8 +26,10 @@ struct FireflyView: View {
     // sets random offset and height ratio
     @StateObject var provider = FireflyProvider()
     
-    @State var firefly: Firefly
-    @State var move = false
+    @State var firefly:     Firefly
+    @State var move:        Bool   = false
+    @State var glowOpacity: Double = 1.0 // initial glow
+    @State var scale:       Double = 2.0 // initial scale multiplier
     
     var body: some View {
         Circle()
@@ -39,7 +38,7 @@ struct FireflyView: View {
         
             // set the size
             .frame(height:
-                    UIScreen.main.bounds.height / provider.frameHeightRatio)
+                    UIScreen.main.bounds.height / provider.frameHeightRatio * scale)
             
             // set the offset
             .offset(provider.offset)
@@ -54,21 +53,42 @@ struct FireflyView: View {
             // set the position
             .position(firefly.initialPosition)
         
-            // opacity ?
-            //.opacity(0.8)
+            // set the opacity
+            .opacity(glowOpacity)
         
-            // update move variable
+            // start all the animations
             .onAppear {
-                // set the animation
-                withAnimation(
-                    Animation.easeInOut(
-                        duration: firefly.duration
-                    ).repeatForever(autoreverses: true)
-                ){
-                    move.toggle()
-                }
-                
+                startAnimation()
             }
+    }
+    
+    private func startAnimation() {
+        // set the rotation animation
+        withAnimation(
+            Animation.easeOut(
+                duration: firefly.movementDuration
+            ).repeatForever(autoreverses: true)
+        ){
+            move.toggle()
+        }
+        
+        // set the glowing animation
+        withAnimation(
+            Animation.easeOut(
+                duration: firefly.glowDuration
+            ).repeatForever(autoreverses: true)
+        ){
+            glowOpacity = firefly.glow
+        }
+        
+        // set the scaling animation
+        withAnimation(
+            Animation.easeInOut(
+                duration: firefly.scaleDuration
+            ).repeatForever(autoreverses: true)
+        ){
+            scale = firefly.scale
+        }
     }
 }
 
@@ -138,7 +158,11 @@ struct FloatingFireflies: View {
             let firefly = Firefly(
                 color: Theme.FireflyTheme(forScheme: scheme),
                 rotationStart: Double.random(in: 0...300),
-                duration: Double.random(in: 10...50),
+                movementDuration: Double.random(in: 10...50),
+                scale: Double.random(in: 1...3),
+                scaleDuration: Double.random(in: 10...50),
+                glow: Double.random(in: 0...1),
+                glowDuration: Double.random(in: 5...20),
                 initialPosition: initialPosition
             )
 
@@ -148,6 +172,5 @@ struct FloatingFireflies: View {
 }
 
 #Preview {
-    // Dot(initialPosition: CGPoint(x: 100, y: 100))
     FloatingFireflies(quantity: 70)
 }
