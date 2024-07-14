@@ -10,17 +10,22 @@ import SwiftUI
 struct Icon: View {
     let iconName: String
     let iconColor: Color
+    let iconSize: CGFloat
+    let fontWeight: Font.Weight
     
     var body: some View {
         Image(systemName: iconName)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 100)
+            .frame(height: iconSize)
+            .font(Font.title.weight(fontWeight))
             .foregroundStyle(iconColor)
     }
 }
 
 #Preview {
     Icon(iconName: "eye",
-         iconColor: .black)
+         iconColor: .black,
+         iconSize: 100,
+         fontWeight: .thin)
 }

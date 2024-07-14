@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */; };
 		1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE702C4378CC008E67A0 /* StaticTheme.swift */; };
+		1137CE732C437ED9008E67A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE722C437ED9008E67A0 /* Colors.swift */; };
+		1137CE762C4388FF008E67A0 /* ButtonShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE752C4388FF008E67A0 /* ButtonShell.swift */; };
 		1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8452C41F4670081539C /* VisageVerifyApp.swift */; };
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTheme.swift; sourceTree = "<group>"; };
 		1137CE702C4378CC008E67A0 /* StaticTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTheme.swift; sourceTree = "<group>"; };
+		1137CE722C437ED9008E67A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1137CE752C4388FF008E67A0 /* ButtonShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonShell.swift; sourceTree = "<group>"; };
 		1179D8422C41F4670081539C /* VisageVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisageVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1179D8452C41F4670081539C /* VisageVerifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisageVerifyApp.swift; sourceTree = "<group>"; };
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1137CE742C438871008E67A0 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1137CE752C4388FF008E67A0 /* ButtonShell.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		1179D8392C41F4670081539C = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +115,7 @@
 		1179D8582C41FE270081539C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1137CE742C438871008E67A0 /* Buttons */,
 				1179D8712C4222F70081539C /* Background */,
 				1179D8592C41FE340081539C /* Helper */,
 			);
@@ -116,6 +129,7 @@
 				1179D85C2C42020E0081539C /* AppName.swift */,
 				1179D86D2C4218060081539C /* Slogan.swift */,
 				1179D86F2C4218850081539C /* PrettyText.swift */,
+				1137CE722C437ED9008E67A0 /* Colors.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -212,8 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
+				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
+				1137CE762C4388FF008E67A0 /* ButtonShell.swift in Sources */,
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				1179D85B2C41FE490081539C /* Icon.swift in Sources */,
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,

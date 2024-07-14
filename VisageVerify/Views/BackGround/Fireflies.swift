@@ -140,7 +140,7 @@ struct FloatingFireflies: View {
                 FireflyView(firefly: firefly)
             }
         }
-        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.all)
         .onAppear {
             generateFireflies()
         }
@@ -148,11 +148,6 @@ struct FloatingFireflies: View {
     
     // function to generate fireflies
     private func generateFireflies() {
-//        if scheme == .dark {
-//            let _ = print("applied dark")
-//        } else {
-//            let _ = print("applied light")
-//        }
         
         // generate fireflies in a loop
         for _ in 0..<quantity {
