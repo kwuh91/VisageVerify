@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Theme {
+struct DynamicTheme {
     // define background color
     static func generalBackground(forScheme scheme: ColorScheme) -> Color {
         let light = Color(red: 255/255, green: 252/255, blue: 242/255) // bone color
@@ -25,7 +25,7 @@ struct Theme {
     }
     
     // define firefly color
-    static func FireflyTheme(forScheme scheme: ColorScheme) -> Color {
+    static func fireflyTheme(forScheme scheme: ColorScheme) -> Color {
         // used both in dark and light themes
         let orange = Color(red: 235/255, green: 94/255, blue: 40/255, opacity: 0.91) // orange color
         

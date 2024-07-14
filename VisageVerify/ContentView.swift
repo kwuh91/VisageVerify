@@ -16,7 +16,7 @@ struct ContentView: View {
 //            Text("Hello, world!")
 //        }
 //        .padding()
-        FloatingFireflies(quantity: 50)
+        FloatingFireflies(quantity: 70)
     }
 }
 
