@@ -22,7 +22,8 @@ struct ButtonShell: View {
                 Button(action: {
                     print("clicked")
                 }){
-                    FloatingFireflies(quantity: 70)
+                    FloatingFireflies(quantity:          70, 
+                                      backgroundOpacity: 1.0)
                         .mask(
                             Circle()
                         )
