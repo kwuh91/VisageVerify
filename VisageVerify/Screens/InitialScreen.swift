@@ -22,6 +22,7 @@ struct InitialScreen: View {
             tempFireflies
                 .opacity(isTapped ? 0.0 : 1.0)
             
+            // stack witn AppName[Icon] & slogan
             VStack{
                 // AppName[Icon]
                 HStack {
@@ -44,8 +45,8 @@ struct InitialScreen: View {
                       UIScreen.main.bounds.width / 2  : // x pos after tap
                       UIScreen.main.bounds.width / 2  , // inital x pos
                       y: isTapped ?
-                      UIScreen.main.bounds.height / 5 :   // y pos after tap
-                      UIScreen.main.bounds.height / 2.5 ) // initial y pos
+                      UIScreen.main.bounds.height / 5 - 50 : // y pos after tap
+                      UIScreen.main.bounds.height / 2.5 )    // initial y pos
             .opacity(iconOpacity) // set initial opacity
             .onAppear {
                 // fade in animation
@@ -55,6 +56,27 @@ struct InitialScreen: View {
             }
             // animation to move up after tap
             .animation(.easeInOut(duration: 1.0), value: isTapped)
+            
+            // stack with sign in/up buttons
+            VStack {
+//                // sign up
+//                TravelButtonShell(whereTo: FloatingFireflies(quantity: 10),
+//                                  buttonText: "Sign up")
+//                
+//                // sign in
+//                TravelButtonShell(whereTo: FloatingFireflies(quantity: 10),
+//                                  buttonText: "Sign in")
+                ZStack {
+                    // sign up
+                    ButtonShell(buttonText: "Sign up")
+                    
+                    // sign in
+                    ButtonShell(buttonText: "Sign in")
+                        .position(x: UIScreen.main.bounds.width/2,
+                                  y: UIScreen.main.bounds.height/2 + 100)
+                }
+
+            }.opacity(isTapped ? 1 : 0)
         }
         // whole screen is tappable
         .onTapGesture {

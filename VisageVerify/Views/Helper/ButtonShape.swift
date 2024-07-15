@@ -16,5 +16,9 @@ struct ButtonShape: View {
 }
 
 #Preview {
-    ButtonShape()
+    VStack {
+        // Spacer()
+        ButtonShape()
+        ButtonShape()
+    }
 }
