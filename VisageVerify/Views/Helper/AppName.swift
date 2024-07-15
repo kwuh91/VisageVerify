@@ -12,7 +12,7 @@ struct AppName: View {
     let fontSize: CGFloat
     
     var body: some View {
-        PrettyText(text: "VisageVerify",
+        PrettyText(text:     "VisageVerify",
                    fontName: "ArsenalSC-Regular",
                    //fontName: "BonaNovaSC-Regular",
                    color:    color,

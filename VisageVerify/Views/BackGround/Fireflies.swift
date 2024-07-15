@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// a view for a firefly model
+// view for a firefly
 struct FireflyView: View {
     // sets random offset and height ratio
     @StateObject var provider = FireflyProvider()
@@ -51,7 +51,9 @@ struct FireflyView: View {
         
             // start all the animations
             .onAppear {
-                startAnimation()
+                DispatchQueue.main.async {
+                    startAnimation()
+                }
             }
     }
     
@@ -134,7 +136,7 @@ class FireflyProvider: ObservableObject {
 struct FloatingFireflies: View {
     
     let quantity:          Int
-    let backgroundOpacity: CGFloat
+    var backgroundOpacity: CGFloat = 1.0
     
     var body: some View {
         ZStack {
@@ -152,6 +154,5 @@ struct FloatingFireflies: View {
 }
 
 #Preview {
-    FloatingFireflies(quantity:          50,
-                      backgroundOpacity: 1.0)
+    FloatingFireflies(quantity: 70)
 }

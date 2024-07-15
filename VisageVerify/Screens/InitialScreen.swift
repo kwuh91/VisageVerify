@@ -8,34 +8,37 @@
 import SwiftUI
 
 struct InitialScreen: View {
-    @State private var isTapped:          Bool   = false
-    @State private var iconOpacity:       Double = 0.0
-    @State private var hideTempFireflies: Bool   = false
-    // var tempFireflies: FloatingFireflies
+    @State private var isTapped:    Bool   = false
+    @State private var iconOpacity: Double = 0.0 // initial icon opacity
     
     var body: some View {
         ZStack {
             // background color
-            FloatingFireflies(quantity:          50,
-                              backgroundOpacity: 1.0)
+            Colors.boneColor
+                .edgesIgnoringSafeArea(.all)
             
             // temp background layer, which is removed after tap
-            let tempFireflies = FloatingFireflies(quantity:          100,
-                                                  backgroundOpacity: 0.0)
+            let tempFireflies = FloatingFireflies(quantity: 100)
             tempFireflies
-                .opacity(hideTempFireflies ? 0.0 : 1.0)
+                .opacity(isTapped ? 0.0 : 1.0)
             
             VStack{
                 // AppName[Icon]
                 HStack {
-                    AppName(color: Colors.boneColor, fontSize: 36)
+                    AppName(color: isTapped     ?
+                                Colors.blackish :
+                                Colors.boneColor,
+                            fontSize: 36)
                     
                     Icon(iconName:  "eye.fill",
-                         iconColor: Colors.boneColor,
+                         iconColor: isTapped ?
+                            Colors.blackish  :
+                            Colors.boneColor,
                          iconSize: 30,
                          fontWeight: .thin)
                 }
                 Slogan(color: Colors.boneColor, fontSize: 30)
+                    .opacity(isTapped ? 0.0 : 1.0)
             }
             .position(x: isTapped ?
                       UIScreen.main.bounds.width / 2  : // x pos after tap
@@ -56,15 +59,15 @@ struct InitialScreen: View {
         // whole screen is tappable
         .onTapGesture {
             // move the AppName[Icon] up
-            isTapped.toggle()
-            
             // remove one bg layer
+            // change icon & AppName[Icon] colors
+            // remove slogan
             withAnimation(
                 Animation.easeOut(
                     duration: 1.0
                 )
             ){
-                hideTempFireflies.toggle()
+                isTapped.toggle()
             }
 //            if !isTapped {
 //                isTapped.toggle()
