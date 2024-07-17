@@ -39,7 +39,7 @@ struct FireflyTextMaskButtonStyle: ButtonStyle {
                            color:    Colors.boneColor,
                            fontSize: fontSize)
             )
-            .shadow(color: Colors.blackish, radius: 10)
+            .shadow(color: Colors.blackish, radius: 8)
             .opacity(configuration.isPressed ? 0.1 : 1)
             // .scaleEffect(configuration.isPressed ? 1.1 : 1)
             .frame(width:  width,
@@ -59,7 +59,7 @@ struct FireflyTextMaskButtonStyle: ButtonStyle {
                        fontName: "ArsenalSC-Regular",
                        color:    Colors.boneColor,
                        fontSize: 46)
-                .shadow(color: Colors.blackish, radius: 5)
+                .shadow(color: Colors.blackish, radius: 10)
         }
         .buttonStyle(FireflyCircleButtonStyle(padding: 90,
                                               quantity: 70))

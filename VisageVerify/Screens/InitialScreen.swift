@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct InitialScreen: View {
-    @State private var isTapped:    Bool   = false
-    @State private var iconOpacity: Double = 0.0 // initial icon opacity
+    @State private var isTapped:        Bool   = false
+    @State private var isTappedButtons: Bool   = false
+    @State private var iconOpacity:     Double = 0.0 // initial icon opacity
     
     var body: some View {
         NavigationView{
@@ -30,7 +31,7 @@ struct InitialScreen: View {
                         AppName(color: isTapped ?
                                 Colors.blackish :
                                 Colors.boneColor,
-                                fontSize: 36) // -> 46
+                                fontSize: isTapped ? 46 : 36)
                         
                         Icon(iconName:  "eye.fill",
                              iconColor: isTapped ?
@@ -93,13 +94,12 @@ struct InitialScreen: View {
                     
                     Spacer()
                     
-                }.opacity(isTapped ? 1 : 0)
+                }.opacity(isTappedButtons ? 1 : 0)
                 
             }
             // whole screen is tappable
             .onTapGesture {
                 // remove one bg layer
-                // fades in buttons
                 withAnimation(
                     Animation.easeOut(
                         duration: 1.0
@@ -107,6 +107,15 @@ struct InitialScreen: View {
                 ){
                     isTapped.toggle()
                 }
+                // fades in buttons
+                withAnimation(
+                    Animation.easeInOut(
+                        duration: 2.0
+                    ).delay(0.7)
+                ){
+                    isTappedButtons.toggle()
+                }
+                
                 //            if !isTapped {
                 //                isTapped.toggle()
                 //            }
