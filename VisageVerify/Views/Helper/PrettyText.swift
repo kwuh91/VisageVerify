@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrettyText: View {
     let text:      String
-    let fontName:  String
+    var fontName:  String = "ArsenalSC-Regular"
     let color:     Color
     let fontSize:  CGFloat
     

@@ -10,7 +10,6 @@
 		1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */; };
 		1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE702C4378CC008E67A0 /* StaticTheme.swift */; };
 		1137CE732C437ED9008E67A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE722C437ED9008E67A0 /* Colors.swift */; };
-		1137CE762C4388FF008E67A0 /* TravelButtonShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE752C4388FF008E67A0 /* TravelButtonShell.swift */; };
 		1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8452C41F4670081539C /* VisageVerifyApp.swift */; };
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
@@ -23,8 +22,7 @@
 		1179D86E2C4218060081539C /* Slogan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86D2C4218060081539C /* Slogan.swift */; };
 		1179D8702C4218850081539C /* PrettyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86F2C4218850081539C /* PrettyText.swift */; };
 		1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87E2C42D83A0081539C /* Fireflies.swift */; };
-		11E7013C2C44CA8300631C0A /* ButtonShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013B2C44CA8300631C0A /* ButtonShape.swift */; };
-		11E7013E2C44E9B900631C0A /* ButtonShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013D2C44E9B800631C0A /* ButtonShell.swift */; };
+		11AA18052C47A35B004F3F64 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AA18042C47A35B004F3F64 /* ButtonStyle.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +30,6 @@
 		1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTheme.swift; sourceTree = "<group>"; };
 		1137CE702C4378CC008E67A0 /* StaticTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTheme.swift; sourceTree = "<group>"; };
 		1137CE722C437ED9008E67A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		1137CE752C4388FF008E67A0 /* TravelButtonShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelButtonShell.swift; sourceTree = "<group>"; };
 		1179D8422C41F4670081539C /* VisageVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisageVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1179D8452C41F4670081539C /* VisageVerifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisageVerifyApp.swift; sourceTree = "<group>"; };
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,8 +44,7 @@
 		1179D86D2C4218060081539C /* Slogan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slogan.swift; sourceTree = "<group>"; };
 		1179D86F2C4218850081539C /* PrettyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyText.swift; sourceTree = "<group>"; };
 		1179D87E2C42D83A0081539C /* Fireflies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireflies.swift; sourceTree = "<group>"; };
-		11E7013B2C44CA8300631C0A /* ButtonShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonShape.swift; sourceTree = "<group>"; };
-		11E7013D2C44E9B800631C0A /* ButtonShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonShell.swift; sourceTree = "<group>"; };
+		11AA18042C47A35B004F3F64 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,8 +62,7 @@
 		1137CE742C438871008E67A0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				1137CE752C4388FF008E67A0 /* TravelButtonShell.swift */,
-				11E7013D2C44E9B800631C0A /* ButtonShell.swift */,
+				11AA18042C47A35B004F3F64 /* ButtonStyle.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -134,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				1179D85A2C41FE490081539C /* Icon.swift */,
-				11E7013B2C44CA8300631C0A /* ButtonShape.swift */,
 				1179D85C2C42020E0081539C /* AppName.swift */,
 				1179D86D2C4218060081539C /* Slogan.swift */,
 				1179D86F2C4218850081539C /* PrettyText.swift */,
@@ -234,15 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11AA18052C47A35B004F3F64 /* ButtonStyle.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
-				11E7013E2C44E9B900631C0A /* ButtonShell.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
-				1137CE762C4388FF008E67A0 /* TravelButtonShell.swift in Sources */,
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				1179D85B2C41FE490081539C /* Icon.swift in Sources */,
-				11E7013C2C44CA8300631C0A /* ButtonShape.swift in Sources */,
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,
 				1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,

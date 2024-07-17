@@ -1,24 +1,24 @@
+////
+////  Testing.swift
+////  VisageVerify
+////
+////  Created by Nikita Ochkin on 15.07.2024.
+////
 //
-//  Testing.swift
-//  VisageVerify
+//import SwiftUI
 //
-//  Created by Nikita Ochkin on 15.07.2024.
+//struct Testing: View {
+//    var body: some View {
+//        
+//        Button {
+//            print("hey")
+//        } label: {
+//            ButtonShell(buttonText: "Sample")
+//        }
+//        
+//    }
+//}
 //
-
-import SwiftUI
-
-struct Testing: View {
-    var body: some View {
-        
-        Button {
-            print("hey")
-        } label: {
-            ButtonShell(buttonText: "Sample")
-        }
-        
-    }
-}
-
-#Preview {
-    Testing()
-}
+//#Preview {
+//    Testing()
+//}

@@ -149,10 +149,11 @@ struct FloatingFireflies: View {
                 FireflyView()
             }
         }
+        .drawingGroup()
         .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
-    FloatingFireflies(quantity: 70)
+    FloatingFireflies(quantity: 170)
 }
