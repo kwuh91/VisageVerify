@@ -15,6 +15,8 @@
 		11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */; };
 		11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE22C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift */; };
 		11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */; };
+		11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE62C5EBDF1003009F8 /* SignUpButton.swift */; };
+		11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE82C5EEB8E003009F8 /* SignInButton.swift */; };
 		1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8452C41F4670081539C /* VisageVerifyApp.swift */; };
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTestViewStyle.swift; sourceTree = "<group>"; };
 		11391CE22C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyCircleButtonStyle.swift; sourceTree = "<group>"; };
 		11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyTextMaskButtonStyle.swift; sourceTree = "<group>"; };
+		11391CE62C5EBDF1003009F8 /* SignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButton.swift; sourceTree = "<group>"; };
+		11391CE82C5EEB8E003009F8 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		1179D8422C41F4670081539C /* VisageVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisageVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1179D8452C41F4670081539C /* VisageVerifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisageVerifyApp.swift; sourceTree = "<group>"; };
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			children = (
 				11391CDF2C5E8E4B003009F8 /* ButtonStyles */,
 				11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */,
+				11391CE62C5EBDF1003009F8 /* SignUpButton.swift */,
+				11391CE82C5EEB8E003009F8 /* SignInButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -268,10 +274,12 @@
 				11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */,
 				11391CDE2C5E8DC5003009F8 /* MyForm.swift in Sources */,
 				1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */,
+				11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,
 				11E701402C44EB6B00631C0A /* Testing.swift in Sources */,
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
+				11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */,
 				1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

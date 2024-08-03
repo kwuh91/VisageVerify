@@ -19,7 +19,7 @@ struct FireflyCircleButtonStyle: ButtonStyle {
             .clipShape(Circle())
             .shadow(color: Colors.blackish, radius: 10)
             .opacity(configuration.isPressed ? 0.1 : 1)
-            //.scaleEffect(configuration.isPressed ? 1.1 : 1)
+            // .scaleEffect(configuration.isPressed ? 2 : 1)
     }
 }
 

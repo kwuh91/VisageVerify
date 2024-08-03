@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RegistrationScreen: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("Registration Screen!")
+            .font(.largeTitle)
     }
 }
 
