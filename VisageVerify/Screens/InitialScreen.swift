@@ -87,7 +87,7 @@ struct InitialScreen: View {
             // remove slogan
             // change AppName[Icon] colors
             //.animation(.easeInOut(duration: 1.0), value: isTapped)
-            .animation(.spring(duration: 1, bounce: 0.4), value: isTapped)
+            .animation(.spring(duration: 1, bounce: 0.3), value: isTapped)
             
             // stack with sign in/up buttons
             VStack {
@@ -177,4 +177,5 @@ struct InitialScreen: View {
 
 #Preview {
     InitialScreen()
+    // Testing()
 }

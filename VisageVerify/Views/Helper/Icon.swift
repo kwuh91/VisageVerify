@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct Icon: View {
-    let iconName: String
-    let iconColor: Color
-    let iconSize: CGFloat
+    let iconName:   String
+    let iconColor:  Color
+    let iconSize:   CGFloat
     let fontWeight: Font.Weight
     
     var body: some View {
         Image(systemName: iconName)
+            // .renderingMode(.template)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: iconSize)
@@ -24,8 +25,13 @@ struct Icon: View {
 }
 
 #Preview {
-    Icon(iconName: "eye",
-         iconColor: .black,
-         iconSize: 100,
+//    Icon(iconName: "eye",
+//         iconColor: .black,
+//         iconSize: 100,
+//         fontWeight: .thin)
+    
+    Icon(iconName:   "eye.fill",
+         iconColor:  Colors.blackish,
+         iconSize:   70,
          fontWeight: .thin)
 }

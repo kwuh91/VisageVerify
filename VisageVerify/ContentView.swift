@@ -18,6 +18,7 @@ struct ContentView: View {
 //        .padding()
         // FloatingFireflies(quantity: 70)
         InitialScreen()
+        // Testing2()
     }
 }
 
