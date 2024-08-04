@@ -31,13 +31,10 @@ import SwiftUI
 //}
 
 struct Testing: View {
-    //    let iconName:   String
-    //    let iconColor:  Color
-    //    let iconSize:   CGFloat
-    //    let fontWeight: Font.Weight
+    let initialSize:     CGFloat
+    let scaleMultiplier: CGFloat
     
     @State private var action  = false
-    @State private var pulsate = false
     
     var body: some View {
         ZStack {
@@ -47,36 +44,24 @@ struct Testing: View {
                 
             // main body
             ZStack {
-                // eye
+                // eye 1
                 Icon(iconName:   "eye.fill",
-                     //                 iconColor:  action ? .red : Colors.blackish,
                      iconColor:  .black,
-                     iconSize:   70,
+                     iconSize:   30,
                      fontWeight: .thin)
                 .rotationEffect(action ? Angle(degrees: 90) : Angle(degrees: 0))
-                .scaleEffect(action ? 4 : 1)
-                //.opacity(0)
+                .scaleEffect(action ? 2 : 1)
                 
                 // pupil
                 Circle()
-                    .frame(height: action ? 30 * 3.1 : 0) // 20 -> 30
+                    .frame(height: action ? 15 : 1)
                     .foregroundStyle(action ? .red : Colors.blackish)
-                    // .scaleEffect(pulsate ? 3.1 : 1)
-                    // .opacity(action ? 1 : 0)
                 
+                // eye 2
                 Icon(iconName:   "eye.fill",
                      iconColor:  .black,
-                     iconSize:   action ? 100 : 1,
+                     iconSize:   action ? 20 : 1,
                      fontWeight: .thin)
-                //.rotationEffect(action ? Angle(degrees: 90) : Angle(degrees: 0))
-                // .scaleEffect(action ? 90 : 1)
-                
-                //            Icon(iconName:   "eye.fill",
-                //                 iconColor:  Colors.blackish,
-                //                 iconSize:   action ? 50 : 1,
-                //                 fontWeight: .thin)
-                // .rotationEffect(action ? Angle(degrees: 90) : Angle(degrees: 0))
-                // .scaleEffect(action ? 90 : 1)
             }
             .onTapGesture {
                 // rotate
@@ -89,20 +74,12 @@ struct Testing: View {
                 ){
                     action.toggle()
                 }
-                
-                // pulsate
-                withAnimation(
-                    Animation.easeInOut(
-                        duration: 2
-                    ).repeatForever(autoreverses: true).delay(1)
-                ){
-                    pulsate.toggle()
-                }
             }
         }
     }
 }
     
 #Preview {
-    Testing()
+//    Testing(initialSize: 70, scaleMultiplier: 4)
+    Testing(initialSize: 30, scaleMultiplier: 4)
 }

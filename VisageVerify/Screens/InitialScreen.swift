@@ -111,7 +111,7 @@ struct InitialScreen: View {
                         scale.toggle()
                     }
                     
-                    // initial screen fade out animation
+                    // initial screen fade out animation (AppName[Icon] & Sign in button)
                     withAnimation(
                         Animation.easeInOut(
                             duration: 1.5
@@ -145,27 +145,14 @@ struct InitialScreen: View {
                 // sign in button
                 SignInButton(fontSize: 56, quantity: 150)
                 .opacity(hideInitialScreen ? 0 : 1)
+                .offset(y: -100)
                 .onTapGesture {
 
                     // debug message
                     print("Sign in button tapped!")
                 }
                 
-//                    Spacer()
-//
-//                    // sign up button
-//                    NavigationLink(destination: {
-//                        FloatingFireflies(quantity: 150)
-//                    }, label: {
-//                        FloatingFireflies(quantity: 150)
-//                    })
-//                    .buttonStyle(FireflyTextMaskButtonStyle(buttonText: "Sign up",
-//                                                            fontSize:   46,
-//                                                            padding:    10,
-//                                                            width:      300,
-//                                                            height:     100))
-//
-//                    Spacer()
+                // Spacer()
                 
             }.opacity(isTappedButtons ? 1 : 0)
             
