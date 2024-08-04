@@ -42,7 +42,7 @@ struct Testing: View {
                      quantity: 150)
 
         .rotationEffect(
-            scale ? Angle(degrees: 0.001) : Angle(degrees: 0)
+            scale ? Angle(degrees: 0.0001) : Angle(degrees: 0)
         )
         .scaleEffect(scale ? 4 : 1, anchor: .center)
         .opacity(hide ? 0.0001 : 1)
@@ -64,6 +64,9 @@ struct Testing: View {
             ){
                 hide.toggle()
             }
+            
+            // debug message
+            print("Sign up button tapped!")
         }
     }
 }

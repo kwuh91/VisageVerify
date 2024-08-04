@@ -16,7 +16,6 @@ struct SignUpButton: View {
     let fontSize: CGFloat
     let quantity: Int
     
-    
     var body: some View {
         ZStack {
             // Circle

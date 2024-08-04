@@ -17,6 +17,7 @@
 		11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */; };
 		11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE62C5EBDF1003009F8 /* SignUpButton.swift */; };
 		11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE82C5EEB8E003009F8 /* SignInButton.swift */; };
+		11391CEC2C5FF83D003009F8 /* swiftCat.png in Resources */ = {isa = PBXBuildFile; fileRef = 11391CEB2C5FF83D003009F8 /* swiftCat.png */; };
 		1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8452C41F4670081539C /* VisageVerifyApp.swift */; };
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyTextMaskButtonStyle.swift; sourceTree = "<group>"; };
 		11391CE62C5EBDF1003009F8 /* SignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButton.swift; sourceTree = "<group>"; };
 		11391CE82C5EEB8E003009F8 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
+		11391CEB2C5FF83D003009F8 /* swiftCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swiftCat.png; sourceTree = "<group>"; };
 		1179D8422C41F4670081539C /* VisageVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisageVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1179D8452C41F4670081539C /* VisageVerifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisageVerifyApp.swift; sourceTree = "<group>"; };
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
+		11391CEA2C5FF816003009F8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				11391CEB2C5FF83D003009F8 /* swiftCat.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		1179D8392C41F4670081539C = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		1179D8442C41F4670081539C /* VisageVerify */ = {
 			isa = PBXGroup;
 			children = (
+				11391CEA2C5FF816003009F8 /* Images */,
 				1179D86C2C420BE40081539C /* Info.plist */,
 				1179D85E2C420AE30081539C /* Fonts */,
 				1179D8582C41FE270081539C /* Views */,
@@ -251,6 +262,7 @@
 				1179D84D2C41F4680081539C /* Preview Assets.xcassets in Resources */,
 				1179D8602C420B210081539C /* ArsenalSC-Regular.ttf in Resources */,
 				1179D84A2C41F4680081539C /* Assets.xcassets in Resources */,
+				11391CEC2C5FF83D003009F8 /* swiftCat.png in Resources */,
 				1179D86B2C420B550081539C /* BonaNovaSC-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,12 +7,43 @@
 
 import SwiftUI
 
+func fontSizeToWidthRatio(fontSize: CGFloat) -> CGFloat {
+    58*sqrt(fontSize + 47) - 410
+}
+
+func fontSizeToHeightRatio(fontSize: CGFloat) -> CGFloat {
+    16*sqrt(fontSize + 10) - 60
+}
+
 struct SignInButton: View {
+    let fontSize: CGFloat
+    let quantity: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            // Text
+            FloatingFireflies(quantity: quantity)
+                .mask(
+                    PrettyText(text:     "Sign in",
+                               fontName: "ArsenalSC-Regular",
+                               color:    Colors.boneColor,
+                               fontSize: fontSize)
+                )
+                .frame(width:  fontSizeToWidthRatio(fontSize:  fontSize),
+                       height: fontSizeToHeightRatio(fontSize: fontSize))
+                .contentShape(Rectangle())
+                .padding(10)
+                .shadow(color: Colors.blackish, radius: 10)
+                
+        }
     }
 }
 
 #Preview {
-    SignInButton()
+    SignInButton(fontSize: 56, quantity: 150)
+        .onTapGesture {
+
+            // debug message
+            print("Sign in button tapped!")
+        }
 }

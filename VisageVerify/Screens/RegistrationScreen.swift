@@ -9,8 +9,17 @@ import SwiftUI
 
 struct RegistrationScreen: View {
     var body: some View {
-        Text("Registration Screen!")
-            .font(.largeTitle)
+        ZStack {
+            // background color
+            Colors.boneColor
+                .edgesIgnoringSafeArea(.all)
+            
+            // image
+            Image("swiftCat")
+                .resizable()
+                .frame(height: 644)
+                .padding(20)
+        }
     }
 }
 
