@@ -162,19 +162,22 @@ import SwiftUI
 
 struct MainEyeBody: Shape {
     func path(in rect: CGRect) -> Path {
-        var path   = Path()
-//        let width  = rect.size.width
-//        let height = rect.size.height
-        let width  = 1
-        let height = 1
         
-        let scaleWidth: CGFloat  = 14.5
+        var path = Path()
+        
+        var width  = UIScreen.main.bounds.width
+        var height = UIScreen.main.bounds.height
+        
+        let scaleWidth:  CGFloat = 14.5
         let scaleHeight: CGFloat = 28.5
         
         var fixedStartingPoint: CGPoint {
             CGPoint(x: width  / 2,
                     y: height / 2)
         }
+        
+        //width  = 10.0
+        //height = 20.0
         
         // O
         path.move(to: fixedStartingPoint)
@@ -484,26 +487,30 @@ struct MyEye: View {
 //              sectorColor:  .red,
 //              pupilColor:   .black)
     //}
-    VStack{
-        //Circle()
-//        Image(systemName: "eye.fill")
-//            .resizable()
-//            .aspectRatio(contentMode: .fit)
-            // .frame(height: iconSize)
-            // .position(CGPoint(x: 270.0, y: 410.0))
-        
-        Circle()
-            // .position(CGPoint(x: 280.0, y: 310.0))
-            .scaleEffect(0.4)
-        
-        MainEyeBody()
-            // .position(CGPoint(x: 280.0, y: 310.0))
-            .scaleEffect(0.4)
-            // .position(CGPoint(x: 270.0, y: 410.0))
-        .opacity(0.5)
-        .foregroundStyle(.red)
-        
-    }
+//    ZStack{
+//        //Circle()
+////        Image(systemName: "eye.fill")
+////            .resizable()
+////            .aspectRatio(contentMode: .fit)
+//            // .frame(height: iconSize)
+//            // .position(CGPoint(x: 270.0, y: 410.0))
+//        
+////        Circle()
+////          // .position(CGPoint(x: 280.0, y: 310.0))
+////          .scaleEffect(1)
+//        
+//        MainEyeBody()
+//            // .position(CGPoint(x: 280.0, y: 310.0))
+//            .scaleEffect(1)
+//            
+//            // .position(CGPoint(x: 270.0, y: 410.0))
+//        .opacity(0.5)
+//        .foregroundStyle(.red)
+//        
+//    }
+  
+    MainEyeBody()
+        .frame(width: 100)
     
    // ZStack {
     //   MainEyeBody()
