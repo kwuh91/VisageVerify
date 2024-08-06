@@ -215,8 +215,8 @@ struct OpenEye: View {
             .font(Font.title.weight(.thin))
     
         OpenEye(mainEyeColor: .black, 
-              sectorColor:  .white,
-              pupilColor:   .black)
+                sectorColor:  .white,
+                pupilColor:   .black)
             .aspectRatio(0.5, contentMode: .fit)
             .frame(height: 500)
             .onTapGesture{
