@@ -72,85 +72,205 @@ import SwiftUI
 //    }
 //}
 
-struct MainEye: Shape {
-    let startingPoint: CGPoint
-    let mult:          CGFloat
-    
+//struct MainEye: Shape {
+//    let startingPoint: CGPoint
+//    let mult:          CGFloat
+//    
+//    func path(in rect: CGRect) -> Path {
+//        var path = Path()
+//        // let width = rect.size.width
+//        // let height = rect.size.height
+//        
+//        // O
+//        path.move(to: startingPoint)
+//        
+//        // A (+x)
+//        path.addLine(to: CGPoint(x: startingPoint.x + 7.19 * mult,
+//                                 y: startingPoint.y + -0   * mult))
+//        
+//        // C (+x) (+y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x + 3.54  * mult,
+//                                        y: startingPoint.y + -3.74 * mult),
+//                      control1: CGPoint(x: startingPoint.x + 7.19  * mult,
+//                                        y: startingPoint.y + -1    * mult),
+//                      control2: CGPoint(x: startingPoint.x + 5.56  * mult,
+//                                        y: startingPoint.y + -2.7  * mult))
+//                    
+//        // E (+y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x + 0     * mult,
+//                                        y: startingPoint.y + -4.59 * mult),
+//                      control1: CGPoint(x: startingPoint.x + 3.54  * mult,
+//                                        y: startingPoint.y + -3.74 * mult),
+//                      control2: CGPoint(x: startingPoint.x + 1.76  * mult,
+//                                        y: startingPoint.y + -4.62 * mult))
+//        
+//        // C (-x) (+y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x - 3.54  * mult,
+//                                        y: startingPoint.y + -3.74 * mult),
+//                      control1: CGPoint(x: startingPoint.x - 1.76  * mult,
+//                                        y: startingPoint.y + -4.62 * mult),
+//                      control2: CGPoint(x: startingPoint.x - 3.54  * mult,
+//                                        y: startingPoint.y + -3.74 * mult))
+//        
+//        // A (-x)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x - 7.19 * mult,
+//                                        y: startingPoint.y + -0   * mult),
+//                      control1: CGPoint(x: startingPoint.x - 5.56 * mult,
+//                                        y: startingPoint.y + -2.7 * mult),
+//                      control2: CGPoint(x: startingPoint.x - 7.19 * mult,
+//                                        y: startingPoint.y + -1   * mult))
+//        
+//        // C (-x) (-y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x - 3.54  * mult,
+//                                        y: startingPoint.y - -3.74 * mult),
+//                      control1: CGPoint(x: startingPoint.x - 7.19  * mult,
+//                                        y: startingPoint.y - -1    * mult),
+//                      control2: CGPoint(x: startingPoint.x - 5.56  * mult,
+//                                        y: startingPoint.y - -2.7  * mult))
+//        
+//        // E (-y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x + 0     * mult,
+//                                        y: startingPoint.y - -4.59 * mult),
+//                      control1: CGPoint(x: startingPoint.x - 3.54  * mult,
+//                                        y: startingPoint.y - -3.74 * mult),
+//                      control2: CGPoint(x: startingPoint.x - 1.76  * mult,
+//                                        y: startingPoint.y - -4.62 * mult))
+//        
+//        // C (+x) (-y)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x + 3.54  * mult,
+//                                        y: startingPoint.y - -3.74 * mult),
+//                      control1: CGPoint(x: startingPoint.x + 1.76  * mult,
+//                                        y: startingPoint.y - -4.62 * mult),
+//                      control2: CGPoint(x: startingPoint.x + 3.54  * mult,
+//                                        y: startingPoint.y - -3.74 * mult))
+//        
+//        // A (+x)
+//        path.addCurve(to:       CGPoint(x: startingPoint.x + 7.19 * mult,
+//                                        y: startingPoint.y - -0   * mult),
+//                      control1: CGPoint(x: startingPoint.x + 5.56 * mult,
+//                                        y: startingPoint.y - -2.7 * mult),
+//                      control2: CGPoint(x: startingPoint.x + 7.19 * mult,
+//                                        y: startingPoint.y - -1   * mult))
+//        
+//        // let _ = print(width)  // 430
+//        // let _ = print(height) // 839
+//        
+//        path.closeSubpath()
+//        return path
+//    }
+//}
+
+struct MainEyeBody: Shape {
     func path(in rect: CGRect) -> Path {
-        var path = Path()
-        // let width = rect.size.width
-        // let height = rect.size.height
+        var path   = Path()
+//        let width  = rect.size.width
+//        let height = rect.size.height
+        let width  = 1
+        let height = 1
+        
+        let scaleWidth: CGFloat  = 14.5
+        let scaleHeight: CGFloat = 28.5
+        
+        var fixedStartingPoint: CGPoint {
+            CGPoint(x: width  / 2,
+                    y: height / 2)
+        }
         
         // O
-        path.move(to: startingPoint)
+        path.move(to: fixedStartingPoint)
         
         // A (+x)
-        path.addLine(to: CGPoint(x: startingPoint.x + 7.19 * mult,
-                                 y: startingPoint.y + -0   * mult))
+        path.addLine(
+            to: CGPoint(x: fixedStartingPoint.x + 7.19 / scaleWidth  * width,
+                        y: fixedStartingPoint.y + 0    / scaleHeight * height))
         
         // C (+x) (+y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x + 3.54  * mult,
-                                        y: startingPoint.y + -3.74 * mult),
-                      control1: CGPoint(x: startingPoint.x + 7.19  * mult,
-                                        y: startingPoint.y + -1    * mult),
-                      control2: CGPoint(x: startingPoint.x + 5.56  * mult,
-                                        y: startingPoint.y + -2.7  * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x + 3.54  / scaleWidth  * width,
+                        y: fixedStartingPoint.y + -3.74 / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x + 7.19  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -1    / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x + 5.56  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -2.7  / scaleHeight * height))
                     
         // E (+y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x + 0     * mult,
-                                        y: startingPoint.y + -4.59 * mult),
-                      control1: CGPoint(x: startingPoint.x + 3.54  * mult,
-                                        y: startingPoint.y + -3.74 * mult),
-                      control2: CGPoint(x: startingPoint.x + 1.76  * mult,
-                                        y: startingPoint.y + -4.62 * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x + 0     / scaleWidth  * width,
+                        y: fixedStartingPoint.y + -4.59 / scaleHeight * height),
+                      
+            control1: CGPoint(x: fixedStartingPoint.x + 3.54  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -3.74 / scaleHeight * height),
+                      
+            control2: CGPoint(x: fixedStartingPoint.x + 1.76  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -4.62 / scaleHeight * height))
         
         // C (-x) (+y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x - 3.54  * mult,
-                                        y: startingPoint.y + -3.74 * mult),
-                      control1: CGPoint(x: startingPoint.x - 1.76  * mult,
-                                        y: startingPoint.y + -4.62 * mult),
-                      control2: CGPoint(x: startingPoint.x - 3.54  * mult,
-                                        y: startingPoint.y + -3.74 * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x - 3.54  / scaleWidth  * width,
+                        y: fixedStartingPoint.y + -3.74 / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x - 1.76  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -4.62 / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x - 3.54  / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -3.74 / scaleHeight * height))
         
         // A (-x)
-        path.addCurve(to:       CGPoint(x: startingPoint.x - 7.19 * mult,
-                                        y: startingPoint.y + -0   * mult),
-                      control1: CGPoint(x: startingPoint.x - 5.56 * mult,
-                                        y: startingPoint.y + -2.7 * mult),
-                      control2: CGPoint(x: startingPoint.x - 7.19 * mult,
-                                        y: startingPoint.y + -1   * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x - 7.19 / scaleWidth  * width,
+                        y: fixedStartingPoint.y + -0   / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x - 5.56 / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -2.7 / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x - 7.19 / scaleWidth  * width,
+                              y: fixedStartingPoint.y + -1   / scaleHeight * height))
         
         // C (-x) (-y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x - 3.54  * mult,
-                                        y: startingPoint.y - -3.74 * mult),
-                      control1: CGPoint(x: startingPoint.x - 7.19  * mult,
-                                        y: startingPoint.y - -1    * mult),
-                      control2: CGPoint(x: startingPoint.x - 5.56  * mult,
-                                        y: startingPoint.y - -2.7  * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x - 3.54  / scaleWidth  * width,
+                        y: fixedStartingPoint.y - -3.74 / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x - 7.19  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -1    / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x - 5.56  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -2.7  / scaleHeight * height))
         
         // E (-y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x + 0     * mult,
-                                        y: startingPoint.y - -4.59 * mult),
-                      control1: CGPoint(x: startingPoint.x - 3.54  * mult,
-                                        y: startingPoint.y - -3.74 * mult),
-                      control2: CGPoint(x: startingPoint.x - 1.76  * mult,
-                                        y: startingPoint.y - -4.62 * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x + 0     / scaleWidth  * width,
+                        y: fixedStartingPoint.y - -4.59 / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x - 3.54  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -3.74 / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x - 1.76  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -4.62 / scaleHeight * height))
         
         // C (+x) (-y)
-        path.addCurve(to:       CGPoint(x: startingPoint.x + 3.54  * mult,
-                                        y: startingPoint.y - -3.74 * mult),
-                      control1: CGPoint(x: startingPoint.x + 1.76  * mult,
-                                        y: startingPoint.y - -4.62 * mult),
-                      control2: CGPoint(x: startingPoint.x + 3.54  * mult,
-                                        y: startingPoint.y - -3.74 * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x + 3.54  / scaleWidth  * width,
+                        y: fixedStartingPoint.y - -3.74 / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x + 1.76  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -4.62 / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x + 3.54  / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -3.74 / scaleHeight * height))
         
         // A (+x)
-        path.addCurve(to:       CGPoint(x: startingPoint.x + 7.19 * mult,
-                                        y: startingPoint.y - -0   * mult),
-                      control1: CGPoint(x: startingPoint.x + 5.56 * mult,
-                                        y: startingPoint.y - -2.7 * mult),
-                      control2: CGPoint(x: startingPoint.x + 7.19 * mult,
-                                        y: startingPoint.y - -1   * mult))
+        path.addCurve(
+            to: CGPoint(x: fixedStartingPoint.x + 7.19 / scaleWidth  * width,
+                        y: fixedStartingPoint.y - -0   / scaleHeight * height),
+            
+            control1: CGPoint(x: fixedStartingPoint.x + 5.56 / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -2.7 / scaleHeight * height),
+            
+            control2: CGPoint(x: fixedStartingPoint.x + 7.19 / scaleWidth  * width,
+                              y: fixedStartingPoint.y - -1   / scaleHeight * height))
         
         // let _ = print(width)  // 430
         // let _ = print(height) // 839
@@ -159,6 +279,7 @@ struct MainEye: Shape {
         return path
     }
 }
+
 
 //struct MainEye: View {
 //    
@@ -289,46 +410,72 @@ struct SimpleEyeShape: Shape {
     }
 }
 
+//struct MyEye: View {
+//    let position:     CGPoint
+//    let size:         CGFloat
+//    let mainEyeColor: Color
+//    let sectorColor:  Color
+//    let pupilColor:   Color
+//    
+//    var body: some View {
+//        ZStack {
+//            // main eye body
+//            MainEye1()
+//            .foregroundStyle(mainEyeColor)
+//            
+//            // sector
+//            MyCircle(startingPoint: position,
+//                     radius:        size * 3)
+//            .foregroundStyle(sectorColor)
+//
+//            
+//            // pupil
+//            MyCircle(startingPoint: position,
+//                     radius:        size * 0.95)
+//            .foregroundStyle(pupilColor)
+//        }
+//
+//        .contentShape(MainEye1(startingPoint: position, mult: size))
+//    }
+//}
+
 struct MyEye: View {
-    let position:     CGPoint
-    let size:         CGFloat
+    // let size:         CGFloat
     let mainEyeColor: Color
     let sectorColor:  Color
     let pupilColor:   Color
+    let position:     CGPoint = CGPoint(x: 0, y: 0)
     
     var body: some View {
         ZStack {
             // main eye body
-            MainEye(startingPoint: position,
-                    mult:          size)
-            .foregroundStyle(mainEyeColor)
-            
-            // sector
-            MyCircle(startingPoint: position,
-                     radius:        size * 3)
-            .foregroundStyle(sectorColor)
+            MainEyeBody()
+                .foregroundStyle(mainEyeColor)
 
-            
+            // sector
+            Circle()
+                .frame(width: 60)
+                .foregroundStyle(sectorColor)
+
+
             // pupil
-            MyCircle(startingPoint: position,
-                     radius:        size * 0.95)
-            .foregroundStyle(pupilColor)
+            Circle()
+                .frame(width: 50)
+                .foregroundStyle(pupilColor)
         }
 
-        .contentShape(MainEye(startingPoint: position, mult: size))
+        .contentShape(MainEyeBody())
     }
 }
 
 #Preview {
-    VStack {
-        EyeSF(iconName:   "eye.fill",
-             iconColor:  Colors.blackish,
-             iconSize:   70,
-             fontWeight: .thin)
+    //VStack {
+//        EyeSF(iconName:   "eye.fill",
+//             iconColor:  Colors.blackish,
+//             iconSize:   70,
+//             fontWeight: .thin)
         
-        MainEye(startingPoint: CGPoint(x: 215,
-                                       y: 419.5),
-                   mult: 25)
+
         
 //        MyEye(position: CGPoint(x: 215,
 //                                y: 419.5),
@@ -336,18 +483,41 @@ struct MyEye: View {
 //              mainEyeColor: .black,
 //              sectorColor:  .red,
 //              pupilColor:   .black)
+    //}
+    VStack{
+        //Circle()
+//        Image(systemName: "eye.fill")
+//            .resizable()
+//            .aspectRatio(contentMode: .fit)
+            // .frame(height: iconSize)
+            // .position(CGPoint(x: 270.0, y: 410.0))
+        
+        Circle()
+            // .position(CGPoint(x: 280.0, y: 310.0))
+            .scaleEffect(0.4)
+        
+        MainEyeBody()
+            // .position(CGPoint(x: 280.0, y: 310.0))
+            .scaleEffect(0.4)
+            // .position(CGPoint(x: 270.0, y: 410.0))
+        .opacity(0.5)
+        .foregroundStyle(.red)
+        
     }
-//    ZStack {
-//        MainEye(startingPoint: CGPoint(x: 215,
-//                                       y: 419.5),
-//                   mult: 25)
-//        
+    
+   // ZStack {
+    //   MainEyeBody()
+        
+//        MyEye(mainEyeColor: .black,
+//              sectorColor:  .green,
+//              pupilColor:   .blue)
+        
 //        EyeSF(iconName:   "eye.fill",
 //              iconColor:  .red,
 //             iconSize:    230,
 //             fontWeight:  .thin)
 //        .opacity(0.5)
-//    }
+ //   }
 //    MyEye(position: CGPoint(x: 215,
 //                            y: 419.5),
 //          size: 25,
