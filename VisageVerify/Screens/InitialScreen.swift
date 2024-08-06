@@ -58,7 +58,7 @@ struct InitialScreen: View {
                             Colors.boneColor,
                             fontSize: isTapped ? 46 : 36)
                     
-                    Icon(iconName:  "eye.fill",
+                    EyeSF(iconName:  "eye.fill",
                          iconColor: isTapped ?
                          Colors.blackish     :
                          Colors.boneColor,
@@ -164,5 +164,4 @@ struct InitialScreen: View {
 
 #Preview {
     InitialScreen()
-    // Testing()
 }

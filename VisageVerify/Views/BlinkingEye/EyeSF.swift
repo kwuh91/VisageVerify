@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Icon: View {
+struct EyeSF: View {
     let iconName:   String
     let iconColor:  Color
     let iconSize:   CGFloat
@@ -30,7 +30,7 @@ struct Icon: View {
 //         iconSize: 100,
 //         fontWeight: .thin)
     
-    Icon(iconName:   "eye.fill",
+    EyeSF(iconName:   "eye.fill",
          iconColor:  Colors.blackish,
          iconSize:   70,
          fontWeight: .thin)
