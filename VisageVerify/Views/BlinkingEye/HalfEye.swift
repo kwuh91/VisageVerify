@@ -92,6 +92,29 @@ struct MyHalfCircle: Shape {
     }
 }
 
+struct MyCustomCircle: Shape {
+    let radius:     CGFloat
+    let startAngle: CGFloat
+    let endAngle:   CGFloat
+    let clockwise:  Bool
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let radiusScale = rect.width / 14.0
+        
+        path.addArc(center:     CGPoint(x: rect.midX,
+                                        y: rect.midY),
+                    radius:     radius * radiusScale ,
+                    startAngle: .degrees(startAngle),
+                    endAngle:   .degrees(endAngle),
+                    clockwise:  clockwise)
+        
+        path.closeSubpath()
+        return path
+    }
+}
+
 struct HalfEye: View {
     let mainEyeColor: Color
     let sectorColor:  Color

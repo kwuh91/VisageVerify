@@ -1,21 +1,25 @@
 //
-//  BlinkingEyeAnimationState2.swift
+//  BlinkingEyeAnimationState4.swift
 //  VisageVerify
 //
-//  Created by Nikita Ochkin on 07.08.2024.
+//  Created by Nikita Ochkin on 09.08.2024.
 //
 
 import SwiftUI
 
-func iterToDegreesRatioLowerEyePartState2(iter: Int) -> CGFloat {
-    -pow((CGFloat(iter) * 0.4 - 7), 2) + 90
+func iterToDegreesRatioLowerEyePartState4(iter: Int) -> CGFloat {
+    -pow((CGFloat(iter) * 0.445 - 6.86), 2) + 90
 }
 
-func iterToDegreesRatioUpperEyePartState2(iter: Int) -> CGFloat {
-    pow((CGFloat(iter) * 0.35 - 6.3), 2) + 90
+func iterToDegreesRatioUpperEyePartState4(iter: Int) -> CGFloat {
+    pow((CGFloat(iter) * 0.14 - 2.3), 2) + 90
 }
 
-struct MainEyeShapeMiddlePartHelperState2: Shape {
+func iterToDegreesRatioUpperSectorEyePartState4(iter: Int) -> CGFloat {
+    pow((CGFloat(iter) * 0.153 - 2.5), 2) + 90
+}
+
+struct MainEyeShapeMiddlePartHelperState4: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
@@ -30,7 +34,7 @@ struct MainEyeShapeMiddlePartHelperState2: Shape {
         // up
         path.addLine(
             to: CGPoint(x: rect.midX,
-                        y: rect.midY - 3.5 * heightScale))
+                        y: rect.midY - 0.44 * heightScale))
         
         // left corner
         path.addLine(
@@ -47,7 +51,7 @@ struct MainEyeShapeMiddlePartHelperState2: Shape {
     }
 }
 
-struct BlinkingEyeAnimationState2Body: View {
+struct BlinkingEyeAnimationState4Body: View {
     let mainEyeColor: Color
     
     var body: some View {
@@ -57,24 +61,24 @@ struct BlinkingEyeAnimationState2Body: View {
                 // fill lower part
                 ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(
-                        .degrees(iterToDegreesRatioLowerEyePartState2(iter: i)),
+                        .degrees(iterToDegreesRatioLowerEyePartState4(iter: i)),
                         axis: (x: 1, y: 0, z: 0))
                 
-                // fill higher part
+                // fill upper part
                 ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(
-                        .degrees(iterToDegreesRatioUpperEyePartState2(iter: i)),
+                        .degrees(iterToDegreesRatioUpperEyePartState4(iter: i)),
                         axis: (x: 1, y: 0, z: 0))
             }
             
             // fill the middle
-            MainEyeShapeMiddlePartHelperState2()
+             MainEyeShapeMiddlePartHelperState4()
                 .foregroundStyle(mainEyeColor)
         }
     }
 }
 
-struct BlinkingEyeAnimationState2: View {
+struct BlinkingEyeAnimationState4: View {
     let mainEyeColor: Color
     let sectorColor:  Color
     let pupilColor:   Color
@@ -83,36 +87,52 @@ struct BlinkingEyeAnimationState2: View {
         ZStack {
             // upper part
             ClosedEye(mainEyeColor: mainEyeColor)
-                .rotation3DEffect(.degrees(135), axis: (x: 1, y: 0, z: 0))
+                .rotation3DEffect(.degrees(95), axis: (x: 1, y: 0, z: 0))
             
             // middle part
-            BlinkingEyeAnimationState2Body(mainEyeColor: mainEyeColor)
-            
+            BlinkingEyeAnimationState4Body(mainEyeColor: mainEyeColor)
             
             // lower part
             ClosedEye(mainEyeColor: mainEyeColor)
-                .rotation3DEffect(.degrees(35), axis: (x: 1, y: 0, z: 0))
+                .rotation3DEffect(.degrees(36), axis: (x: 1, y: 0, z: 0))
             
             // sector
-            MyFullCircle(radius: 3)
+            MyCustomCircle(radius:     3,
+                           startAngle: -7.7,
+                           endAngle:   187.7,
+                           clockwise:  false)
                 .foregroundStyle(sectorColor)
 
             // pupil
-            MyFullCircle(radius: 0.9)
+            MyCustomCircle(radius:     0.9,
+                           startAngle: -24,
+                           endAngle:   204,
+                           clockwise:  false)
                 .foregroundStyle(pupilColor)
+            
+            // upper sector part
+            ZStack {
+                ForEach(1..<10, id: \.self) { i in
+                    // fill upper part
+                    ClosedEye(mainEyeColor: .black)
+                        .rotation3DEffect(
+                            .degrees(iterToDegreesRatioUpperSectorEyePartState4(iter: i)),
+                            axis: (x: 1, y: 0, z: 0))
+                }
+            }// .opacity(0.8)
         }
     }
 }
 
 #Preview {
     VStack(spacing: -300) {
-        OpenEye(mainEyeColor: .black,
-                sectorColor:  .white,
-                pupilColor:   .black)
-            .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: 500)
+        BlinkingEyeAnimationState3(mainEyeColor: .black,
+                                   sectorColor:  .white,
+                                   pupilColor:   .black)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
         
-        BlinkingEyeAnimationState2(mainEyeColor: .black,
+        BlinkingEyeAnimationState4(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
         .aspectRatio(0.5, contentMode: .fit)

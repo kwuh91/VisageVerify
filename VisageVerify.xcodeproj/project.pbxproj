@@ -38,6 +38,8 @@
 		11B886572C62C5CD0058CE5C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886562C62C5CD0058CE5C /* Testing3.swift */; };
 		11B886592C62CF7B0058CE5C /* Testing4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886582C62CF7B0058CE5C /* Testing4.swift */; };
 		11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */; };
+		11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */; };
+		11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		11B886562C62C5CD0058CE5C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
 		11B886582C62CF7B0058CE5C /* Testing4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing4.swift; sourceTree = "<group>"; };
 		11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState2.swift; sourceTree = "<group>"; };
+		11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState3.swift; sourceTree = "<group>"; };
+		11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState4.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,11 +198,7 @@
 				1137CE742C438871008E67A0 /* Buttons */,
 				1179D8712C4222F70081539C /* Background */,
 				1179D8592C41FE340081539C /* Helper */,
-				11E7013F2C44EB6B00631C0A /* Testing.swift */,
-				11391CEE2C602C48003009F8 /* Testing2.swift */,
-				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
-				11B886562C62C5CD0058CE5C /* Testing3.swift */,
-				11B886582C62CF7B0058CE5C /* Testing4.swift */,
+				11B8865D2C62EDD80058CE5C /* Testing */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,8 +237,22 @@
 			isa = PBXGroup;
 			children = (
 				11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */,
+				11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */,
+				11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */,
 			);
 			path = BlinkingEye2;
+			sourceTree = "<group>";
+		};
+		11B8865D2C62EDD80058CE5C /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				11E7013F2C44EB6B00631C0A /* Testing.swift */,
+				11391CEE2C602C48003009F8 /* Testing2.swift */,
+				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
+				11B886562C62C5CD0058CE5C /* Testing3.swift */,
+				11B886582C62CF7B0058CE5C /* Testing4.swift */,
+			);
+			path = Testing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +349,11 @@
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */,
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,
+				11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */,
 				11E701402C44EB6B00631C0A /* Testing.swift in Sources */,
 				11B886572C62C5CD0058CE5C /* Testing3.swift in Sources */,
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
+				11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */,
 				11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */,
 				11B886512C629BBE0058CE5C /* HalfEye.swift in Sources */,
 				1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */,
