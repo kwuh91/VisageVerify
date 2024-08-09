@@ -8,7 +8,7 @@
 import SwiftUI
 
 func iterToDegreesRatioLowerEyePartState2(iter: Int) -> CGFloat {
-    -pow((CGFloat(iter) * 0.4 - 7), 2) + 90
+    -pow((CGFloat(iter) * 0.4 - 7.2), 2) + 90
 }
 
 func iterToDegreesRatioUpperEyePartState2(iter: Int) -> CGFloat {
@@ -91,7 +91,7 @@ struct BlinkingEyeAnimationState2: View {
             
             // lower part
             ClosedEye(mainEyeColor: mainEyeColor)
-                .rotation3DEffect(.degrees(35), axis: (x: 1, y: 0, z: 0))
+                .rotation3DEffect(.degrees(27), axis: (x: 1, y: 0, z: 0))
             
             // sector
             MyFullCircle(radius: 3)
@@ -105,17 +105,28 @@ struct BlinkingEyeAnimationState2: View {
 }
 
 #Preview {
-    VStack(spacing: -300) {
+//    VStack(spacing: -300) {
+//        OpenEye(mainEyeColor: .black,
+//                sectorColor:  .white,
+//                pupilColor:   .black)
+//            .aspectRatio(0.5, contentMode: .fit)
+//            .frame(height: 500)
+//        
+//        BlinkingEyeAnimationState2(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .aspectRatio(0.5, contentMode: .fit)
+//        .frame(height: 500)
+//    }
+    
+    ZStack() {
         OpenEye(mainEyeColor: .black,
                 sectorColor:  .white,
                 pupilColor:   .black)
-            .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: 500)
         
-        BlinkingEyeAnimationState2(mainEyeColor: .black,
+        BlinkingEyeAnimationState2(mainEyeColor: .red,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .aspectRatio(0.5, contentMode: .fit)
-        .frame(height: 500)
+        .opacity(0.8)
     }
 }

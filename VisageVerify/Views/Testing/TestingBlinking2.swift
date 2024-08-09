@@ -100,7 +100,7 @@ struct BlinkingEyeView: View {
                     isBlinking = false
                 }
             }
-            delay += 0.01
+            delay += 0.02
         }
     }
 }

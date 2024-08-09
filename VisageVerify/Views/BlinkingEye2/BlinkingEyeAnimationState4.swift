@@ -44,7 +44,7 @@ struct MainEyeShapeMiddlePartHelperState4: Shape {
         // down
         path.addLine(
             to: CGPoint(x: rect.midX,
-                        y: rect.midY + 4 * heightScale))
+                        y: rect.midY + 3.7 * heightScale))
         
         path.closeSubpath()
         return path
@@ -94,7 +94,7 @@ struct BlinkingEyeAnimationState4: View {
             
             // lower part
             ClosedEye(mainEyeColor: mainEyeColor)
-                .rotation3DEffect(.degrees(36), axis: (x: 1, y: 0, z: 0))
+                .rotation3DEffect(.degrees(38), axis: (x: 1, y: 0, z: 0))
             
             // sector
             MyCustomCircle(radius:     3,
@@ -125,17 +125,27 @@ struct BlinkingEyeAnimationState4: View {
 }
 
 #Preview {
-    VStack(spacing: -300) {
+//    VStack(spacing: -300) {
+//        BlinkingEyeAnimationState3(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .aspectRatio(0.5, contentMode: .fit)
+//        .frame(height: 500)
+//        
+//        BlinkingEyeAnimationState4(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .aspectRatio(0.5, contentMode: .fit)
+//        .frame(height: 500)
+//    }
+    ZStack {
         BlinkingEyeAnimationState3(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .aspectRatio(0.5, contentMode: .fit)
-        .frame(height: 500)
         
-        BlinkingEyeAnimationState4(mainEyeColor: .black,
+        BlinkingEyeAnimationState4(mainEyeColor: .red,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .aspectRatio(0.5, contentMode: .fit)
-        .frame(height: 500)
+        .opacity(0.8)
     }
 }

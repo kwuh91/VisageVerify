@@ -24,7 +24,7 @@ struct BlinkingEyeAnimationState5: View {
             // lower part
             ZStack {
                 ClosedEye(mainEyeColor: mainEyeColor)
-                    .rotation3DEffect(.degrees(39), axis: (x: 1, y: 0, z: 0))
+                    .rotation3DEffect(.degrees(40), axis: (x: 1, y: 0, z: 0))
                 
                 ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(.degrees(51), axis: (x: 1, y: 0, z: 0))
@@ -59,17 +59,28 @@ struct BlinkingEyeAnimationState5: View {
 }
 
 #Preview {
-    VStack(spacing: -300) {
+//    VStack(spacing: -300) {
+//        BlinkingEyeAnimationState4(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .aspectRatio(0.5, contentMode: .fit)
+//        .frame(height: 500)
+//        
+//        BlinkingEyeAnimationState5(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .aspectRatio(0.5, contentMode: .fit)
+//        .frame(height: 500)
+//    }
+    
+    ZStack {
         BlinkingEyeAnimationState4(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .aspectRatio(0.5, contentMode: .fit)
-        .frame(height: 500)
         
-        BlinkingEyeAnimationState5(mainEyeColor: .black,
+        BlinkingEyeAnimationState5(mainEyeColor: .red,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .aspectRatio(0.5, contentMode: .fit)
-        .frame(height: 500)
+        .opacity(0.8)
     }
 }
