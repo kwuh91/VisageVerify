@@ -9,30 +9,46 @@ import SwiftUI
 
 struct Testing3: View {
     var body: some View {
-        VStack(spacing: -300) {
+        VStack(spacing: -230) {
             OpenEye(mainEyeColor: .black,
                     sectorColor:  .white,
                     pupilColor:   .black)
-                .aspectRatio(0.5, contentMode: .fit)
-                .frame(height: 500)
+            .aspectRatio(0.5, contentMode: .fit)
+            .frame(height: 350)
             
             BlinkingEyeAnimationState2(mainEyeColor: .black,
                                        sectorColor:  .white,
                                        pupilColor:   .black)
             .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: 500)
+            .frame(height: 350)
             
             BlinkingEyeAnimationState3(mainEyeColor: .black,
                                        sectorColor:  .white,
                                        pupilColor:   .black)
             .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: 500)
+            .frame(height: 350)
             
             BlinkingEyeAnimationState4(mainEyeColor: .black,
                                        sectorColor:  .white,
                                        pupilColor:   .black)
             .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: 500)
+            .frame(height: 350)
+            
+            BlinkingEyeAnimationState5(mainEyeColor: .black,
+                                       sectorColor:  .white,
+                                       pupilColor:   .black)
+            .aspectRatio(0.5, contentMode: .fit)
+            .frame(height: 350)
+            
+            BlinkingEyeAnimationState6(mainEyeColor: .black,
+                                       sectorColor:  .white,
+                                       pupilColor:   .black)
+            .aspectRatio(0.5, contentMode: .fit)
+            .frame(height: 350)
+            
+            ClosedEye(mainEyeColor: .black)
+            .aspectRatio(0.5, contentMode: .fit)
+            .frame(height: 350)
         }
     }
 }

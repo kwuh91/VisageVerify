@@ -40,6 +40,9 @@
 		11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */; };
 		11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */; };
 		11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */; };
+		11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */; };
+		11B886652C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */; };
+		11B886672C6682A20058CE5C /* TestingBlinking2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886662C6682A20058CE5C /* TestingBlinking2.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,9 @@
 		11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState2.swift; sourceTree = "<group>"; };
 		11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState3.swift; sourceTree = "<group>"; };
 		11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState4.swift; sourceTree = "<group>"; };
+		11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState5.swift; sourceTree = "<group>"; };
+		11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState6.swift; sourceTree = "<group>"; };
+		11B886662C6682A20058CE5C /* TestingBlinking2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingBlinking2.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +245,8 @@
 				11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */,
 				11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */,
 				11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */,
+				11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */,
+				11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */,
 			);
 			path = BlinkingEye2;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
 				11B886562C62C5CD0058CE5C /* Testing3.swift */,
 				11B886582C62CF7B0058CE5C /* Testing4.swift */,
+				11B886662C6682A20058CE5C /* TestingBlinking2.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -336,14 +345,17 @@
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				11391CEF2C602C48003009F8 /* Testing2.swift in Sources */,
+				11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */,
 				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */,
 				11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */,
 				1179D85B2C41FE490081539C /* EyeSF.swift in Sources */,
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,
+				11B886672C6682A20058CE5C /* TestingBlinking2.swift in Sources */,
 				11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */,
 				11391CDE2C5E8DC5003009F8 /* MyForm.swift in Sources */,
+				11B886652C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift in Sources */,
 				1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */,
 				11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
