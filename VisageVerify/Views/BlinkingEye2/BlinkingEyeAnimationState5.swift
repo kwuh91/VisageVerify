@@ -24,6 +24,9 @@ struct BlinkingEyeAnimationState5: View {
             // lower part
             ZStack {
                 ClosedEye(mainEyeColor: mainEyeColor)
+                    .rotation3DEffect(.degrees(29), axis: (x: 1, y: 0, z: 0))
+                
+                ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(.degrees(40), axis: (x: 1, y: 0, z: 0))
                 
                 ClosedEye(mainEyeColor: mainEyeColor)

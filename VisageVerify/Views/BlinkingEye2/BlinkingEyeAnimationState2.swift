@@ -8,7 +8,7 @@
 import SwiftUI
 
 func iterToDegreesRatioLowerEyePartState2(iter: Int) -> CGFloat {
-    -pow((CGFloat(iter) * 0.4 - 7.2), 2) + 90
+    -pow((CGFloat(iter) * 0.71 - 7.7), 2) + 90
 }
 
 func iterToDegreesRatioUpperEyePartState2(iter: Int) -> CGFloat {
@@ -91,7 +91,7 @@ struct BlinkingEyeAnimationState2: View {
             
             // lower part
             ClosedEye(mainEyeColor: mainEyeColor)
-                .rotation3DEffect(.degrees(27), axis: (x: 1, y: 0, z: 0))
+                .rotation3DEffect(.degrees(22), axis: (x: 1, y: 0, z: 0))
             
             // sector
             MyFullCircle(radius: 3)

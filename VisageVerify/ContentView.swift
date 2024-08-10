@@ -18,6 +18,12 @@ struct ContentView: View {
 //        .padding()
         // FloatingFireflies(quantity: 70)
         InitialScreen()
+//        ZStack {
+//            Colors.boneColor
+//                .ignoresSafeArea()
+//            
+//            MultipleBlinkingEyes()
+//        }
         // Testing2()
     }
 }

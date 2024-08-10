@@ -35,14 +35,15 @@
 		11B886512C629BBE0058CE5C /* HalfEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886502C629BBE0058CE5C /* HalfEye.swift */; };
 		11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886522C629FA90058CE5C /* ClosedEye.swift */; };
 		11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886542C62BD920058CE5C /* TestingBlinking.swift */; };
-		11B886572C62C5CD0058CE5C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886562C62C5CD0058CE5C /* Testing3.swift */; };
-		11B886592C62CF7B0058CE5C /* Testing4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886582C62CF7B0058CE5C /* Testing4.swift */; };
+		11B886572C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */; };
 		11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */; };
 		11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */; };
 		11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */; };
 		11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */; };
 		11B886652C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */; };
 		11B886672C6682A20058CE5C /* TestingBlinking2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886662C6682A20058CE5C /* TestingBlinking2.swift */; };
+		11B886692C67FD4C0058CE5C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886682C67FD4C0058CE5C /* Testing3.swift */; };
+		11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,14 +78,15 @@
 		11B886502C629BBE0058CE5C /* HalfEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfEye.swift; sourceTree = "<group>"; };
 		11B886522C629FA90058CE5C /* ClosedEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedEye.swift; sourceTree = "<group>"; };
 		11B886542C62BD920058CE5C /* TestingBlinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingBlinking.swift; sourceTree = "<group>"; };
-		11B886562C62C5CD0058CE5C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
-		11B886582C62CF7B0058CE5C /* Testing4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing4.swift; sourceTree = "<group>"; };
+		11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeStatesDisplay.swift; sourceTree = "<group>"; };
 		11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState2.swift; sourceTree = "<group>"; };
 		11B8865E2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState3.swift; sourceTree = "<group>"; };
 		11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState4.swift; sourceTree = "<group>"; };
 		11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState5.swift; sourceTree = "<group>"; };
 		11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState6.swift; sourceTree = "<group>"; };
 		11B886662C6682A20058CE5C /* TestingBlinking2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingBlinking2.swift; sourceTree = "<group>"; };
+		11B886682C67FD4C0058CE5C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
+		11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState7.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +249,7 @@
 				11B886602C65BC120058CE5C /* BlinkingEyeAnimationState4.swift */,
 				11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */,
 				11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */,
+				11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */,
 			);
 			path = BlinkingEye2;
 			sourceTree = "<group>";
@@ -257,9 +260,9 @@
 				11E7013F2C44EB6B00631C0A /* Testing.swift */,
 				11391CEE2C602C48003009F8 /* Testing2.swift */,
 				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
-				11B886562C62C5CD0058CE5C /* Testing3.swift */,
-				11B886582C62CF7B0058CE5C /* Testing4.swift */,
+				11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */,
 				11B886662C6682A20058CE5C /* TestingBlinking2.swift */,
+				11B886682C67FD4C0058CE5C /* Testing3.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -338,7 +341,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */,
-				11B886592C62CF7B0058CE5C /* Testing4.swift in Sources */,
 				11391CDB2C5E870F003009F8 /* RegistrationScreen.swift in Sources */,
 				11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
@@ -346,6 +348,7 @@
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				11391CEF2C602C48003009F8 /* Testing2.swift in Sources */,
 				11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */,
+				11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */,
 				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */,
@@ -363,7 +366,8 @@
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,
 				11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */,
 				11E701402C44EB6B00631C0A /* Testing.swift in Sources */,
-				11B886572C62C5CD0058CE5C /* Testing3.swift in Sources */,
+				11B886572C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift in Sources */,
+				11B886692C67FD4C0058CE5C /* Testing3.swift in Sources */,
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
 				11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */,
 				11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */,
