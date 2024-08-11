@@ -29,13 +29,6 @@ struct BlinkingEyeAnimationState6: View {
                 ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(.degrees(48.5), axis: (x: 1, y: 0, z: 0))
             }
-            
-//            // sector
-//            MyCustomCircle(radius:     3,
-//                           startAngle: 60,
-//                           endAngle:   120,
-//                           clockwise:  false)
-//                .foregroundStyle(sectorColor)
 
             // upper sector part
             ZStack {
@@ -47,28 +40,29 @@ struct BlinkingEyeAnimationState6: View {
 }
 
 #Preview {
-//    VStack(spacing: -300) {
-//        BlinkingEyeAnimationState5(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//        
-//        BlinkingEyeAnimationState6(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//        // .opacity(0.6)
-//    }
-    ZStack {
+    VStack(spacing: -300) {
         BlinkingEyeAnimationState5(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
         
-        BlinkingEyeAnimationState6(mainEyeColor: .red,
+        BlinkingEyeAnimationState6(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .opacity(0.8)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
+        // .opacity(0.6)
     }
+    
+//    ZStack {
+//        BlinkingEyeAnimationState5(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        
+//        BlinkingEyeAnimationState6(mainEyeColor: .red,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .opacity(0.8)
+//    }
 }

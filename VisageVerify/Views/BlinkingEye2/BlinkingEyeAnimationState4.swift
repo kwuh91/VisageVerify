@@ -125,27 +125,28 @@ struct BlinkingEyeAnimationState4: View {
 }
 
 #Preview {
-//    VStack(spacing: -300) {
-//        BlinkingEyeAnimationState3(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//        
-//        BlinkingEyeAnimationState4(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//    }
-    ZStack {
+    VStack(spacing: -300) {
         BlinkingEyeAnimationState3(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
         
-        BlinkingEyeAnimationState4(mainEyeColor: .red,
+        BlinkingEyeAnimationState4(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .opacity(0.8)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
     }
+    
+//    ZStack {
+//        BlinkingEyeAnimationState3(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        
+//        BlinkingEyeAnimationState4(mainEyeColor: .red,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .opacity(0.8)
+//    }
 }

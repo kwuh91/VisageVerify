@@ -163,11 +163,6 @@ struct BlinkingEyeAnimationState3: View {
                     .rotation3DEffect(.degrees(111), axis: (x: 1, y: 0, z: 0))
             }
             
-            
-            // sector helper
-//            MainEyeShapeSectorHelperState3()
-//                .foregroundStyle(sectorColor)
-            
             // pupil
             MyFullCircle(radius: 0.9)
                 .foregroundStyle(pupilColor)
@@ -178,28 +173,28 @@ struct BlinkingEyeAnimationState3: View {
 
 
 #Preview {
-//    VStack(spacing: -300) {
-//        BlinkingEyeAnimationState2(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//        
-//        BlinkingEyeAnimationState3(mainEyeColor: .black,
-//                                   sectorColor:  .white,
-//                                   pupilColor:   .black)
-//        .aspectRatio(0.5, contentMode: .fit)
-//        .frame(height: 500)
-//    }
-    
-    ZStack() {
+    VStack(spacing: -300) {
         BlinkingEyeAnimationState2(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
         
-        BlinkingEyeAnimationState3(mainEyeColor: .red,
+        BlinkingEyeAnimationState3(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .opacity(0.8)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
     }
+    
+//    ZStack() {
+//        BlinkingEyeAnimationState2(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        
+//        BlinkingEyeAnimationState3(mainEyeColor: .red,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .opacity(0.8)
+//    }
 }

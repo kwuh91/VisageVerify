@@ -19,14 +19,29 @@ struct BlinkingEyeAnimationState7: View {
 }
 
 #Preview {
-    ZStack {
+    VStack(spacing: -300) {
         BlinkingEyeAnimationState6(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
         
-        BlinkingEyeAnimationState7(mainEyeColor: .red,
+        BlinkingEyeAnimationState7(mainEyeColor: .black,
                                    sectorColor:  .white,
                                    pupilColor:   .black)
-        .opacity(0.8)
+        .aspectRatio(0.5, contentMode: .fit)
+        .frame(height: 500)
+        // .opacity(0.6)
     }
+    
+//    ZStack {
+//        BlinkingEyeAnimationState6(mainEyeColor: .black,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        
+//        BlinkingEyeAnimationState7(mainEyeColor: .red,
+//                                   sectorColor:  .white,
+//                                   pupilColor:   .black)
+//        .opacity(0.8)
+//    }
 }
