@@ -103,21 +103,5 @@ struct ClosedEye: View {
 }
 
 #Preview {
-//    ZStack {
-//        ClosedEye(mainEyeColor: .black)
-//            .aspectRatio(0.5, contentMode: .fit)
-//            .frame(height: 500)
-//            .onTapGesture{
-//                print("eye tapped!")
-//            }
-//    }
-    
-    ZStack {
-        BlinkingEyeAnimationState6(mainEyeColor: .black,
-                                   sectorColor:  .white,
-                                   pupilColor:   .black)
-        
-        ClosedEye(mainEyeColor: .red)
-        .opacity(0.8)
-    }
+    ClosedEye(mainEyeColor: .black)
 }

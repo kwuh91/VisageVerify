@@ -209,6 +209,7 @@ struct OpenEye: View {
 
 #Preview {
     VStack(spacing: -150) {
+
         Image(systemName: "eye.fill")
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -223,5 +224,6 @@ struct OpenEye: View {
             .onTapGesture{
                 print("eye tapped!")
             }
+        
     }
 }

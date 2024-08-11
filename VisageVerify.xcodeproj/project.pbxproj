@@ -32,7 +32,6 @@
 		1179D86E2C4218060081539C /* Slogan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86D2C4218060081539C /* Slogan.swift */; };
 		1179D8702C4218850081539C /* PrettyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D86F2C4218850081539C /* PrettyText.swift */; };
 		1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D87E2C42D83A0081539C /* Fireflies.swift */; };
-		11B886512C629BBE0058CE5C /* HalfEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886502C629BBE0058CE5C /* HalfEye.swift */; };
 		11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886522C629FA90058CE5C /* ClosedEye.swift */; };
 		11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886542C62BD920058CE5C /* TestingBlinking.swift */; };
 		11B886572C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */; };
@@ -44,6 +43,7 @@
 		11B886672C6682A20058CE5C /* SingleBlinkingEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886662C6682A20058CE5C /* SingleBlinkingEye.swift */; };
 		11B886692C67FD4C0058CE5C /* MultipleBlinkingEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886682C67FD4C0058CE5C /* MultipleBlinkingEyes.swift */; };
 		11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */; };
+		11D1A92F2C6969F9000AF8A8 /* EyeExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D1A92E2C6969F9000AF8A8 /* EyeExtras.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 		11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB73472C68652000B659EE /* RestrictedArea.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +76,6 @@
 		1179D86D2C4218060081539C /* Slogan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slogan.swift; sourceTree = "<group>"; };
 		1179D86F2C4218850081539C /* PrettyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyText.swift; sourceTree = "<group>"; };
 		1179D87E2C42D83A0081539C /* Fireflies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireflies.swift; sourceTree = "<group>"; };
-		11B886502C629BBE0058CE5C /* HalfEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfEye.swift; sourceTree = "<group>"; };
 		11B886522C629FA90058CE5C /* ClosedEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedEye.swift; sourceTree = "<group>"; };
 		11B886542C62BD920058CE5C /* TestingBlinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingBlinking.swift; sourceTree = "<group>"; };
 		11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeStatesDisplay.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		11B886662C6682A20058CE5C /* SingleBlinkingEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBlinkingEye.swift; sourceTree = "<group>"; };
 		11B886682C67FD4C0058CE5C /* MultipleBlinkingEyes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBlinkingEyes.swift; sourceTree = "<group>"; };
 		11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState7.swift; sourceTree = "<group>"; };
+		11D1A92E2C6969F9000AF8A8 /* EyeExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeExtras.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		11EB73472C68652000B659EE /* RestrictedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,15 +139,14 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		11391CF02C616C9E003009F8 /* BlinkingEye */ = {
+		11391CF02C616C9E003009F8 /* GeneralEyeViews */ = {
 			isa = PBXGroup;
 			children = (
 				1179D85A2C41FE490081539C /* EyeSF.swift */,
 				11391CF12C616D0A003009F8 /* OpenEye.swift */,
-				11B886502C629BBE0058CE5C /* HalfEye.swift */,
 				11B886522C629FA90058CE5C /* ClosedEye.swift */,
 			);
-			path = BlinkingEye;
+			path = GeneralEyeViews;
 			sourceTree = "<group>";
 		};
 		1179D8392C41F4670081539C = {
@@ -202,8 +201,7 @@
 		1179D8582C41FE270081539C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11B8865A2C62D82D0058CE5C /* BlinkingEye2 */,
-				11391CF02C616C9E003009F8 /* BlinkingEye */,
+				11D1A92C2C6968DD000AF8A8 /* Eyes */,
 				11391CDC2C5E8DB0003009F8 /* Blocks */,
 				1137CE742C438871008E67A0 /* Buttons */,
 				1179D8712C4222F70081539C /* Background */,
@@ -243,7 +241,7 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
-		11B8865A2C62D82D0058CE5C /* BlinkingEye2 */ = {
+		11B8865A2C62D82D0058CE5C /* BlinkingEyeStates */ = {
 			isa = PBXGroup;
 			children = (
 				11B8865B2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift */,
@@ -252,8 +250,9 @@
 				11B886622C6673B00058CE5C /* BlinkingEyeAnimationState5.swift */,
 				11B886642C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift */,
 				11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */,
+				11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */,
 			);
-			path = BlinkingEye2;
+			path = BlinkingEyeStates;
 			sourceTree = "<group>";
 		};
 		11B8865D2C62EDD80058CE5C /* Testing */ = {
@@ -262,12 +261,29 @@
 				11E7013F2C44EB6B00631C0A /* Testing.swift */,
 				11391CEE2C602C48003009F8 /* Testing2.swift */,
 				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
-				11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */,
-				11B886662C6682A20058CE5C /* SingleBlinkingEye.swift */,
-				11B886682C67FD4C0058CE5C /* MultipleBlinkingEyes.swift */,
 				11EB73472C68652000B659EE /* RestrictedArea.swift */,
 			);
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		11D1A92C2C6968DD000AF8A8 /* Eyes */ = {
+			isa = PBXGroup;
+			children = (
+				11D1A92D2C6968EF000AF8A8 /* BlinkingAnimation */,
+				11391CF02C616C9E003009F8 /* GeneralEyeViews */,
+				11B8865A2C62D82D0058CE5C /* BlinkingEyeStates */,
+				11D1A92E2C6969F9000AF8A8 /* EyeExtras.swift */,
+			);
+			path = Eyes;
+			sourceTree = "<group>";
+		};
+		11D1A92D2C6968EF000AF8A8 /* BlinkingAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				11B886662C6682A20058CE5C /* SingleBlinkingEye.swift */,
+				11B886682C67FD4C0058CE5C /* MultipleBlinkingEyes.swift */,
+			);
+			path = BlinkingAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +377,7 @@
 				11B886672C6682A20058CE5C /* SingleBlinkingEye.swift in Sources */,
 				11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */,
 				11391CDE2C5E8DC5003009F8 /* MyForm.swift in Sources */,
+				11D1A92F2C6969F9000AF8A8 /* EyeExtras.swift in Sources */,
 				11B886652C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift in Sources */,
 				1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */,
 				11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */,
@@ -375,7 +392,6 @@
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
 				11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */,
 				11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */,
-				11B886512C629BBE0058CE5C /* HalfEye.swift in Sources */,
 				1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
