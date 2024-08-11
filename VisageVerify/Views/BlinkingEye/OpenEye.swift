@@ -203,6 +203,7 @@ struct OpenEye: View {
                 .foregroundStyle(pupilColor)
         }
         .contentShape(MainOpenedEyeBody())
+        .drawingGroup()
     }
 }
 

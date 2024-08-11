@@ -24,7 +24,7 @@ struct ContentView: View {
 //            
 //            MultipleBlinkingEyes()
 //        }
-        // Testing2()
+        // MultipleBlinkingEyes(quantity: 5)
     }
 }
 

@@ -171,7 +171,7 @@ struct BlinkingEyeAnimationState3: View {
             // pupil
             MyFullCircle(radius: 0.9)
                 .foregroundStyle(pupilColor)
-        }
+        }.drawingGroup()
     }
 }
 

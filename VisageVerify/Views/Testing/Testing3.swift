@@ -103,7 +103,7 @@ struct BlinkingEyeView: View {
     }
     
     func scheduleNextBlink() {
-        let randomInterval = CGFloat.random(in: 3...16)
+        let randomInterval = CGFloat.random(in: 1...20)
         timer = Timer.scheduledTimer(withTimeInterval: randomInterval,
                                      repeats: false) { _ in
             startBlinkingAnimation()
@@ -117,70 +117,29 @@ struct BlinkingEyeView: View {
 }
 
 struct MultipleBlinkingEyes: View {
-    let eyeCount = 15
+    let quantity: Int
     
     let screenWidth  = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-    var coordinates  = [CGPoint]()
-    
-    // populate coordinates array with all posible natural coordinates for the screen
-    init() {
-        for w in 0..<Int(screenWidth + 1) {
-            //
-            for h in 0..<Int(screenHeight + 1) {
-                // let _ = print("(\(w), \(h))")
-                coordinates.append(CGPoint(x: w, y: h))
-            }
-        }
-        
-        let ind = 933
-        let point = coordinates[Int(ind)]
-        let foundInd = coordsToInd(point: point)
-        let foundPoint = coordinates[foundInd]
-        
-        let _ = print("ind: \(ind), point: \(point)")
-        let _ = print("found ind: \(foundInd), found point: \(foundPoint)")
-    }
     
     var body: some View {
-        let eyeCount = 1
         
-            ForEach(0..<eyeCount, id: \.self) { _ in
-                if let randomEyePos = coordinates.randomElement() {
-                    let randomEyeHeight = CGFloat.random(in: 50...300)
-                    
-//                    let _ = print("eye position = (\(randomEyePos.x), \(randomEyePos.y))")
-//                    
-//                    let _ = print("eye height = \(randomEyeHeight)")
-//                    
-//                    let pointArrayInd = coordsToInd(point: randomEyePos)
-//                    
-//                    let _ = print("func res: \(pointArrayInd)")
-//                    
-//                    let foundPoint = coordinates[pointArrayInd]
-//                    
-//                    let _  = print("found point in array: (\(foundPoint.x), \(foundPoint.y))")
-                    
-                    BlinkingEyeView()
-                        .aspectRatio(0.5, contentMode: .fit)
-                        .frame(height: randomEyeHeight)
-                        .position(randomEyePos)
-                }
+        ForEach(0..<quantity, id: \.self) { _ in
+            let randomEyePos = CGPoint(
+                x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
+                y: CGFloat.random(in: 0...UIScreen.main.bounds.height)
+            )
+            let randomEyeHeight = CGFloat.random(in: 50...300)
             
+            BlinkingEyeView()
+                .aspectRatio(0.5, contentMode: .fit)
+                .frame(height: randomEyeHeight)
+                .position(randomEyePos)
         }
-//        let eyePosition = CGPoint(
-//            x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
-//            y: CGFloat.random(in: 0...UIScreen.main.bounds.height)
-//        )
-        
-        // Text("123")
-    }
-    
-    func coordsToInd(point: CGPoint) -> Int {
-        return Int(point.x * (UIScreen.main.bounds.height + 1) + point.y)
+            
     }
 }
     
 #Preview {
-    MultipleBlinkingEyes()
+    MultipleBlinkingEyes(quantity: 100)
 }

@@ -45,6 +45,7 @@
 		11B886692C67FD4C0058CE5C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B886682C67FD4C0058CE5C /* Testing3.swift */; };
 		11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
+		11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB73472C68652000B659EE /* RestrictedArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		11B886682C67FD4C0058CE5C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
 		11B8866A2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingEyeAnimationState7.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		11EB73472C68652000B659EE /* RestrictedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				11B886562C62C5CD0058CE5C /* BlinkingEyeStatesDisplay.swift */,
 				11B886662C6682A20058CE5C /* TestingBlinking2.swift */,
 				11B886682C67FD4C0058CE5C /* Testing3.swift */,
+				11EB73472C68652000B659EE /* RestrictedArea.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				11B886652C6678BC0058CE5C /* BlinkingEyeAnimationState6.swift in Sources */,
 				1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */,
 				11391CE72C5EBDF2003009F8 /* SignUpButton.swift in Sources */,
+				11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */,
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,

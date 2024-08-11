@@ -100,7 +100,7 @@ struct BlinkingEyeAnimationState2: View {
             // pupil
             MyFullCircle(radius: 0.9)
                 .foregroundStyle(pupilColor)
-        }
+        }.drawingGroup()
     }
 }
 

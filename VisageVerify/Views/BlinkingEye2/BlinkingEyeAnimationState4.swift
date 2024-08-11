@@ -120,7 +120,7 @@ struct BlinkingEyeAnimationState4: View {
                             axis: (x: 1, y: 0, z: 0))
                 }
             }// .opacity(0.8)
-        }
+        }.drawingGroup()
     }
 }
 

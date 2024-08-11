@@ -42,7 +42,7 @@ struct BlinkingEyeAnimationState6: View {
                 ClosedEye(mainEyeColor: mainEyeColor)
                     .rotation3DEffect(.degrees(57), axis: (x: 1, y: 0, z: 0))
             }
-        }
+        }.drawingGroup()
     }
 }
 

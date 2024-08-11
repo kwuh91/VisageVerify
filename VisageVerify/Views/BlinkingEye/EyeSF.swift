@@ -18,7 +18,7 @@ struct EyeSF: View {
             // .renderingMode(.template)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            //.frame(height: iconSize)
+            .frame(height: iconSize)
             .font(Font.title.weight(fontWeight))
             .foregroundStyle(iconColor)
     }
