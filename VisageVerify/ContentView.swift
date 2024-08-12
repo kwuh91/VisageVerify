@@ -56,15 +56,15 @@ struct ContentView: View {
 //                .frame(height: 500)
 //        }
         
-        ZStack {
-            Color.white
-                .ignoresSafeArea()
-
-            MultipleBlinkingEyes(quantity:     70,
-                                 mainEyeColor: Color.black,
-                                 sectorColor:  Color.white,
-                                 pupilColor:   Color.black)
-        }
+//        ZStack {
+//            Color.white
+//                .ignoresSafeArea()
+//
+//            MultipleBlinkingEyes(quantity:     70,
+//                                 mainEyeColor: Color.black,
+//                                 sectorColor:  Color.white,
+//                                 pupilColor:   Color.black)
+//        }
         
 //        ZStack {
 //            Color.white
@@ -96,15 +96,15 @@ struct ContentView: View {
 //                                 pupilColor:   Color(hex: "FFF8F0"))
 //        }
         
-//        ZStack {
-//            Color.black
-//                .ignoresSafeArea()
-//            
-//            MultipleBlinkingEyes(quantity:     150,
-//                                 mainEyeColor: Color.black ,
-//                                 sectorColor:  Color.black,
-//                                 pupilColor:   Color.blue)
-//        }
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+            
+            MultipleBlinkingEyes(quantity:     150,
+                                 mainEyeColor: Color.black ,
+                                 sectorColor:  Color.black,
+                                 pupilColor:   Color.blue)
+        }
     }
 }
 
