@@ -152,39 +152,39 @@ struct MultipleBlinkingEyes: View {
     @State private var action: Bool = false
     
     var body: some View {
-        ZStack {
-            Color.white
-                .ignoresSafeArea()
-            
-            generateEyes()
-                // .opacity(action ? 1 : 0)
-                // .scaleEffect(action ? 1 : 0)
-        }
-        .onAppear {
-            eyes = (0..<quantity).map { _ in
-                Eye(
-                    position: CGPoint(
-                        x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
-                        y: CGFloat.random(in: 0...UIScreen.main.bounds.height)
-                    ),
-                    
-                    size: CGFloat.random(in: intervalForRandomSize),
-                    
-                    anchor: UnitPoint(
-                        x: CGFloat.random(in: 0...1),
-                        y: CGFloat.random(in: 0...1))
-                )
+        GeometryReader { geometry in
+            ZStack {
+                Color.white
+                    .ignoresSafeArea()
+                
+                generateEyes()
             }
-        }
-        .onTapGesture {
-            action.toggle()
-            for index in eyes.indices {
-                let delay = CGFloat.random(in: intervalForRandomDelay)
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    withAnimation(
-                        animation
-                    ) {
-                        eyes[index].scale = action ? 1 : 0
+            .onAppear {
+                eyes = (0..<quantity).map { _ in
+                    Eye(
+                        position: CGPoint(
+                            x: CGFloat.random(in: 0...geometry.size.width),
+                            y: CGFloat.random(in: 0...geometry.size.height + geometry.safeAreaInsets.top)
+                        ),
+                        
+                        size: CGFloat.random(in: intervalForRandomSize),
+                        
+                        anchor: UnitPoint(
+                            x: CGFloat.random(in: 0...1),
+                            y: CGFloat.random(in: 0...1))
+                    )
+                }
+            }
+            .onTapGesture {
+                action.toggle()
+                for index in eyes.indices {
+                    let delay = CGFloat.random(in: intervalForRandomDelay)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                        withAnimation(
+                            animation
+                        ) {
+                            eyes[index].scale = action ? 1 : 0
+                        }
                     }
                 }
             }
@@ -192,22 +192,27 @@ struct MultipleBlinkingEyes: View {
     }
     
     @ViewBuilder func generateEyes() -> some View {
-        ForEach(eyes.indices, id: \.self) { index in
-            let eye = eyes[index]
-            BlinkingEyeView(
-                mainEyeColor: mainEyeColor,
-                sectorColor: sectorColor,
-                pupilColor: pupilColor,
-                delayBetweenChangingStates: delayBetweenChangingStates,
-                intervalForRandomTimeBetweenBlinking: intervalForRandomTimeBetweenBlinking
-            )
-            .aspectRatio(0.5, contentMode: .fit)
-            .frame(height: eye.size)
-            .position(eye.position)
-            .scaleEffect(eye.scale, anchor: randomizeAnchor ? eye.anchor : UnitPoint(
-                x: 1 / UIScreen.main.bounds.width  * eye.position.x,
-                y: 1 / UIScreen.main.bounds.height * eye.position.y + 0.05)
-                         /*UnitPoint(x: 0.5, y: 0.5)*/)
+        GeometryReader { geometry in
+            ForEach(eyes.indices, id: \.self) { index in
+                let eye = eyes[index]
+                BlinkingEyeView(
+                    mainEyeColor: mainEyeColor,
+                    sectorColor:  sectorColor,
+                    pupilColor:   pupilColor,
+                    delayBetweenChangingStates: delayBetweenChangingStates,
+                    intervalForRandomTimeBetweenBlinking: intervalForRandomTimeBetweenBlinking
+                )
+                .aspectRatio(0.5, contentMode: .fit)
+                .frame(height: eye.size)
+                .position(eye.position)
+                .scaleEffect(
+                    eye.scale,
+                    anchor: randomizeAnchor ? eye.anchor :
+                        UnitPoint(
+                    x: 1 / geometry.size.width * eye.position.x,
+                    y: 1 / (geometry.size.height + geometry.safeAreaInsets.top) * eye.position.y)
+                        )
+            }
         }
     }
 }
@@ -221,6 +226,6 @@ struct MultipleBlinkingEyes: View {
                          intervalForRandomTimeBetweenBlinking: 1...20,
                          intervalForRandomSize: 50...300,
                          intervalForRandomDelay: 0...0.25,
-                         randomizeAnchor: false,
-                         animation: .spring)
+                         randomizeAnchor: true,
+                         animation: .spring(duration: 0.5, bounce: 0.9))
 }
