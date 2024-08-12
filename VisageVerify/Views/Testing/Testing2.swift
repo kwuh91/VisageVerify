@@ -86,34 +86,34 @@ import SwiftUI
 //    }
 //}
 
-struct Testing2: View {
-    
-    @State private var action  = false
-    
-    var body: some View {
-        ZStack {
-            // background color
-            Colors.boneColor
-                .edgesIgnoringSafeArea(.all)
-            
-            Testing()
-                .opacity(action ? 1 : 0)
-                //.scaleEffect(action ? 1 : 0)
-        }
-        .onTapGesture {
-            withAnimation (
-                Animation.easeInOut(
-                    duration: 3
-                )
-            ){
-                action.toggle()
-            }
-        }
-    }
-}
-
-
-
-#Preview {
-    Testing2()
-}
+//struct Testing2: View {
+//    
+//    @State private var action  = false
+//    
+//    var body: some View {
+//        ZStack {
+//            // background color
+//            Colors.boneColor
+//                .edgesIgnoringSafeArea(.all)
+//            
+//            Testing()
+//                .opacity(action ? 1 : 0)
+//                //.scaleEffect(action ? 1 : 0)
+//        }
+//        .onTapGesture {
+//            withAnimation (
+//                Animation.easeInOut(
+//                    duration: 3
+//                )
+//            ){
+//                action.toggle()
+//            }
+//        }
+//    }
+//}
+//
+//
+//
+//#Preview {
+//    Testing2()
+//}

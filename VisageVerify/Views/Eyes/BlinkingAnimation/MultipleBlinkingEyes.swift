@@ -216,7 +216,7 @@ struct MultipleBlinkingEyes: View {
         }
     }
 }
-    
+
 #Preview {
     MultipleBlinkingEyes(quantity:     100,
                          mainEyeColor: Color.black,
@@ -227,5 +227,5 @@ struct MultipleBlinkingEyes: View {
                          intervalForRandomSize: 50...300,
                          intervalForRandomDelay: 0...0.25,
                          randomizeAnchor: true,
-                         animation: .spring(duration: 0.5, bounce: 0.9))
+                         animation: .spring(duration: 0.5, bounce: 0.5))
 }

@@ -79,44 +79,54 @@ import SwiftUI
 //    }
 //}
   
-struct Testing: View {
-    
-//    @State private var action  = false
-    
-    var body: some View {
-        ZStack{
-            // background color
-//            Colors.boneColor
-//                .edgesIgnoringSafeArea(.all)
-            
-            // eye 1
-            EyeSF(iconName:   "eye.fill",
-                 iconColor:  .black,
-                 iconSize:   30,
-                 fontWeight: .thin)
-            
-            // generate eyes and put them on screen
-            ForEach(0..<150, id: \.self) { _ in
-                EyeSF(iconName:   "eye.fill",
-                     iconColor:  .black,
-                     iconSize:   CGFloat.random(in: 10...50),
-                     fontWeight: .thin)
-                .position(x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
-                          y: CGFloat.random(in: 0...UIScreen.main.bounds.height))
-            }
-        }
-//        .onTapGesture {
-//            withAnimation (
-//                Animation.spring(
-//                    duration: 2
-//                )
-//            ){
-//                action.toggle()
+//struct Testing: View {
+//    
+////    @State private var action  = false
+//    
+//    var body: some View {
+//        ZStack{
+//            // background color
+////            Colors.boneColor
+////                .edgesIgnoringSafeArea(.all)
+//            
+//            // eye 1
+//            EyeSF(iconName:   "eye.fill",
+//                 iconColor:  .black,
+//                 iconSize:   30,
+//                 fontWeight: .thin)
+//            
+//            // generate eyes and put them on screen
+//            ForEach(0..<150, id: \.self) { _ in
+//                EyeSF(iconName:   "eye.fill",
+//                     iconColor:  .black,
+//                     iconSize:   CGFloat.random(in: 10...50),
+//                     fontWeight: .thin)
+//                .position(x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
+//                          y: CGFloat.random(in: 0...UIScreen.main.bounds.height))
 //            }
 //        }
-    }
-}
+////        .onTapGesture {
+////            withAnimation (
+////                Animation.spring(
+////                    duration: 2
+////                )
+////            ){
+////                action.toggle()
+////            }
+////        }
+//    }
+//}
     
-#Preview {
-    Testing()
-}
+//struct Testing: View {
+//    var body: some View {
+//        Button {
+//            MultipleBlinkingEyes(...)
+//        } label: {
+//            Text("Tap me!")
+//        }
+//    }
+//}
+//
+//#Preview {
+//    Testing()
+//}
