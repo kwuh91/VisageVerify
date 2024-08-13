@@ -157,7 +157,7 @@ struct ContentView: View {
                                  delayBetweenChangingStates: 0.025,
                                  intervalForRandomTimeBetweenBlinking: 1...20,
                                  intervalForRandomSize: 50...300,
-                                 intervalForRandomDelay: 0...0.25,
+                                 intervalForRandomDelayBeforeAppearing: 0...0.25,
                                  randomizeAnchor: true,
                                  animation: .spring(duration: 0.5, bounce: 0.5))
         }

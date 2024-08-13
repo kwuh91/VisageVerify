@@ -141,7 +141,7 @@ struct MultipleBlinkingEyes: View {
     var delayBetweenChangingStates: CGFloat = 0.025
     var intervalForRandomTimeBetweenBlinking: ClosedRange<CGFloat> = 1...20
     var intervalForRandomSize: ClosedRange<CGFloat> = 50...300
-    var intervalForRandomDelay: ClosedRange<CGFloat> = 0...0.5
+    var intervalForRandomDelayBeforeAppearing: ClosedRange<CGFloat> = 0...0.5
     var randomizeAnchor: Bool = true
     var animation: Animation? = .spring
     
@@ -151,11 +151,14 @@ struct MultipleBlinkingEyes: View {
     @State private var eyes: [Eye] = []
     @State private var action: Bool = false
     
+    @StateObject private var initialScreenViewSignInButtonTapState = SignInButtonTapState()
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.white
-                    .ignoresSafeArea()
+                InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState)
+//                Color.white
+//                    .ignoresSafeArea()
                 
                 generateEyes()
             }
@@ -175,10 +178,10 @@ struct MultipleBlinkingEyes: View {
                     )
                 }
             }
-            .onTapGesture {
+            .onChange(of: initialScreenViewSignInButtonTapState.isButtonTapped) {
                 action.toggle()
                 for index in eyes.indices {
-                    let delay = CGFloat.random(in: intervalForRandomDelay)
+                    let delay = CGFloat.random(in: intervalForRandomDelayBeforeAppearing)
                     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                         withAnimation(
                             animation
@@ -187,6 +190,9 @@ struct MultipleBlinkingEyes: View {
                         }
                     }
                 }
+                
+                // Reset the state if needed
+                // initialScreenViewSignInButtonTapState.isButtonTapped = false
             }
         }
     }
@@ -225,7 +231,7 @@ struct MultipleBlinkingEyes: View {
                          delayBetweenChangingStates: 0.025,
                          intervalForRandomTimeBetweenBlinking: 1...20,
                          intervalForRandomSize: 50...300,
-                         intervalForRandomDelay: 0...0.25,
+                         intervalForRandomDelayBeforeAppearing: 0...0.25,
                          randomizeAnchor: true,
                          animation: .spring(duration: 0.5, bounce: 0.5))
 }

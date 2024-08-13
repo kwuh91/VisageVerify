@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class SignInButtonTapState: ObservableObject {
+    @Published var isButtonTapped: Bool = false
+}
+
 struct InitialScreen: View {
     @State private var isTapped:               Bool   = false
     @State private var isTappedButtons:        Bool   = false
@@ -15,6 +19,8 @@ struct InitialScreen: View {
     @State private var hideSignUpButton:       Bool   = false
     @State private var hideInitialScreen:      Bool   = false
     @State private var hideRegistrationScreen: Bool   = false
+    
+    @ObservedObject var signInButtonTapState: SignInButtonTapState
     
     var body: some View {
         ZStack {
@@ -150,6 +156,7 @@ struct InitialScreen: View {
 
                     // debug message
                     print("Sign in button tapped!")
+                    signInButtonTapState.isButtonTapped.toggle()
                 }
                 
                 // Spacer()
@@ -162,6 +169,6 @@ struct InitialScreen: View {
     }
 }
 
-#Preview {
-    InitialScreen()
-}
+//#Preview {
+//    // InitialScreen(signInButtonTapState: SignInButtonTapState)
+//}
