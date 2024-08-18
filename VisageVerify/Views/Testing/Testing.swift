@@ -160,42 +160,48 @@ import SwiftUI
 //    Testing()
 //}
 
-// Shared state object
-class ButtonTapState: ObservableObject {
-    @Published var isButtonTapped: Bool = false
-}
+//// Shared state object
+//class ButtonTapState: ObservableObject {
+//    @Published var isButtonTapped: Bool = false
+//}
+//
+//// View1 with button
+//struct View1: View {
+//    @ObservedObject var buttonTapState: ButtonTapState
+//
+//    var body: some View {
+//        Button(action: {
+//            buttonTapState.isButtonTapped = true
+//        }) {
+//            Text("Tap me")
+//        }
+//    }
+//}
+//
+//// View2 observing the button tap state
+//struct View2: View {
+//    @StateObject private var buttonTapState = ButtonTapState()
+//
+//    var body: some View {
+//        VStack {
+//            View1(buttonTapState: buttonTapState)
+//            Text(buttonTapState.isButtonTapped ? "Button from View1 tapped!" : "Waiting for tap...")
+//        }
+//        .onChange(of: buttonTapState.isButtonTapped) {
+//            print("Button from View1 tapped!")
+//            
+//            // Reset the state if needed
+//            // buttonTapState.isButtonTapped = false
+//        }
+//    }
+//}
 
-// View1 with button
-struct View1: View {
-    @ObservedObject var buttonTapState: ButtonTapState
-
+struct Testing: View  {
     var body: some View {
-        Button(action: {
-            buttonTapState.isButtonTapped = true
-        }) {
-            Text("Tap me")
-        }
-    }
-}
-
-// View2 observing the button tap state
-struct View2: View {
-    @StateObject private var buttonTapState = ButtonTapState()
-
-    var body: some View {
-        VStack {
-            View1(buttonTapState: buttonTapState)
-            Text(buttonTapState.isButtonTapped ? "Button from View1 tapped!" : "Waiting for tap...")
-        }
-        .onChange(of: buttonTapState.isButtonTapped) {
-            print("Button from View1 tapped!")
-            
-            // Reset the state if needed
-            // buttonTapState.isButtonTapped = false
-        }
+        Text("123")
     }
 }
 
 #Preview {
-    View2()
+    Testing()
 }

@@ -145,20 +145,20 @@ struct MultipleBlinkingEyes: View {
     var randomizeAnchor: Bool = true
     var animation: Animation? = .spring
     
-    private let screenWidth  = UIScreen.main.bounds.width
-    private let screenHeight = UIScreen.main.bounds.height
+    // private let screenWidth  = UIScreen.main.bounds.width
+    // private let screenHeight = UIScreen.main.bounds.height
     
-    @State private var eyes: [Eye] = []
-    @State private var action: Bool = false
+    @State private var eyes:   [Eye] = []
+    @State private var action: Bool  = false
     
     @StateObject private var initialScreenViewSignInButtonTapState = SignInButtonTapState()
+    // is equivalent to:
+    // @StateObject private var initialScreenViewSignInButtonTapState: SignInButtonTapState = .init()
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState)
-//                Color.white
-//                    .ignoresSafeArea()
                 
                 generateEyes()
             }
@@ -179,20 +179,20 @@ struct MultipleBlinkingEyes: View {
                 }
             }
             .onChange(of: initialScreenViewSignInButtonTapState.isButtonTapped) {
-                action.toggle()
-                for index in eyes.indices {
-                    let delay = CGFloat.random(in: intervalForRandomDelayBeforeAppearing)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                        withAnimation(
-                            animation
-                        ) {
-                            eyes[index].scale = action ? 1 : 0
+                    action.toggle()
+                    for index in eyes.indices {
+                        let delay = CGFloat.random(in: intervalForRandomDelayBeforeAppearing)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                            withAnimation(
+                                animation
+                            ) {
+                                eyes[index].scale = action ? 1 : 0
+                            }
                         }
                     }
-                }
-                
-                // Reset the state if needed
-                // initialScreenViewSignInButtonTapState.isButtonTapped = false
+                    
+                    // Reset the state if needed
+                    // initialScreenViewSignInButtonTapState.isButtonTapped = false
             }
         }
     }
@@ -224,14 +224,14 @@ struct MultipleBlinkingEyes: View {
 }
 
 #Preview {
-    MultipleBlinkingEyes(quantity:     100,
-                         mainEyeColor: Color.black,
-                         sectorColor:  Color.white,
-                         pupilColor:   Color.black,
+    MultipleBlinkingEyes(quantity:     70,
+                         mainEyeColor: Colors.blackish,
+                         sectorColor:  Colors.boneColor,
+                         pupilColor:   Colors.blackish,
                          delayBetweenChangingStates: 0.025,
-                         intervalForRandomTimeBetweenBlinking: 1...20,
+                         intervalForRandomTimeBetweenBlinking: 1...30,
                          intervalForRandomSize: 50...300,
                          intervalForRandomDelayBeforeAppearing: 0...0.25,
-                         randomizeAnchor: true,
+                         randomizeAnchor: false,
                          animation: .spring(duration: 0.5, bounce: 0.5))
 }
