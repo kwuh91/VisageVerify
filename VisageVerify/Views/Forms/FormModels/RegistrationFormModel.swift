@@ -10,7 +10,7 @@ import Combine
 
 // FormModel class conforms to ObservableObject,
 // meaning instances of this class can be observed for changes.
-class FormModel: ObservableObject {
+class RegistrationFormModel: ObservableObject {
     
     // These variables are marked with @Published,
     // so any change will notify observers.

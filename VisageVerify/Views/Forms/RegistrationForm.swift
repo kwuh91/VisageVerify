@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegistrationForm: View {
     
-    @ObservedObject var formModel: FormModel = .init()
+    @ObservedObject var formModel: RegistrationFormModel = .init()
     
     var body: some View {
         // vertical stack with fields for:
