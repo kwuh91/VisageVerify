@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct User {
-    // TODO: var realName: String = ""
+    var realName: String = ""
     // TODO: var username: String = ""
     var email:    String = ""
     var password: String = ""
@@ -33,9 +33,11 @@ class RegistrationFormModel: ObservableObject {
     @Published var checkPassword = ""
     
     @Published var allGood         = false
+    
+    @Published var invalidRealName = ""
     @Published var invalidEmail    = ""
     @Published var invalidPassword = ""
-
+    
     @Published var errorMessage: String? {
         // Print `errorMessage` if `errorMessage` is changed.
         didSet {
@@ -55,6 +57,12 @@ class RegistrationFormModel: ObservableObject {
     // private var subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()
     
     init() {
+        
+        // A publisher that emits true if user.realName is not empty, false otherwise.
+        let realNameValidation = $user
+                                    .map({ !$0.realName.isEmpty })
+                                    // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                    .eraseToAnyPublisher()
         
         // A publisher that emits true if user.email is not empty and is a valid email, false otherwise.
         let emailValidation = $user
@@ -77,18 +85,26 @@ class RegistrationFormModel: ObservableObject {
                                             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                             .eraseToAnyPublisher()
         
-        Publishers.CombineLatest4(emailValidation,
-                                  passwordValidation,
-                                  checkPasswordValidation,
-                                  matchPasswordsValidation)
-            .map({ [$0.0, $0.1, $0.2, $0.3] }) // Transforms the tuple from CombineLatest4 into an array of four Booleans.
-            .map({ $0.allSatisfy{ $0 } })      // Checks if all elements in the array are true.
-            // .receive(on: RunLoop.main)      // Ensures updates are made on the main thread.
-            .assign(to: &$allGood)             // asigns the result to allGood.
+        Publishers.CombineLatest(realNameValidation, 
+                                 emailValidation)
+                  .combineLatest(passwordValidation)
+                  .combineLatest(checkPasswordValidation)
+                  .combineLatest(matchPasswordsValidation)
+                  .map({ [$0.0.0.0, $0.0.0.1, $0.0.1, $0.1, $1] }) // Transforms the tuples from all the CombineLatest 
+                                                                   // into an array of n Booleans.
+                  .map({ $0.allSatisfy{ $0 } })                    // Checks if all elements in the array are true.
+                  // .receive(on: RunLoop.main)                    // Ensures updates are made on the main thread.
+                  .assign(to: &$allGood)                           // asigns the result to allGood.
+        
+        // Updates invalidRealName with an error message if the realName is empty.
+        $user
+            .map({ !$0.realName.isEmpty ? "" : "Name cannot be empty" })
+            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .assign(to: &$invalidRealName)
         
         // Updates invalidEmail with an error message if the email is invalid or empty.
         $user
-            .map({ $0.email.isEmpty || $0.email.isValidEmail ? "" : "enter valid mail address" })
+            .map({ $0.email.isEmpty || $0.email.isValidEmail ? "" : "Enter valid mail address" })
             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidEmail)
         
@@ -96,7 +112,7 @@ class RegistrationFormModel: ObservableObject {
         // if at least one of them is empty.
         $user.combineLatest($checkPassword)
             .filter({ !$0.0.password.isEmpty && !$0.1.isEmpty })
-            .map({ $0.0.password == $0.1 ? "" : "must match password" })
+            .map({ $0.0.password == $0.1 ? "" : "Passwords must match" })
             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidPassword)
     }
@@ -126,7 +142,7 @@ class RegistrationFormModel: ObservableObject {
     // Function for storing additional user data in Firestore.
     private func storeUserData(userID: String) {
         let userData: [String: Any] = [
-            // "realName": user.realName,
+            "realName": user.realName,
             // "username": user.username,
             "email": user.email
             // "biometry": user.biometry
@@ -141,7 +157,7 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
-    // loginUser
+    // TODO: loginUser
 }
 
 extension String {

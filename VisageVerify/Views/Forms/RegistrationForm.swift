@@ -9,23 +9,39 @@ import SwiftUI
 
 struct RegistrationForm: View {
     
-    @ObservedObject var formModel: RegistrationFormModel = .init()
+    @ObservedObject var registrationFormModel: RegistrationFormModel = .init()
     
     var body: some View {
         // vertical stack with fields for:
-        // mail, password, checking password and register button
+        // real name, email, password, checking password and register button
         VStack {
-            // mail address
+            // real name
             Group {
                 // input field
                 TextField
-                    .init("mail address", text: $formModel.mail)
+                    .init("Your Name", text: $registrationFormModel.user.realName)
+                    .textContentType(.givenName)
+                    .autocapitalization(.words)
+                
+                // error message
+                if !registrationFormModel.invalidRealName.isEmpty {
+                    Text(registrationFormModel.invalidRealName)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                }
+            }
+            
+            // email address
+            Group {
+                // input field
+                TextField
+                    .init("Email Address", text: $registrationFormModel.user.email)
                     .textContentType(.emailAddress)
                     .autocapitalization(.none)
                 
                 // error message
-                if !formModel.invalidMail.isEmpty {
-                    Text(formModel.invalidMail)
+                if !registrationFormModel.invalidEmail.isEmpty {
+                    Text(registrationFormModel.invalidEmail)
                         .foregroundColor(.red)
                         .font(.footnote)
                 }
@@ -35,27 +51,35 @@ struct RegistrationForm: View {
             Group {
                 // main password
                 SecureField
-                    .init("password", text: $formModel.pass)
+                    .init("Password", text: $registrationFormModel.user.password)
                     .textContentType(.newPassword)
                 
                 // check password
                 SecureField
-                    .init("retype password", text: $formModel.retype)
+                    .init("repeat password", text: $registrationFormModel.checkPassword)
                     .textContentType(.newPassword)
 
                 // error message
-                if !formModel.invalidPass.isEmpty {
-                    Text(formModel.invalidPass)
+                if !registrationFormModel.invalidPassword.isEmpty {
+                    Text(registrationFormModel.invalidPassword)
                         .foregroundColor(.red)
                         .font(.footnote)
                 }
             }
             
+            if let errorMessage = registrationFormModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .font(.footnote)
+            }
+            
             // register button
             Button("Register") {
-                debugPrint("register")
+                registrationFormModel.registerUser()
+                
+                debugPrint("register button tapped!")
             }
-            .disabled(!formModel.canSend)
+            .disabled(!registrationFormModel.allGood)
             .foregroundColor(.blue)
             
             Spacer()
@@ -67,5 +91,5 @@ struct RegistrationForm: View {
 }
 
 #Preview {
-    RegistrationForm(formModel: .init())
+    RegistrationForm(registrationFormModel: .init())
 }
