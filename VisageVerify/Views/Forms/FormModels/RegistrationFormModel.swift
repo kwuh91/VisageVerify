@@ -37,7 +37,7 @@ class RegistrationFormModel: ObservableObject {
     @Published var invalidPassword = ""
 
     @Published var errorMessage: String? {
-        // print `errorMessage` if `errorMessage` is changed.
+        // Print `errorMessage` if `errorMessage` is changed.
         didSet {
             if let errorMessage {
                 print("Error Message: \(errorMessage)")
@@ -123,7 +123,7 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
-    // function for storing additional user data in Firestore.
+    // Function for storing additional user data in Firestore.
     private func storeUserData(userID: String) {
         let userData: [String: Any] = [
             // "realName": user.realName,
@@ -141,6 +141,7 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
+    // loginUser
 }
 
 extension String {
