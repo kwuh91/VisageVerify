@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 struct User {
     var realName: String = ""
-    // TODO: var username: String = ""
+    var username: String = ""
     var email:    String = ""
     var password: String = ""
     // TODO: var biometry: ???
@@ -32,17 +32,19 @@ class RegistrationFormModel: ObservableObject {
     
     @Published var checkPassword = ""
     
-    @Published var allGood         = false
+    @Published var allGood = false
     
-    @Published var invalidRealName = ""
-    @Published var invalidEmail    = ""
-    @Published var invalidPassword = ""
+    @Published var invalidRealName      = ""
+    @Published var invalidUsername      = ""
+    @Published var invalidEmail         = ""
+    @Published var invalidPassword      = ""
+    @Published var invalidCheckPassword = ""
     
     @Published var errorMessage: String? {
         // Print `errorMessage` if `errorMessage` is changed.
         didSet {
             if let errorMessage {
-                print("Error Message: \(errorMessage)")
+                print(errorMessage)
             }
         }
     }
@@ -60,7 +62,25 @@ class RegistrationFormModel: ObservableObject {
         
         // A publisher that emits true if user.realName is not empty, false otherwise.
         let realNameValidation = $user
-                                    .map({ !$0.realName.isEmpty })
+            .map({ $0.realName.count > 1 })
+            // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .eraseToAnyPublisher()
+        
+        // A publisher that emits true if user.username is not empty and not present in the database, false otherwise.
+        let usernameValidation = $user
+                                    .flatMap ({ [weak self] user -> AnyPublisher<Bool, Never> in
+                                        guard let self = self else {
+                                            return Just(false).eraseToAnyPublisher()
+                                        }
+                                        
+                                        return user.username.isEmpty
+                                            ? Just(false).eraseToAnyPublisher()
+                                            : self.doesValueExist(collectionName: "userData", 
+                                                                  key:            "username",
+                                                                  value:          user.username,
+                                                                  isExist:        false)
+                                            .eraseToAnyPublisher()
+                                    })
                                     // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                     .eraseToAnyPublisher()
         
@@ -69,16 +89,19 @@ class RegistrationFormModel: ObservableObject {
                                 .map({ !$0.email.isEmpty && $0.email.isValidEmail })
                                 // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                 .eraseToAnyPublisher()
+        
         // A publisher that emits true if user.password is not empty, false otherwise.
         let passwordValidation = $user
-                                    .map({ !$0.password.isEmpty })
+                                    .map({ !$0.password.isEmpty && $0.password.isValidPassword })
                                     // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                     .eraseToAnyPublisher()
+        
         // A publisher that emits true if checkPassword is not empty, false otherwise.
         let checkPasswordValidation = $checkPassword
-                                        .map({ !$0.isEmpty })
-                                        // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
-                                        .eraseToAnyPublisher()
+                                            .map({ !$0.isEmpty })
+                                            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                            .eraseToAnyPublisher()
+        
         // A publisher that emits true if user.password and checkPassword are the same, false otherwise.
         let matchPasswordsValidation = $user.combineLatest($checkPassword)
                                             .map({ $0.password == $1 })
@@ -86,35 +109,55 @@ class RegistrationFormModel: ObservableObject {
                                             .eraseToAnyPublisher()
         
         Publishers.CombineLatest(realNameValidation, 
-                                 emailValidation)
+                                 usernameValidation)
+                  .combineLatest(emailValidation)
                   .combineLatest(passwordValidation)
                   .combineLatest(checkPasswordValidation)
                   .combineLatest(matchPasswordsValidation)
-                  .map({ [$0.0.0.0, $0.0.0.1, $0.0.1, $0.1, $1] }) // Transforms the tuples from all the CombineLatest 
-                                                                   // into an array of n Booleans.
-                  .map({ $0.allSatisfy{ $0 } })                    // Checks if all elements in the array are true.
-                  // .receive(on: RunLoop.main)                    // Ensures updates are made on the main thread.
-                  .assign(to: &$allGood)                           // asigns the result to allGood.
+                  .map({ [$0.0.0.0.0, $0.0.0.0.1, $0.0.0.1, $0.0.1, $0.1, $1] }) // Transforms the tuples from all the CombineLatest
+                                                                                 // into an array of n Booleans.
+                  .map({ $0.allSatisfy{ $0 } }) // Checks if all elements in the array are true.
+                  // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                  .assign(to: &$allGood)        // asigns the result to allGood.
         
-        // Updates invalidRealName with an error message if the realName is empty.
+        // Updates invalidRealName with an error message if the realName is less than 2 characters.
         $user
-            .map({ !$0.realName.isEmpty ? "" : "Name cannot be empty" })
+            .map({ $0.realName.isEmpty || $0.realName.count > 1 ? "" : "Name must be >1 characters." })
             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidRealName)
         
+        // Updates invalidUsername with an error message if the username is already in database or empty.
+        $user
+            .flatMap ({ [weak self] user in
+                self?.doesValueExist(collectionName: "userData",
+                                     key:            "username",
+                                     value:          user.username,
+                                     isExist:        false)
+                .map ({ isFree -> String in
+                    return user.username.isEmpty || isFree ? "" : "Username is taken"
+                }).eraseToAnyPublisher() ?? Just("Something went wrong").eraseToAnyPublisher()
+            })
+            .assign(to: &$invalidUsername)
+        
         // Updates invalidEmail with an error message if the email is invalid or empty.
         $user
-            .map({ $0.email.isEmpty || $0.email.isValidEmail ? "" : "Enter valid mail address" })
+            .map({ $0.email.isEmpty || $0.email.isValidEmail ? "" : "Enter valid email address." })
             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidEmail)
         
-        // Updates invalidPassword with an error message if the passwords do not match or
+        // Updates invalidPassword with an error message if the password is invalid.
+        $user
+            .map({ $0.password.isEmpty || $0.password.isValidPassword ? "" : "Password must consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:" })
+            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .assign(to: &$invalidPassword)
+        
+        // Updates invalidCheckPassword with an error message if the passwords do not match or
         // if at least one of them is empty.
         $user.combineLatest($checkPassword)
             .filter({ !$0.0.password.isEmpty && !$0.1.isEmpty })
-            .map({ $0.0.password == $0.1 ? "" : "Passwords must match" })
+            .map({ $0.0.password == $0.1 ? "" : "Passwords must match." })
             // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
-            .assign(to: &$invalidPassword)
+            .assign(to: &$invalidCheckPassword)
     }
     
     // Register user in db, using email and password.
@@ -139,12 +182,14 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
+    // TODO: loginUser
+    
     // Function for storing additional user data in Firestore.
     private func storeUserData(userID: String) {
         let userData: [String: Any] = [
             "realName": user.realName,
-            // "username": user.username,
-            "email": user.email
+            "username": user.username,
+            "email":    user.email
             // "biometry": user.biometry
         ]
         
@@ -157,7 +202,36 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
-    // TODO: loginUser
+    // Function to check if value is/isn't in database
+    private func doesValueExist(collectionName: String,
+                                key:            String,
+                                value:          String,
+                                isExist:        Bool) -> Future<Bool, Never> {
+        return Future { promise in
+            Task {
+                do {
+                    let snapshot = try await self.db.collection(collectionName)
+                                                        .whereField(key, isEqualTo: value)
+                                                        .getDocuments()
+                    if isExist {
+                        promise(.success(!snapshot.isEmpty))
+                    } else {
+                        promise(.success(snapshot.isEmpty))
+                    }
+                    
+                } catch {
+                    self.errorMessage = "Failed to check value: \(error.localizedDescription)"
+                    
+                    if isExist {
+                        promise(.success(false))
+                    } else {
+                        promise(.success(true))
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 extension String {
@@ -168,4 +242,11 @@ extension String {
         return emailTest.evaluate(with: self)
      }
     
+    var isValidPassword: Bool {
+        // Minimum eight characters, at least one uppercase letter,
+        // one lowercase letter, one number and one special character.
+        let passwordRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: self)
+    }
 }

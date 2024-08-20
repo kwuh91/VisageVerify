@@ -31,6 +31,22 @@ struct RegistrationForm: View {
                 }
             }
             
+            // username
+            Group {
+                // input field
+                TextField
+                    .init("Username", text: $registrationFormModel.user.username)
+                    .textContentType(.givenName)
+                    .autocapitalization(.words)
+                
+                // error message
+                if !registrationFormModel.invalidUsername.isEmpty {
+                    Text(registrationFormModel.invalidUsername)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                }
+            }
+            
             // email address
             Group {
                 // input field
@@ -54,23 +70,24 @@ struct RegistrationForm: View {
                     .init("Password", text: $registrationFormModel.user.password)
                     .textContentType(.newPassword)
                 
-                // check password
-                SecureField
-                    .init("repeat password", text: $registrationFormModel.checkPassword)
-                    .textContentType(.newPassword)
-
-                // error message
+                // error message for main password
                 if !registrationFormModel.invalidPassword.isEmpty {
                     Text(registrationFormModel.invalidPassword)
                         .foregroundColor(.red)
                         .font(.footnote)
                 }
-            }
-            
-            if let errorMessage = registrationFormModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .font(.footnote)
+                
+                // check password
+                SecureField
+                    .init("repeat password", text: $registrationFormModel.checkPassword)
+                    .textContentType(.newPassword)
+
+                // error message for check password
+                if !registrationFormModel.invalidCheckPassword.isEmpty {
+                    Text(registrationFormModel.invalidCheckPassword)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                }
             }
             
             // register button
@@ -81,6 +98,12 @@ struct RegistrationForm: View {
             }
             .disabled(!registrationFormModel.allGood)
             .foregroundColor(.blue)
+            
+            if let errorMessage = registrationFormModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .font(.footnote)
+            }
             
             Spacer()
             
