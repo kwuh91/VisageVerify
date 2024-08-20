@@ -20,6 +20,8 @@ struct InitialScreen: View {
     @State private var hideInitialScreen:      Bool   = false
     @State private var hideRegistrationScreen: Bool   = false
     
+    @State private var blockTapGesture: Bool = false
+    
     @ObservedObject var signInButtonTapState: SignInButtonTapState
     
     var body: some View {
@@ -103,60 +105,63 @@ struct InitialScreen: View {
                              quantity: 150)
                 // needed to fix a bug with scaling
                 .rotationEffect(
-                    scale ? Angle(degrees: 0.0001) : Angle(degrees: 0)
+                    scale ? Angle(degrees: 0.01) : Angle(degrees: 0)
                 )
                 .scaleEffect(scale ? 4 : 1, anchor: .center) // increase the button
                 .opacity(hideSignUpButton ? 0 : 1)           // fade it out
                 .onTapGesture {
-                    // sign up button scale animation
-                    withAnimation(
-                        Animation.easeInOut(
-                            duration: 2.2
-                        )
-                    ){
-                        scale.toggle()
+                    if !blockTapGesture {
+                        // sign up button scale animation
+                        withAnimation(
+                            Animation.easeInOut(
+                                duration: 2.2
+                            )
+                        ){
+                            scale.toggle()
+                        }
+                        
+                        // initial screen fade out animation (AppName[Icon] & Sign in button)
+                        withAnimation(
+                            Animation.easeInOut(
+                                duration: 1.5
+                            )
+                        ){
+                            hideInitialScreen.toggle()
+                        }
+                        
+                        // registration screen fade in animation
+                        withAnimation(
+                            Animation.easeInOut(
+                                duration: 1.5
+                            ).delay(1.5)
+                        ){
+                            hideRegistrationScreen.toggle()
+                        }
+                        
+                        // sign up button fade out animation
+                        withAnimation(
+                            Animation.easeInOut(
+                                duration: 2.0
+                            ).delay(0.2)
+                        ){
+                            hideSignUpButton.toggle()
+                        }
+                        
+                        // debug message
+                        print("Sign up button tapped!")
                     }
-                    
-                    // initial screen fade out animation (AppName[Icon] & Sign in button)
-                    withAnimation(
-                        Animation.easeInOut(
-                            duration: 1.5
-                        )
-                    ){
-                        hideInitialScreen.toggle()
-                    }
-                    
-                    // registration screen fade in animation
-                    withAnimation(
-                        Animation.easeInOut(
-                            duration: 1.5
-                        ).delay(1.5)
-                    ){
-                        hideRegistrationScreen.toggle()
-                    }
-                    
-                    // sign up button fade out animation
-                    withAnimation(
-                        Animation.easeInOut(
-                            duration: 2.0
-                        ).delay(0.2)
-                    ){
-                        hideSignUpButton.toggle()
-                    }
-                    
-                    // debug message
-                    print("Sign up button tapped!")
                 }
-                
+                    
                 // sign in button
                 SignInButton(fontSize: 56, quantity: 150)
                 .opacity(hideInitialScreen ? 0 : 1)
                 .offset(y: -100)
                 .onTapGesture {
-
+                    blockTapGesture.toggle()
+                    signInButtonTapState.isButtonTapped.toggle()
+                    
                     // debug message
                     print("Sign in button tapped!")
-                    signInButtonTapState.isButtonTapped.toggle()
                 }
                 
                 // Spacer()

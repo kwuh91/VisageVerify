@@ -1,5 +1,6 @@
 
 import SwiftUI
+// import PythonKit
 
 //struct Testing: View {
 //    @Namespace var namespace
@@ -196,12 +197,89 @@ import SwiftUI
 //    }
 //}
 
-struct Testing: View  {
-    var body: some View {
-        Text("123")
-    }
-}
-
-#Preview {
-    Testing()
-}
+// struct Testing: View  {
+//    @State private var inputString:  String = ""
+//    @State private var outputString: String = "Press me"
+//    
+//    @State private var scriptCalled: Bool = false
+//    
+//    @State private var num1: String = ""
+//    @State private var num2: String = ""
+//    
+//    var body: some View {
+//        VStack {
+//            TextField("Enter a string", text: $inputString)
+//            
+//            Text("Enter two numbers:")
+//            HStack {
+//                TextField("number 1", text: $num1)
+//                
+//                TextField("number 2", text: $num2)
+//            }
+//            
+//            Button(action: {
+//                self.callPythonScript(str:  inputString,
+//                                      num1: Int(num1) ?? 0,
+//                                      num2: Int(num2) ?? 0)
+//            }) {
+//                Text(outputString)
+//            }
+//            
+//            Text(outputString)
+//                .padding()
+//                .opacity(scriptCalled ? 1 : 0)
+//        }
+//        .textFieldStyle(RoundedBorderTextFieldStyle())
+//        .padding()
+//    }
+//    
+//    func callPythonScript(str: String, num1: Int, num2: Int) {
+//        let sys = Python.import("sys")
+//        sys.path.append("/Users/nikita/VScodeProjects/stuff/stuff")
+//        
+//        let script: PythonObject
+//        do {
+//            script = try Python.attemptImport("scriptForSwift")
+//        } catch {
+//            print("Error importing Python script: \(error)")
+//            outputString = "Error importing script"
+//            return
+//        }
+//
+//        let result: PythonObject
+//        do {
+//            result = script.returnString(str, num1, num2)
+//        } catch {
+//            print("Error calling Python function: \(error)")
+//            outputString = "Error calling function"
+//            return
+//        }
+//
+//        // Ensure the Python result is properly converted to a Swift String
+//        outputString = String(result) ?? "Conversion failed"
+//        
+//        withAnimation(Animation.spring(duration: 1, bounce: 0.7)) {
+//            scriptCalled.toggle()
+//        }
+//    }
+//    var body: some View {
+//        Text("Running Python Script...")
+//            .onAppear {
+//                runPythonScript()
+//            }
+//    }
+//    
+//    func runPythonScript() {
+//        let sys = Python.import("sys")
+//        sys.path.append("/Users/nikita/VScodeProjects/stuff/stuff")
+//        
+//        let script = Python.import("scriptForSwift.py") // Import your Python script
+//        let result = script.test() // Call a function from your script
+//        
+//        print(result)
+//    }
+//}
+//
+//#Preview {
+//    Testing()
+//}

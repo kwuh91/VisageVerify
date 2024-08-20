@@ -63,7 +63,7 @@ class RegistrationFormModel: ObservableObject {
         // A publisher that emits true if user.realName is not empty, false otherwise.
         let realNameValidation = $user
             .map({ $0.realName.count > 1 })
-            // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .eraseToAnyPublisher()
         
         // A publisher that emits true if user.username is not empty and not present in the database, false otherwise.
@@ -81,31 +81,30 @@ class RegistrationFormModel: ObservableObject {
                                                                   isExist:        false)
                                             .eraseToAnyPublisher()
                                     })
-                                    // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
-                                    .eraseToAnyPublisher()
+                                    .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
         
         // A publisher that emits true if user.email is not empty and is a valid email, false otherwise.
         let emailValidation = $user
                                 .map({ !$0.email.isEmpty && $0.email.isValidEmail })
-                                // TODO: .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                 .eraseToAnyPublisher()
         
         // A publisher that emits true if user.password is not empty, false otherwise.
         let passwordValidation = $user
                                     .map({ !$0.password.isEmpty && $0.password.isValidPassword })
-                                    // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                    .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                     .eraseToAnyPublisher()
         
         // A publisher that emits true if checkPassword is not empty, false otherwise.
         let checkPasswordValidation = $checkPassword
                                             .map({ !$0.isEmpty })
-                                            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                             .eraseToAnyPublisher()
         
         // A publisher that emits true if user.password and checkPassword are the same, false otherwise.
         let matchPasswordsValidation = $user.combineLatest($checkPassword)
                                             .map({ $0.password == $1 })
-                                            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                                            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                                             .eraseToAnyPublisher()
         
         Publishers.CombineLatest(realNameValidation, 
@@ -117,13 +116,13 @@ class RegistrationFormModel: ObservableObject {
                   .map({ [$0.0.0.0.0, $0.0.0.0.1, $0.0.0.1, $0.0.1, $0.1, $1] }) // Transforms the tuples from all the CombineLatest
                                                                                  // into an array of n Booleans.
                   .map({ $0.allSatisfy{ $0 } }) // Checks if all elements in the array are true.
-                  // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+                  .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
                   .assign(to: &$allGood)        // asigns the result to allGood.
         
         // Updates invalidRealName with an error message if the realName is less than 2 characters.
         $user
             .map({ $0.realName.isEmpty || $0.realName.count > 1 ? "" : "Name must be >1 characters." })
-            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidRealName)
         
         // Updates invalidUsername with an error message if the username is already in database or empty.
@@ -134,7 +133,7 @@ class RegistrationFormModel: ObservableObject {
                                      value:          user.username,
                                      isExist:        false)
                 .map ({ isFree -> String in
-                    return user.username.isEmpty || isFree ? "" : "Username is taken"
+                    return user.username.isEmpty || isFree ? "" : "Username is taken."
                 }).eraseToAnyPublisher() ?? Just("Something went wrong").eraseToAnyPublisher()
             })
             .assign(to: &$invalidUsername)
@@ -142,21 +141,21 @@ class RegistrationFormModel: ObservableObject {
         // Updates invalidEmail with an error message if the email is invalid or empty.
         $user
             .map({ $0.email.isEmpty || $0.email.isValidEmail ? "" : "Enter valid email address." })
-            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidEmail)
         
         // Updates invalidPassword with an error message if the password is invalid.
         $user
-            .map({ $0.password.isEmpty || $0.password.isValidPassword ? "" : "Password must consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:" })
-            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            .map({ $0.password.isEmpty || $0.password.isValidPassword ? "" : "Password must consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character." })
+            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidPassword)
         
         // Updates invalidCheckPassword with an error message if the passwords do not match or
         // if at least one of them is empty.
         $user.combineLatest($checkPassword)
-            .filter({ !$0.0.password.isEmpty && !$0.1.isEmpty })
-            .map({ $0.0.password == $0.1 ? "" : "Passwords must match." })
-            // .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
+            // .filter({ !$0.0.password.isEmpty && !$0.1.isEmpty })
+            .map({ $0.1.isEmpty || ($0.0.password == $0.1) ? "" : "Passwords must match." })
+            .receive(on: RunLoop.main) // Ensures updates are made on the main thread.
             .assign(to: &$invalidCheckPassword)
     }
     
@@ -216,7 +215,9 @@ class RegistrationFormModel: ObservableObject {
                     if isExist {
                         promise(.success(!snapshot.isEmpty))
                     } else {
-                        promise(.success(snapshot.isEmpty))
+                        await MainActor.run {
+                            promise(.success(snapshot.isEmpty))
+                        }
                     }
                     
                 } catch {

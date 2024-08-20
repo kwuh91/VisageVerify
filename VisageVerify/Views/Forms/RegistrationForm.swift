@@ -79,7 +79,7 @@ struct RegistrationForm: View {
                 
                 // check password
                 SecureField
-                    .init("repeat password", text: $registrationFormModel.checkPassword)
+                    .init("Repeat password", text: $registrationFormModel.checkPassword)
                     .textContentType(.newPassword)
 
                 // error message for check password
@@ -105,7 +105,7 @@ struct RegistrationForm: View {
                     .font(.footnote)
             }
             
-            Spacer()
+            // Spacer()
             
         }
         .padding()

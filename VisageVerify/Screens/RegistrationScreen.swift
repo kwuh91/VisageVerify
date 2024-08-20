@@ -9,10 +9,15 @@ import SwiftUI
 
 struct RegistrationScreen: View {
     var body: some View {
-        RegistrationForm(registrationFormModel: .init())
+        ZStack {
+            Colors.blackish
+                .ignoresSafeArea()
+
+            RegistrationForm(registrationFormModel: .init())
+        }
     }
 }
-
+    
 #Preview {
     RegistrationScreen()
 }
