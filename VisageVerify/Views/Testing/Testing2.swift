@@ -117,3 +117,29 @@ import SwiftUI
 //#Preview {
 //    Testing2()
 //}
+
+struct Testing2: View {
+    @ObservedObject var registrationFormModel: RegistrationFormModel
+    
+    var body: some View {
+        VStack {
+            Text("Entered Data")
+            
+            Text("realName: \(registrationFormModel.user.realName)")
+
+            Text("username: \(registrationFormModel.user.username)")
+            
+            Text("email: \(registrationFormModel.user.email)")
+            
+            Text("pasword: \(registrationFormModel.user.password)")
+            
+            Button("Register") {
+                registrationFormModel.registerUser()
+                
+                debugPrint("register button tapped!")
+            }
+            .disabled(!registrationFormModel.allGood)
+            .foregroundColor(.blue)
+        }
+    }
+}

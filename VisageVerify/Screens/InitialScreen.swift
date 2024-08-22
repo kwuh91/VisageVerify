@@ -11,6 +11,10 @@ class SignInButtonTapState: ObservableObject {
     @Published var isButtonTapped: Bool = false
 }
 
+//class SignUpButtonTapState: ObservableObject {
+//    @Published var isButtonTapped: Bool = false
+//}
+
 struct InitialScreen: View {
     @State private var isTapped:               Bool   = false
     @State private var isTappedButtons:        Bool   = false
@@ -23,6 +27,7 @@ struct InitialScreen: View {
     @State private var blockTapGesture: Bool = false
     
     @ObservedObject var signInButtonTapState: SignInButtonTapState
+    // @ObservedObject var signUpButtonTapState: SignUpButtonTapState
     
     var body: some View {
         ZStack {
@@ -111,6 +116,8 @@ struct InitialScreen: View {
                 .opacity(hideSignUpButton ? 0 : 1)           // fade it out
                 .onTapGesture {
                     if !blockTapGesture {
+                        // signUpButtonTapState.isButtonTapped.toggle()
+                        
                         // sign up button scale animation
                         withAnimation(
                             Animation.easeInOut(
@@ -168,7 +175,7 @@ struct InitialScreen: View {
                 
             }.opacity(isTappedButtons ? 1 : 0)
             
-            RegistrationScreen()
+            RegistrationForm(registrationFormModel: .init())
                 .opacity(hideRegistrationScreen ? 1 : 0)
         }
     }

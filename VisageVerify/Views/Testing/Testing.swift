@@ -283,3 +283,132 @@ import SwiftUI
 //#Preview {
 //    Testing()
 //}
+
+import SwiftUI
+
+struct Testing: View {
+    @State private var getResult: String = ""
+    @State private var postResult: String = ""
+
+    let ip = "91.107.123.50"
+
+    var body: some View {
+        VStack {
+            Text("GET Request Result:")
+            Text(getResult)
+                .padding()
+            
+            Button("Send GET Request") {
+                sendGetRequest()
+                print("sent get request")
+            }
+            .padding()
+
+            Text("POST Request Result:")
+            Text(postResult)
+                .padding()
+            
+            Button("Send POST Request") {
+                sendPostRequest()
+            }
+            .padding()
+        }
+    }
+
+    func sendGetRequest() {
+        guard let url = URL(string: "http://\(ip):5000/echo?input_string=yepyepyep") else {
+            print("Invalid URL")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.getResult = "Error: \(error.localizedDescription)"
+                }
+                return
+            }
+
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    self.getResult = "No data or response."
+                }
+                return
+            }
+
+            if response.statusCode == 200 {
+                DispatchQueue.main.async {
+                    self.getResult = String(decoding: data, as: UTF8.self)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.getResult = "Error: \(response.statusCode)"
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    func sendPostRequest() {
+        guard let url = URL(string: "http://\(ip):5000/upload"),
+              let filePath = Bundle.main.path(forResource: "ben", ofType: "jpeg"),
+              let fileData = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+            print("Invalid URL or file path")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"ben.jpeg\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        body.append(fileData)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+
+        let task = URLSession.shared.uploadTask(with: request, from: body) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.postResult = "Error: \(error.localizedDescription)"
+                }
+                return
+            }
+
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    self.postResult = "No data or response."
+                }
+                return
+            }
+
+            if response.statusCode == 200 {
+                DispatchQueue.main.async {
+                    self.postResult = String(decoding: data, as: UTF8.self)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.postResult = "Error: \(response.statusCode)"
+                }
+            }
+        }
+
+        task.resume()
+    }
+}
+
+extension Data {
+    mutating func append(_ string: String, using encoding: String.Encoding = .utf8) {
+        if let data = string.data(using: encoding) {
+            append(data)
+        }
+    }
+}
+
+#Preview {
+    Testing()
+}

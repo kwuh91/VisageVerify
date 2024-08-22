@@ -10,7 +10,6 @@
 		1137CE6F2C4378A8008E67A0 /* DynamicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */; };
 		1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE702C4378CC008E67A0 /* StaticTheme.swift */; };
 		1137CE732C437ED9008E67A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137CE722C437ED9008E67A0 /* Colors.swift */; };
-		11391CDB2C5E870F003009F8 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CDA2C5E870F003009F8 /* RegistrationScreen.swift */; };
 		11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */; };
 		11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE22C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift */; };
 		11391CE52C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */; };
@@ -45,6 +44,8 @@
 		1162C1142C72B68300CB5B7D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1162C1132C72B68300CB5B7D /* FirebaseStorage */; };
 		1162C1162C72B68300CB5B7D /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1162C1152C72B68300CB5B7D /* FirebaseStorageCombine-Community */; };
 		1162C1182C72B68300CB5B7D /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1162C1172C72B68300CB5B7D /* FirebaseVertexAI-Preview */; };
+		1162C11D2C77C36C00CB5B7D /* ben.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1162C11C2C77C36B00CB5B7D /* ben.jpeg */; };
+		1162C11F2C77D4BF00CB5B7D /* underlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162C11E2C77D4BF00CB5B7D /* underlineTextField.swift */; };
 		1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8452C41F4670081539C /* VisageVerifyApp.swift */; };
 		1179D8482C41F4670081539C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179D8472C41F4670081539C /* ContentView.swift */; };
 		1179D84A2C41F4680081539C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1179D8492C41F4680081539C /* Assets.xcassets */; };
@@ -77,7 +78,6 @@
 		1137CE6E2C4378A8008E67A0 /* DynamicTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTheme.swift; sourceTree = "<group>"; };
 		1137CE702C4378CC008E67A0 /* StaticTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTheme.swift; sourceTree = "<group>"; };
 		1137CE722C437ED9008E67A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		11391CDA2C5E870F003009F8 /* RegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTestViewStyle.swift; sourceTree = "<group>"; };
 		11391CE22C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyCircleButtonStyle.swift; sourceTree = "<group>"; };
 		11391CE42C5E8E9C003009F8 /* FireflyTextMaskButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyTextMaskButtonStyle.swift; sourceTree = "<group>"; };
@@ -90,6 +90,8 @@
 		1162C0E32C72635400CB5B7D /* RegistrationFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormModel.swift; sourceTree = "<group>"; };
 		1162C0E52C72639600CB5B7D /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		1162C0EA2C72B4C300CB5B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1162C11C2C77C36B00CB5B7D /* ben.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ben.jpeg; sourceTree = "<group>"; };
+		1162C11E2C77D4BF00CB5B7D /* underlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = underlineTextField.swift; sourceTree = "<group>"; };
 		1179D8422C41F4670081539C /* VisageVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisageVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1179D8452C41F4670081539C /* VisageVerifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisageVerifyApp.swift; sourceTree = "<group>"; };
 		1179D8472C41F4670081539C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		11391CEA2C5FF816003009F8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1162C11C2C77C36B00CB5B7D /* ben.jpeg */,
 				11391CEB2C5FF83D003009F8 /* swiftCat.png */,
 			);
 			path = Images;
@@ -212,6 +215,7 @@
 		1162C0E92C72B02000CB5B7D /* FormHelper */ = {
 			isa = PBXGroup;
 			children = (
+				1162C11E2C77D4BF00CB5B7D /* underlineTextField.swift */,
 			);
 			path = FormHelper;
 			sourceTree = "<group>";
@@ -261,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				1179D8562C41FCC40081539C /* InitialScreen.swift */,
-				11391CDA2C5E870F003009F8 /* RegistrationScreen.swift */,
 				1162C0E02C725D4500CB5B7D /* MainScreen.swift */,
 			);
 			path = Screens;
@@ -442,6 +445,7 @@
 			files = (
 				1179D84D2C41F4680081539C /* Preview Assets.xcassets in Resources */,
 				1179D8602C420B210081539C /* ArsenalSC-Regular.ttf in Resources */,
+				1162C11D2C77C36C00CB5B7D /* ben.jpeg in Resources */,
 				1179D84A2C41F4680081539C /* Assets.xcassets in Resources */,
 				11391CEC2C5FF83D003009F8 /* swiftCat.png in Resources */,
 				1179D86B2C420B550081539C /* BonaNovaSC-Regular.ttf in Resources */,
@@ -457,13 +461,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */,
-				11391CDB2C5E870F003009F8 /* RegistrationScreen.swift in Sources */,
 				11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */,
 				1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				11391CEF2C602C48003009F8 /* Testing2.swift in Sources */,
+				1162C11F2C77D4BF00CB5B7D /* underlineTextField.swift in Sources */,
 				1162C0E62C72639600CB5B7D /* RegistrationForm.swift in Sources */,
 				11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */,
 				11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */,
