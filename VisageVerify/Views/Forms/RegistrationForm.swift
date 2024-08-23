@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class BackButtonTapState: ObservableObject {
+    @Published var isButtonTapped: Int = 0
+}
+
 struct RegistrationForm: View {
     
     @ObservedObject var registrationFormModel: RegistrationFormModel = .init()
@@ -20,16 +24,31 @@ struct RegistrationForm: View {
     let errorFontColor:     Color = Color(hex: "c1121f")
     let errorMessageOffset: CGFloat = -15
     
+    @ObservedObject var backButtonTapState: BackButtonTapState
+    
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
                 ZStack {
+                    // background color
                     Colors.boneColor
                         .ignoresSafeArea()
                     
                     // vertical stack with fields for:
-                    // real name, email, password, checking password and register button
+                    // real name, username, email, password, checking password and continue button
                     VStack(spacing: -5) {
+                        // back button
+                        Button {
+                            backButtonTapState.isButtonTapped += 1
+                        } label : {
+                            PrettyText(text:     "Back",
+                                       color:    Colors.blackish,
+                                       fontSize: 35)
+                        }
+                        .offset(y: -(geometry.size.height / 10.5))
+//                        .offset(x: -(geometry.size.width) / 3,
+//                                y: -(geometry.size.height / 10.5))
+                        
                         // real name
                         Group {
                             // input field
@@ -39,9 +58,12 @@ struct RegistrationForm: View {
                                 }
                                 .textContentType(.givenName)
                                 .autocapitalization(.words)
-                                .underlineTextField(color:         color,
-                                                    fontSize:      26,
-                                                    bottomPadding: bottomPadding)
+                                .underlineTextField(
+                                    color: registrationFormModel.invalidRealName.isEmpty
+                                                ? color
+                                                : errorFontColor,
+                                    fontSize:      26,
+                                    bottomPadding: bottomPadding)
                             
                             // error message
                             Text(registrationFormModel.invalidRealName)
@@ -61,9 +83,13 @@ struct RegistrationForm: View {
                                 }
                                 .textContentType(.nickname)
                                 .autocapitalization(.none)
-                                .underlineTextField(color:         color,
-                                                    fontSize:      26,
-                                                    bottomPadding: bottomPadding)
+                                .foregroundStyle(Colors.blackish)
+                                .underlineTextField(
+                                    color: registrationFormModel.invalidUsername.isEmpty
+                                                ? color
+                                                : errorFontColor,
+                                    fontSize:      26,
+                                    bottomPadding: bottomPadding)
                             
                             // error message
                             Text(registrationFormModel.invalidUsername)
@@ -83,9 +109,12 @@ struct RegistrationForm: View {
                                 }
                                 .textContentType(.emailAddress)
                                 .autocapitalization(.none)
-                                .underlineTextField(color:         color,
-                                                    fontSize:      26,
-                                                    bottomPadding: bottomPadding)
+                                .underlineTextField(
+                                    color: registrationFormModel.invalidEmail.isEmpty
+                                                ? color
+                                                : errorFontColor,
+                                    fontSize:      26,
+                                    bottomPadding: bottomPadding)
                             
                             // error message
                             Text(registrationFormModel.invalidEmail)
@@ -105,9 +134,12 @@ struct RegistrationForm: View {
                                         Text("Password").foregroundColor(Colors.blackish)
                                     }
                                     .textContentType(.newPassword)
-                                    .underlineTextField(color:         color,
-                                                        fontSize:      26,
-                                                        bottomPadding: bottomPadding)
+                                    .underlineTextField(
+                                        color: registrationFormModel.invalidPassword.isEmpty
+                                                    ? color
+                                                    : errorFontColor,
+                                        fontSize:      26,
+                                        bottomPadding: bottomPadding)
                                 
                                 // error message for main password
                                 Text(registrationFormModel.invalidPassword)
@@ -125,9 +157,12 @@ struct RegistrationForm: View {
                                         Text("Repeat password").foregroundColor(Colors.blackish)
                                     }
                                     .textContentType(.newPassword)
-                                    .underlineTextField(color:         color,
-                                                        fontSize:      26,
-                                                        bottomPadding: bottomPadding)
+                                    .underlineTextField(
+                                        color: registrationFormModel.invalidCheckPassword.isEmpty
+                                                    ? color
+                                                    : errorFontColor,
+                                        fontSize:      26,
+                                        bottomPadding: bottomPadding)
                                 
                                 // error message for check password
                                 Text(registrationFormModel.invalidCheckPassword)
@@ -151,6 +186,7 @@ struct RegistrationForm: View {
                                            fontSize: 35)
                                 .opacity(registrationFormModel.allGood ? 1 : 0.3)
                             }
+                            .disabled(!registrationFormModel.allGood)
                         }
                         .offset(y: ((geometry.size.height + geometry.safeAreaInsets.top) / 9.5))
                         .navigationDestination(isPresented: $readyToNavigate) {
@@ -159,6 +195,7 @@ struct RegistrationForm: View {
                         .animation(.spring,
                                    value: registrationFormModel.allGood)
                         
+                        // unexpected warning message
                         if let errorMessage = registrationFormModel.errorMessage {
                             Text(errorMessage)
                                 .foregroundColor(.red)
@@ -186,5 +223,8 @@ extension View {
 }
 
 #Preview {
-    RegistrationForm(registrationFormModel: .init())
+    @StateObject var RegistrationFormViewBackButtonTapState = BackButtonTapState()
+    
+    return RegistrationForm(registrationFormModel: .init(),
+                            backButtonTapState: RegistrationFormViewBackButtonTapState)
 }
