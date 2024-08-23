@@ -109,7 +109,7 @@ struct InitialScreen: View {
                 .rotationEffect(
                     scale ? Angle(degrees: 0.01) : Angle(degrees: 0)
                 )
-                .scaleEffect(scale ? 4 : 1, anchor: .center) // increase the button
+                .scaleEffect(scale ? 4 : 1) // increase the button
                 .opacity(hideSignUpButton ? 0 : 1)           // fade it out
                 .onTapGesture {
                     if !blockTapGesture {
