@@ -114,6 +114,8 @@ struct InitialScreen: View {
                 .onTapGesture {
                     if !blockTapGesture {
                         RegistrationFormViewBackButtonTapState.isButtonTapped += 1
+                        
+                        print("InitialScreen: \(RegistrationFormViewBackButtonTapState.isButtonTapped)")
                     }
                 }
                 

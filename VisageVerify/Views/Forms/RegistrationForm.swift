@@ -37,17 +37,25 @@ struct RegistrationForm: View {
                     // vertical stack with fields for:
                     // real name, username, email, password, checking password and continue button
                     VStack(spacing: -5) {
-                        // back button
-                        Button {
-                            backButtonTapState.isButtonTapped += 1
-                        } label : {
-                            PrettyText(text:     "Back",
-                                       color:    Colors.blackish,
-                                       fontSize: 35)
-                        }
-                        .offset(y: -(geometry.size.height / 10.5))
-//                        .offset(x: -(geometry.size.width) / 3,
-//                                y: -(geometry.size.height / 10.5))
+                        // back button (eye)
+                        SingleBlinkingEyeView(mainEyeColor: .black,
+                                              sectorColor:  .white,
+                                              pupilColor:   .black,
+                                              delayBetweenChangingStates: 0.015)
+                            .aspectRatio(0.5, contentMode: .fit)
+                            .frame(height: 200)
+                            // .fixedSize()
+                            .simultaneousGesture(
+                                TapGesture().onEnded {
+                                    // print("(Before click)RegistrationForm: \(backButtonTapState.isButtonTapped)")
+                                    if backButtonTapState.isButtonTapped % 2 != 0 {
+                                        backButtonTapState.isButtonTapped += 1
+                                        
+                                        // print("RegistrationForm: \(backButtonTapState.isButtonTapped)")
+                                    }
+                                }
+                            )
+                            //.offset(y: -(geometry.size.height / 10.5))
                         
                         // real name
                         Group {
@@ -146,6 +154,7 @@ struct RegistrationForm: View {
                                     .font(.custom(fontName, size: errorFontSize))
                                     .foregroundColor(errorFontColor)
                                     .offset(y: errorMessageOffset)
+                                    .fixedSize(horizontal: false, vertical: true)
                             }
                             .animation(.spring,
                                        value: registrationFormModel.invalidPassword.isEmpty)
@@ -202,6 +211,9 @@ struct RegistrationForm: View {
                                 .font(.footnote)
                         }
                         
+                        // move everything up a little
+                        Spacer()
+                            .frame(height: 150)
                     }
                     .offset(y: -20)
                     .padding()

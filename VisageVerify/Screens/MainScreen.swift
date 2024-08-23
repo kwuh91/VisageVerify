@@ -24,4 +24,8 @@ struct MainScreen: View {
 
 #Preview {
     MainScreen()
+//    @StateObject var RegistrationFormViewBackButtonTapState = BackButtonTapState()
+//    
+//    return RegistrationForm(registrationFormModel: .init(),
+//                            backButtonTapState: RegistrationFormViewBackButtonTapState)
 }

@@ -251,3 +251,5 @@ extension String {
         return passwordTest.evaluate(with: self)
     }
 }
+// password must consist of minimum eight character
+// >= 8 characters, >= 1 uppercase letter
