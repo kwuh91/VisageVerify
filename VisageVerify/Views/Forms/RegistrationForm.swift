@@ -8,7 +8,11 @@
 import SwiftUI
 
 class BackButtonTapState: ObservableObject {
-    @Published var isButtonTapped: Int = 0
+    @Published var isButtonTapped: Int
+    
+    init(isButtonTapped: Int = 0) {
+        self.isButtonTapped = isButtonTapped
+    }
 }
 
 struct RegistrationForm: View {
@@ -23,6 +27,11 @@ struct RegistrationForm: View {
     let errorFontSize :     CGFloat = 17.5
     let errorFontColor:     Color = Color(hex: "c1121f")
     let errorMessageOffset: CGFloat = -15
+    
+    let textFieldAppearAnimationDuration:    CGFloat = 1.5
+    let textFieldDisappearAnimationDuration: CGFloat = 1.5
+    let textFieldAppearAnimationDelay:       CGFloat = 1.5
+    let textFieldDisappearAnimationDelay:    CGFloat = 0.0
     
     @ObservedObject var backButtonTapState: BackButtonTapState
     
@@ -44,18 +53,16 @@ struct RegistrationForm: View {
                                               delayBetweenChangingStates: 0.015)
                             .aspectRatio(0.5, contentMode: .fit)
                             .frame(height: 200)
-                            // .fixedSize()
                             .simultaneousGesture(
                                 TapGesture().onEnded {
-                                    // print("(Before click)RegistrationForm: \(backButtonTapState.isButtonTapped)")
+                                    // allow tap gesture only if registration screen is present
+                                    
+                                    // backButtonTapState.isButtonTapped += 1
                                     if backButtonTapState.isButtonTapped % 2 != 0 {
                                         backButtonTapState.isButtonTapped += 1
-                                        
-                                        // print("RegistrationForm: \(backButtonTapState.isButtonTapped)")
                                     }
                                 }
                             )
-                            //.offset(y: -(geometry.size.height / 10.5))
                         
                         // real name
                         Group {
@@ -72,6 +79,9 @@ struct RegistrationForm: View {
                                                 : errorFontColor,
                                     fontSize:      26,
                                     bottomPadding: bottomPadding)
+                                .offset(x: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? 0
+                                            : geometry.size.width)
                             
                             // error message
                             Text(registrationFormModel.invalidRealName)
@@ -79,8 +89,19 @@ struct RegistrationForm: View {
                                 .foregroundColor(errorFontColor)
                                 .offset(y: errorMessageOffset)
                         }
+                        // animation for error message
                         .animation(.spring,
                                    value: registrationFormModel.invalidRealName.isEmpty)
+                        // animation for text field appearing/disappearing
+                        .animation(
+                            .spring(
+                                duration: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDuration
+                                            : textFieldDisappearAnimationDuration)
+                                .delay( backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDelay
+                                            : textFieldDisappearAnimationDelay),
+                                value: backButtonTapState.isButtonTapped)
                         
                         // username
                         Group {
@@ -98,6 +119,9 @@ struct RegistrationForm: View {
                                                 : errorFontColor,
                                     fontSize:      26,
                                     bottomPadding: bottomPadding)
+                                .offset(x: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? 0
+                                            : -geometry.size.width)
                             
                             // error message
                             Text(registrationFormModel.invalidUsername)
@@ -105,8 +129,19 @@ struct RegistrationForm: View {
                                 .foregroundColor(errorFontColor)
                                 .offset(y: errorMessageOffset)
                         }
+                        // animation for error message
                         .animation(.spring,
                                    value: registrationFormModel.invalidUsername.isEmpty)
+                        // animation for text field appearing/disappearing
+                        .animation(
+                            .spring(
+                                duration: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDuration
+                                            : textFieldDisappearAnimationDuration)
+                                .delay( backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDelay
+                                            : textFieldDisappearAnimationDelay),
+                                value: backButtonTapState.isButtonTapped)
                         
                         // email address
                         Group {
@@ -123,6 +158,9 @@ struct RegistrationForm: View {
                                                 : errorFontColor,
                                     fontSize:      26,
                                     bottomPadding: bottomPadding)
+                                .offset(x: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? 0
+                                            : geometry.size.width)
                             
                             // error message
                             Text(registrationFormModel.invalidEmail)
@@ -130,8 +168,19 @@ struct RegistrationForm: View {
                                 .foregroundColor(errorFontColor)
                                 .offset(y: errorMessageOffset)
                         }
+                        // animation for error message
                         .animation(.spring,
                                    value: registrationFormModel.invalidEmail.isEmpty)
+                        // animation for text field appearing/disappearing
+                        .animation(
+                            .spring(
+                                duration: backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDuration
+                                            : textFieldDisappearAnimationDuration)
+                                .delay( backButtonTapState.isButtonTapped % 2 != 0
+                                            ? textFieldAppearAnimationDelay
+                                            : textFieldDisappearAnimationDelay),
+                                value: backButtonTapState.isButtonTapped)
                         
                         // password
                         Group {
@@ -148,6 +197,9 @@ struct RegistrationForm: View {
                                                     : errorFontColor,
                                         fontSize:      26,
                                         bottomPadding: bottomPadding)
+                                    .offset(x: backButtonTapState.isButtonTapped % 2 != 0
+                                                ? 0
+                                                : -geometry.size.width)
                                 
                                 // error message for main password
                                 Text(registrationFormModel.invalidPassword)
@@ -156,14 +208,25 @@ struct RegistrationForm: View {
                                     .offset(y: errorMessageOffset)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
+                            // animation for error message
                             .animation(.spring,
                                        value: registrationFormModel.invalidPassword.isEmpty)
+                            // animation for text field appearing/disappearing
+                            .animation(
+                                .spring(
+                                    duration: backButtonTapState.isButtonTapped % 2 != 0
+                                                ? textFieldAppearAnimationDuration
+                                                : textFieldDisappearAnimationDuration)
+                                    .delay( backButtonTapState.isButtonTapped % 2 != 0
+                                                ? textFieldAppearAnimationDelay
+                                                : textFieldDisappearAnimationDelay),
+                                    value: backButtonTapState.isButtonTapped)
                             
                             // check password
                             Group{
                                 SecureField("", text: $registrationFormModel.checkPassword)
                                     .placeholder(when: registrationFormModel.checkPassword.isEmpty) {
-                                        Text("Repeat password").foregroundColor(Colors.blackish)
+                                        Text("Repeat Password").foregroundColor(Colors.blackish)
                                     }
                                     .textContentType(.newPassword)
                                     .underlineTextField(
@@ -172,6 +235,9 @@ struct RegistrationForm: View {
                                                     : errorFontColor,
                                         fontSize:      26,
                                         bottomPadding: bottomPadding)
+                                    .offset(x: backButtonTapState.isButtonTapped % 2 != 0
+                                                ? 0
+                                                : geometry.size.width)
                                 
                                 // error message for check password
                                 Text(registrationFormModel.invalidCheckPassword)
@@ -179,8 +245,19 @@ struct RegistrationForm: View {
                                     .foregroundColor(errorFontColor)
                                     .offset(y: errorMessageOffset)
                             }
+                            // animation for error message
                             .animation(.spring,
                                        value: registrationFormModel.invalidCheckPassword.isEmpty)
+                            // animation for text field appearing/disappearing
+                            .animation(
+                                .spring(
+                                    duration: backButtonTapState.isButtonTapped % 2 != 0
+                                                ? textFieldAppearAnimationDuration
+                                                : textFieldDisappearAnimationDuration)
+                                    .delay( backButtonTapState.isButtonTapped % 2 != 0
+                                                ? textFieldAppearAnimationDelay
+                                                : textFieldDisappearAnimationDelay),
+                                    value: backButtonTapState.isButtonTapped)
                         }
                         
                         // continue button
@@ -201,6 +278,7 @@ struct RegistrationForm: View {
                         .navigationDestination(isPresented: $readyToNavigate) {
                             Testing2(registrationFormModel: registrationFormModel)
                         }
+                        // animation for enabling continue button
                         .animation(.spring,
                                    value: registrationFormModel.allGood)
                         
@@ -235,7 +313,7 @@ extension View {
 }
 
 #Preview {
-    @StateObject var RegistrationFormViewBackButtonTapState = BackButtonTapState()
+    @StateObject var RegistrationFormViewBackButtonTapState = BackButtonTapState(isButtonTapped: 1)
     
     return RegistrationForm(registrationFormModel: .init(),
                             backButtonTapState: RegistrationFormViewBackButtonTapState)

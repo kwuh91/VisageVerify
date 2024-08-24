@@ -72,6 +72,9 @@
 		11D1A92F2C6969F9000AF8A8 /* EyeExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D1A92E2C6969F9000AF8A8 /* EyeExtras.swift */; };
 		11E701402C44EB6B00631C0A /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E7013F2C44EB6B00631C0A /* Testing.swift */; };
 		11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB73472C68652000B659EE /* RestrictedArea.swift */; };
+		11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */; };
+		11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */; };
+		11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +123,9 @@
 		11D1A92E2C6969F9000AF8A8 /* EyeExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeExtras.swift; sourceTree = "<group>"; };
 		11E7013F2C44EB6B00631C0A /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		11EB73472C68652000B659EE /* RestrictedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedArea.swift; sourceTree = "<group>"; };
+		11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting.swift; sourceTree = "<group>"; };
+		11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexagon.swift; sourceTree = "<group>"; };
+		11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonFigure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +279,7 @@
 		1179D8582C41FE270081539C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11FDF8572C7A5BD800AD9F4C /* Camera */,
 				1162C0E72C72B01100CB5B7D /* Forms */,
 				11D1A92C2C6968DD000AF8A8 /* Eyes */,
 				1137CE742C438871008E67A0 /* Buttons */,
@@ -356,6 +363,24 @@
 				11B886682C67FD4C0058CE5C /* MultipleBlinkingEyes.swift */,
 			);
 			path = BlinkingAnimation;
+			sourceTree = "<group>";
+		};
+		11FDF8572C7A5BD800AD9F4C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				11FDF85A2C7A7BCB00AD9F4C /* CameraHelper */,
+				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		11FDF85A2C7A7BCB00AD9F4C /* CameraHelper */ = {
+			isa = PBXGroup;
+			children = (
+				11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */,
+				11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */,
+			);
+			path = CameraHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,11 +486,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */,
+				11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */,
 				11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */,
 				1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */,
+				11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
+				11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */,
 				11391CEF2C602C48003009F8 /* Testing2.swift in Sources */,
 				1162C11F2C77D4BF00CB5B7D /* underlineTextField.swift in Sources */,
 				1162C0E62C72639600CB5B7D /* RegistrationForm.swift in Sources */,
