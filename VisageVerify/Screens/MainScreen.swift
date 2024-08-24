@@ -22,6 +22,7 @@ struct MainScreen: View {
     }
 }
 
+
 #Preview {
     MainScreen()
 //    @StateObject var RegistrationFormViewBackButtonTapState = BackButtonTapState()

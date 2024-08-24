@@ -210,7 +210,7 @@ struct HexagonFigure: View {
             HexagonFigureFireFlies(quantity: quantity,
                                    mainStrokeColor: mainStrokeColor,
                                    mainStrokeStyle: mainStrokeStyle)
-        }
+        }.drawingGroup()
     }
 }
 
@@ -219,13 +219,14 @@ struct HexagonFigure: View {
             Colors.blackish
                 .ignoresSafeArea()
     
-//            Rectangle()
-//                .frame(width: 330,
-//                       height: 620)
-//                .foregroundStyle(.blue)
+            Image("swiftCat")
+                .resizable()
+                .frame(width: 330,
+                       height: 620)
+                .foregroundStyle(.blue)
   
             HexagonFigure(quantity: 100,
                           blanksStrokeColor: Colors.blackish,
-                          helperColor: Colors.blackish)
+                          helperColor:       Colors.blackish)
         }
 }
