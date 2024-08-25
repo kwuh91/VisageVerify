@@ -13,6 +13,7 @@ class CameraViewModel: ObservableObject {
 
 struct CameraView: UIViewControllerRepresentable {
     @ObservedObject var viewModel: CameraViewModel
+    
     let controller = ViewController()
     
     func makeUIViewController(context: Context) -> ViewController {
@@ -28,4 +29,3 @@ struct CameraView: UIViewControllerRepresentable {
         controller.capturePhoto()
     }
 }
-

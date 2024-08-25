@@ -16,7 +16,7 @@ struct SingleBlinkingEyeView: View {
     var delayBetweenChangingStates: CGFloat = 0.025
     
     @State private var eyeState: EyeState = .state1
-    @State private var isBlinking: Bool = false
+    @Binding var isBlinking: Bool
     
     var body: some View {
         Group {
@@ -69,15 +69,14 @@ struct SingleBlinkingEyeView: View {
                 ClosedEye(mainEyeColor: .black)
             }
         }
-        .onTapGesture {
-            if !isBlinking {
+        .onChange(of: isBlinking) { newValue in
+            if newValue {
                 startBlinkingAnimation()
             }
         }
     }
     
     func startBlinkingAnimation() {
-        isBlinking = true
         let blinkingSequence: [EyeState] = [
             .state2,   .state3,   .state4,   .state5,   .state6,   .state7,
             .state6p2, .state5p2, .state4p2, .state3p2, .state2p2, .state1
@@ -96,9 +95,15 @@ struct SingleBlinkingEyeView: View {
 }
 
 #Preview {
-    SingleBlinkingEyeView(mainEyeColor: .black,
+    @State var isBlinking = false
+    
+    return SingleBlinkingEyeView(mainEyeColor: .black,
                           sectorColor:  .white,
-                          pupilColor:   .black)
+                          pupilColor:   .black,
+                          isBlinking: $isBlinking)
         .aspectRatio(0.5, contentMode: .fit)
         .frame(height: 500)
+        .onTapGesture {
+            isBlinking = true
+        }
 }

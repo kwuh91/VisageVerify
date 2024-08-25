@@ -67,22 +67,27 @@ class ViewController: UIViewController {
     previewLayer.frame = view.frame
   }
   
-  private func getCameraFrames() {
-    videoDataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString): NSNumber(value: kCVPixelFormatType_32BGRA)] as [String: Any]
-    
-    videoDataOutput.alwaysDiscardsLateVideoFrames = true
-    // You do not want to process the frames on the Main Thread so we off load to another thread
-    videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera_frame_processing_queue"))
-    
-    captureSession.addOutput(videoDataOutput)
-    
-    guard let connection = videoDataOutput.connection(with: .video), connection.isVideoOrientationSupported else {
-      return
+    private func getCameraFrames() {
+        videoDataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString): NSNumber(value: kCVPixelFormatType_32BGRA)] as [String: Any]
+        
+        videoDataOutput.alwaysDiscardsLateVideoFrames = true
+        // Offload processing of frames to another thread
+        videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera_frame_processing_queue"))
+        
+        captureSession.addOutput(videoDataOutput)
+        
+        guard let connection = videoDataOutput.connection(with: .video) else {
+            return
+        }
+        
+        let rotationAngle: CGFloat = 90 // Equivalent to .portrait orientation
+        
+        // Check if the connection supports the specific video rotation angle
+        if connection.isVideoRotationAngleSupported(rotationAngle) {
+            connection.videoRotationAngle = rotationAngle
+        }
     }
-    
-    connection.videoOrientation = .portrait
-  }
-  
+
   private func detectFace(image: CVPixelBuffer) {
     let faceDetectionRequest = VNDetectFaceLandmarksRequest { vnRequest, error in
       DispatchQueue.main.async {

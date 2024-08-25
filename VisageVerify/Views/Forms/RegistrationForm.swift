@@ -21,6 +21,8 @@ struct RegistrationForm: View {
     
     @State private var readyToNavigate : Bool = false
     
+    @State private var isBlinking = false
+    
     let color:              Color = Colors.blackish
     let bottomPadding:      CGFloat = 10
     let fontName:           String = "ArsenalSC-Regular"
@@ -50,19 +52,19 @@ struct RegistrationForm: View {
                         SingleBlinkingEyeView(mainEyeColor: .black,
                                               sectorColor:  .white,
                                               pupilColor:   .black,
-                                              delayBetweenChangingStates: 0.015)
+                                              delayBetweenChangingStates: 0.015, 
+                                              isBlinking:   $isBlinking)
                             .aspectRatio(0.5, contentMode: .fit)
                             .frame(height: 200)
-                            .simultaneousGesture(
-                                TapGesture().onEnded {
-                                    // allow tap gesture only if registration screen is present
-                                    
-                                    // backButtonTapState.isButtonTapped += 1
-                                    if backButtonTapState.isButtonTapped % 2 != 0 {
-                                        backButtonTapState.isButtonTapped += 1
-                                    }
+                            .onTapGesture {
+                                // allow tap gesture only if registration screen is present
+                                
+                                // backButtonTapState.isButtonTapped += 1
+                                if backButtonTapState.isButtonTapped % 2 != 0 {
+                                    isBlinking = true
+                                    backButtonTapState.isButtonTapped += 1
                                 }
-                            )
+                            }
                         
                         // real name
                         Group {

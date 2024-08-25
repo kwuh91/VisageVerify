@@ -10,7 +10,6 @@ import SwiftUI
 struct CameraTesting: View {
     
     @StateObject private var viewModel = CameraViewModel()
-    // @State private var capturedImage: UIImage?
     
     var body: some View {
         let cameraView = CameraView(viewModel: viewModel)
@@ -40,14 +39,8 @@ struct CameraTesting: View {
                     .frame(width: 300, height: 300)
                     .border(Color.gray, width: 2)
                     .padding(.top, 20)
-                
-                let _ = print("displayed it")
             }
         }
     }
 
-}
-
-#Preview {
-    CameraTesting()
 }

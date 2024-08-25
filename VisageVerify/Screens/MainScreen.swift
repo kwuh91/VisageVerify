@@ -20,7 +20,7 @@ struct MainScreen: View {
 //                             randomizeAnchor: false,
 //                             animation: .spring(duration: 0.5, bounce: 0.5))
         
-        CameraTesting()
+       CameraTesting2()
     }
 }
 

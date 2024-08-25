@@ -77,6 +77,8 @@
 		11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */; };
 		11FDF86A2C7AB1B200AD9F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8692C7AB1B200AD9F4C /* ViewController.swift */; };
 		11FDF86C2C7AB5EF00AD9F4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */; };
+		11FDF86E2C7AD39800AD9F4C /* CameraTesting2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */; };
+		11FDF8702C7AFCB700AD9F4C /* TakePhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86F2C7AFCB700AD9F4C /* TakePhotoButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +132,8 @@
 		11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonFigure.swift; sourceTree = "<group>"; };
 		11FDF8692C7AB1B200AD9F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting2.swift; sourceTree = "<group>"; };
+		11FDF86F2C7AFCB700AD9F4C /* TakePhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 				11391CE02C5E8E6C003009F8 /* ButtonTestViewStyle.swift */,
 				11391CE62C5EBDF1003009F8 /* SignUpButton.swift */,
 				11391CE82C5EEB8E003009F8 /* SignInButton.swift */,
+				11FDF86F2C7AFCB700AD9F4C /* TakePhotoButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				11FDF8602C7AA85600AD9F4C /* BuildingCamera */,
 				11FDF85A2C7A7BCB00AD9F4C /* CameraDesignHelper */,
 				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
+				11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */,
+				11FDF8702C7AFCB700AD9F4C /* TakePhotoButton.swift in Sources */,
 				11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */,
 				11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */,
 				1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */,
@@ -515,6 +522,7 @@
 				11B886632C6673B00058CE5C /* BlinkingEyeAnimationState5.swift in Sources */,
 				11B8866B2C680C3A0058CE5C /* BlinkingEyeAnimationState7.swift in Sources */,
 				1179D85D2C42020E0081539C /* AppName.swift in Sources */,
+				11FDF86E2C7AD39800AD9F4C /* CameraTesting2.swift in Sources */,
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */,
 				11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */,
