@@ -53,3 +53,15 @@ struct Colors {
     }
 
 }
+
+extension UIColor {
+
+    static let boneColor = UIColor(red: 255/255, green: 252/255, blue: 242/255, alpha: 255/255)
+    
+    static let orangeColor = UIColor(red: 235/255, green: 94/255, blue: 40/255, alpha: 255/255)
+    
+    static let grayish = UIColor(red: 64/255, green: 61/255, blue: 57/255, alpha: 255/255)
+    
+    static let blackish = UIColor(red: 37/255, green: 36/255, blue: 34/255, alpha: 255/255)
+
+}

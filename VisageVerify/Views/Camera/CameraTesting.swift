@@ -10,7 +10,8 @@ import SwiftUI
 struct CameraTesting: View {
 
     var body: some View {
-        Text("123")
+        CameraView()
+            .edgesIgnoringSafeArea(.all)
     }
 
 }

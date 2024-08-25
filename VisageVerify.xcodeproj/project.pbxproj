@@ -75,6 +75,8 @@
 		11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */; };
 		11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */; };
 		11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */; };
+		11FDF86A2C7AB1B200AD9F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8692C7AB1B200AD9F4C /* ViewController.swift */; };
+		11FDF86C2C7AB5EF00AD9F4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +128,8 @@
 		11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting.swift; sourceTree = "<group>"; };
 		11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexagon.swift; sourceTree = "<group>"; };
 		11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonFigure.swift; sourceTree = "<group>"; };
+		11FDF8692C7AB1B200AD9F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +372,7 @@
 		11FDF8572C7A5BD800AD9F4C /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				11FDF8602C7AA85600AD9F4C /* BuildingCamera */,
 				11FDF85A2C7A7BCB00AD9F4C /* CameraHelper */,
 				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
 			);
@@ -381,6 +386,15 @@
 				11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */,
 			);
 			path = CameraHelper;
+			sourceTree = "<group>";
+		};
+		11FDF8602C7AA85600AD9F4C /* BuildingCamera */ = {
+			isa = PBXGroup;
+			children = (
+				11FDF8692C7AB1B200AD9F4C /* ViewController.swift */,
+				11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */,
+			);
+			path = BuildingCamera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +508,7 @@
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
 				1179D8482C41F4670081539C /* ContentView.swift in Sources */,
 				11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */,
+				11FDF86C2C7AB5EF00AD9F4C /* CameraView.swift in Sources */,
 				11391CEF2C602C48003009F8 /* Testing2.swift in Sources */,
 				1162C11F2C77D4BF00CB5B7D /* underlineTextField.swift in Sources */,
 				1162C0E62C72639600CB5B7D /* RegistrationForm.swift in Sources */,
@@ -515,6 +530,7 @@
 				11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */,
+				11FDF86A2C7AB1B200AD9F4C /* ViewController.swift in Sources */,
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,
 				11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */,
 				11E701402C44EB6B00631C0A /* Testing.swift in Sources */,
