@@ -4,13 +4,6 @@
 //
 //  Created by Nikita Ochkin on 25.08.2024.
 //
-
-//
-//  ViewController.swift
-//  FaceDetectionSystem
-//
-//  Created by David Razmadze on 8/27/22.
-//
 //  Following this tutorial: https://medium.com/onfido-tech/live-face-tracking-on-ios-using-vision-framework-adf8a1799233
 
 import UIKit
@@ -24,11 +17,15 @@ class ViewController: UIViewController {
   private var drawings: [CAShapeLayer] = []
   
   private let videoDataOutput = AVCaptureVideoDataOutput()
-  private let captureSession = AVCaptureSession()
-  
-  /// Using `lazy` keyword because the `captureSession` needs to be loaded before we can use the preview layer.
+  private let captureSession  = AVCaptureSession()
+  private let photoOutput     = AVCapturePhotoOutput()
+    
+  // Using `lazy` keyword because the `captureSession` needs to be loaded before we can use the preview layer.
   private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
   
+  // Store the captured photo in this variable
+  var viewModel: CameraViewModel?
+    
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
@@ -37,12 +34,14 @@ class ViewController: UIViewController {
     
     addCameraInput()
     showCameraFeed()
-    
     getCameraFrames()
+      
+    captureSession.addOutput(photoOutput)
+      
     captureSession.startRunning()
   }
   
-  /// The account for when the container's `view` changes.
+  // The account for when the container's `view` changes.
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     
@@ -54,10 +53,10 @@ class ViewController: UIViewController {
   private func addCameraInput() {
     
     guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera, .builtInDualCamera, .builtInWideAngleCamera], mediaType: .video, position: .front).devices.first else {
-      fatalError("No camera detected. Please use a real camera, not a simulator.")
+      fatalError("No camera detected. Please use a real camera and not a simulator.")
     }
     
-    // ⚠️ You should wrap this in a `do-catch` block, but this will be good enough for the demo.
+    // TODO: wrap this in a `do-catch` block.
     let cameraInput = try! AVCaptureDeviceInput(device: device)
     captureSession.addInput(cameraInput)
   }
@@ -129,6 +128,11 @@ class ViewController: UIViewController {
   private func clearDrawings() {
     drawings.forEach({ drawing in drawing.removeFromSuperlayer() })
   }
+    
+    func capturePhoto() {
+        let settings = AVCapturePhotoSettings()
+        photoOutput.capturePhoto(with: settings, delegate: self)
+    }
   
 }
 
@@ -146,4 +150,16 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     detectFace(image: frame)
   }
   
+}
+
+extension ViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        let capturedImage = UIImage(data: imageData)
+        
+        // Notify the ViewModel
+        DispatchQueue.main.async {
+            self.viewModel?.capturedImage = capturedImage
+        }
+    }
 }

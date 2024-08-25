@@ -7,13 +7,25 @@
 
 import SwiftUI
 
+class CameraViewModel: ObservableObject {
+    @Published var capturedImage: UIImage?
+}
+
 struct CameraView: UIViewControllerRepresentable {
+    @ObservedObject var viewModel: CameraViewModel
+    let controller = ViewController()
     
     func makeUIViewController(context: Context) -> ViewController {
-        return ViewController()
+        controller.viewModel = viewModel
+        return controller
     }
-    
+
     func updateUIViewController(_ uiViewController: ViewController, context: Context) {
-        // No need to update anything here for now
+        // No need to do anything here for now
+    }
+
+    func capturePhoto() {
+        controller.capturePhoto()
     }
 }
+

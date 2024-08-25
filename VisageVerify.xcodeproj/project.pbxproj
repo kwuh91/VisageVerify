@@ -373,19 +373,19 @@
 			isa = PBXGroup;
 			children = (
 				11FDF8602C7AA85600AD9F4C /* BuildingCamera */,
-				11FDF85A2C7A7BCB00AD9F4C /* CameraHelper */,
+				11FDF85A2C7A7BCB00AD9F4C /* CameraDesignHelper */,
 				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		11FDF85A2C7A7BCB00AD9F4C /* CameraHelper */ = {
+		11FDF85A2C7A7BCB00AD9F4C /* CameraDesignHelper */ = {
 			isa = PBXGroup;
 			children = (
 				11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */,
 				11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */,
 			);
-			path = CameraHelper;
+			path = CameraDesignHelper;
 			sourceTree = "<group>";
 		};
 		11FDF8602C7AA85600AD9F4C /* BuildingCamera */ = {
