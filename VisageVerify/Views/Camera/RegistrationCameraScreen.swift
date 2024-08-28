@@ -73,7 +73,7 @@ struct CameraTesting3: View {
                                 .frame(width:  geometry.size.width * 0.85,
                                        height: geometry.size.width * 0.85)
                                 .clipShape(Circle())
-                                .scaleEffect(x: -1, y: 1) 
+                                .scaleEffect(x: -1, y: 1)
                                 .shadow(color: .black, radius: 10)
                             
 //                            EnhancedPhotoView(inputImage: takenPhoto)
@@ -102,6 +102,12 @@ struct CameraTesting3: View {
                     .offset(y: geometry.size.height / 30)
                     .padding(40)
                     .frame(height: 100)
+                    
+                    // Access the face count directly without triggering re-renders
+//                    Text("Detected Faces: \(cameraViewModel.detectedFaces)")
+//                        .foregroundColor(Colors.boneColor)
+//                        .font(.headline)
+//                        .padding()
                     
                     Spacer(minLength: geometry.size.height / 20)
                     
