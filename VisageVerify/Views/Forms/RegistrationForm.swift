@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+// singleton
+//class userData {
+//    static let user = userData()
+//    
+//    private init() { }
+//    
+//    var data: User = .init()
+//}
+
 class BackButtonTapState: ObservableObject {
     @Published var isButtonTapped: Int
     
@@ -284,7 +293,7 @@ struct RegistrationForm: View {
                         .navigationDestination(isPresented: $readyToNavigate) {
                             // Testing2(registrationFormModel: registrationFormModel)
                             
-                            CameraTesting3()
+                            RegistrationCameraScreen(registrationFormModel: registrationFormModel)
                             // CameraTesting3(registrationFormModel: registrationFormModel)
                         }
                         // animation for enabling continue button

@@ -38,7 +38,9 @@ class ViewController: UIViewController {
       
     captureSession.addOutput(photoOutput)
       
-    captureSession.startRunning()
+    //DispatchQueue.global(qos: .background).async {
+        captureSession.startRunning()
+    //}
   }
   
   // The account for when the container's `view` changes.
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
   
   private func handleFaceDetectionResults(observedFaces: [VNFaceObservation]) {
     clearDrawings()
-    
+      
     // Create the boxes
     let facesBoundingBoxes: [CAShapeLayer] = observedFaces.map({ (observedFace: VNFaceObservation) -> CAShapeLayer in
       

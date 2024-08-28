@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Combine
+import UIKit
+import AVFoundation
 
 class CameraViewModel: ObservableObject {
     @Published var capturedImage: UIImage?
+    // @Published var detectedFaces: Int = 0
 }
 
 struct CameraView: UIViewControllerRepresentable {
@@ -21,12 +25,9 @@ struct CameraView: UIViewControllerRepresentable {
         return controller
     }
 
-    func updateUIViewController(_ uiViewController: ViewController, context: Context) {
-        // No need to do anything here for now
-    }
+    func updateUIViewController(_ uiViewController: ViewController, context: Context) {}
 
     func capturePhoto() {
         controller.capturePhoto()
     }
 }
-

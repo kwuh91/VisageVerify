@@ -23,7 +23,6 @@ struct RandomPhotoView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())
-                    .shadow(color: .black, radius: 10)
             } else {
                 Text("Processing...")
                     .padding()
