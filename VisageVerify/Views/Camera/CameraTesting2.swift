@@ -34,93 +34,93 @@ struct CameraTesting2: View {
                     HexagonFigure(quantity: 100,
                                   blanksStrokeColor: Colors.blackish,
                                   helperColor:       Colors.blackish)
-                    // back eyes
-                    Group {
-                        Group {
-                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                                  sectorColor:  Colors.blackish,
-                                                  pupilColor:   Colors.boneColor,
-                                                  delayBetweenChangingStates: 0.015,
-                                                  isBlinking:   $isBlinking1)
-                                .aspectRatio(0.5, contentMode: .fit)
-                                .frame(height: 200)
-                                .rotationEffect(Angle(degrees: 90))
-                                .offset(x: -105)
-                            
-                        }
-                        .offset(x: -70,y: -120)
-                        .onTapGesture {
-                            isBlinking1 = true
-                        }
-                        
-                        Group {
-                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                                  sectorColor:  Colors.blackish,
-                                                  pupilColor:   Colors.boneColor,
-                                                  delayBetweenChangingStates: 0.015,
-                                                  isBlinking:   $isBlinking2)
-                                .aspectRatio(0.5, contentMode: .fit)
-                                .frame(height: 200)
-                                .rotationEffect(Angle(degrees: 270))
-                                .offset(x: -105)
-                            
-                        }
-                        .offset(x: 280,y: -240)
-                        .onTapGesture {
-                            isBlinking2 = true
-                        }
-                        
-                        Group {
-                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                                  sectorColor:  Colors.blackish,
-                                                  pupilColor:   Colors.boneColor,
-                                                  delayBetweenChangingStates: 0.015,
-                                                  isBlinking:   $isBlinking3)
-                                .aspectRatio(0.5, contentMode: .fit)
-                                .frame(height: 200)
-                                .rotationEffect(Angle(degrees: 90))
-                                .offset(x: -105)
-                            
-                        }
-                        .offset(x: -70,y: 120)
-                        .onTapGesture {
-                            isBlinking3 = true
-                        }
-                        
-                        Group {
-                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                                  sectorColor:  Colors.blackish,
-                                                  pupilColor:   Colors.boneColor,
-                                                  delayBetweenChangingStates: 0.015,
-                                                  isBlinking:   $isBlinking4)
-                                .aspectRatio(0.5, contentMode: .fit)
-                                .frame(height: 200)
-                                .rotationEffect(Angle(degrees: 270))
-                                .offset(x: -105)
-                            
-                        }
-                        .offset(x: 280)
-                        .onTapGesture {
-                            isBlinking4 = true
-                        }
-                        
-                        Group {
-                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                                  sectorColor:  Colors.blackish,
-                                                  pupilColor:   Colors.boneColor,
-                                                  delayBetweenChangingStates: 0.015,
-                                                  isBlinking:   $isBlinking5)
-                                .aspectRatio(0.5, contentMode: .fit)
-                                .frame(height: 200)
-                                .rotationEffect(Angle(degrees: 270))
-                                .offset(x: -105)
-                            
-                        }
-                        .offset(x: 280, y: 240)
-                        .onTapGesture {
-                            isBlinking5 = true
-                        }
-                    }
+//                    // back eyes
+//                    Group {
+//                        Group {
+//                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+//                                                  sectorColor:  Colors.blackish,
+//                                                  pupilColor:   Colors.boneColor,
+//                                                  delayBetweenChangingStates: 0.015,
+//                                                  isBlinking:   $isBlinking1)
+//                                .aspectRatio(0.5, contentMode: .fit)
+//                                .frame(height: 200)
+//                                .rotationEffect(Angle(degrees: 90))
+//                                .offset(x: -105)
+//                            
+//                        }
+//                        .offset(x: -70,y: -120)
+//                        .onTapGesture {
+//                            isBlinking1 = true
+//                        }
+//                        
+//                        Group {
+//                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+//                                                  sectorColor:  Colors.blackish,
+//                                                  pupilColor:   Colors.boneColor,
+//                                                  delayBetweenChangingStates: 0.015,
+//                                                  isBlinking:   $isBlinking2)
+//                                .aspectRatio(0.5, contentMode: .fit)
+//                                .frame(height: 200)
+//                                .rotationEffect(Angle(degrees: 270))
+//                                .offset(x: -105)
+//                            
+//                        }
+//                        .offset(x: 280,y: -240)
+//                        .onTapGesture {
+//                            isBlinking2 = true
+//                        }
+//                        
+//                        Group {
+//                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+//                                                  sectorColor:  Colors.blackish,
+//                                                  pupilColor:   Colors.boneColor,
+//                                                  delayBetweenChangingStates: 0.015,
+//                                                  isBlinking:   $isBlinking3)
+//                                .aspectRatio(0.5, contentMode: .fit)
+//                                .frame(height: 200)
+//                                .rotationEffect(Angle(degrees: 90))
+//                                .offset(x: -105)
+//                            
+//                        }
+//                        .offset(x: -70,y: 120)
+//                        .onTapGesture {
+//                            isBlinking3 = true
+//                        }
+//                        
+//                        Group {
+//                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+//                                                  sectorColor:  Colors.blackish,
+//                                                  pupilColor:   Colors.boneColor,
+//                                                  delayBetweenChangingStates: 0.015,
+//                                                  isBlinking:   $isBlinking4)
+//                                .aspectRatio(0.5, contentMode: .fit)
+//                                .frame(height: 200)
+//                                .rotationEffect(Angle(degrees: 270))
+//                                .offset(x: -105)
+//                            
+//                        }
+//                        .offset(x: 280)
+//                        .onTapGesture {
+//                            isBlinking4 = true
+//                        }
+//                        
+//                        Group {
+//                            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+//                                                  sectorColor:  Colors.blackish,
+//                                                  pupilColor:   Colors.boneColor,
+//                                                  delayBetweenChangingStates: 0.015,
+//                                                  isBlinking:   $isBlinking5)
+//                                .aspectRatio(0.5, contentMode: .fit)
+//                                .frame(height: 200)
+//                                .rotationEffect(Angle(degrees: 270))
+//                                .offset(x: -105)
+//                            
+//                        }
+//                        .offset(x: 280, y: 240)
+//                        .onTapGesture {
+//                            isBlinking5 = true
+//                        }
+//                    }
                     
                     // Display the captured image if available
                     if let image = cameraView.viewModel.capturedImage {

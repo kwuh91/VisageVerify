@@ -19,8 +19,8 @@ struct MainScreen: View {
 //                             intervalForRandomDelayBeforeAppearing: 0...0.25,
 //                             randomizeAnchor: false,
 //                             animation: .spring(duration: 0.5, bounce: 0.5))
-        
-       CameraTesting2()
+//        
+     CameraTesting3()
     }
 }
 

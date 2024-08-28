@@ -55,10 +55,13 @@ class ViewController: UIViewController {
     guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera, .builtInDualCamera, .builtInWideAngleCamera], mediaType: .video, position: .front).devices.first else {
       fatalError("No camera detected. Please use a real camera and not a simulator.")
     }
-    
-    // TODO: wrap this in a `do-catch` block.
-    let cameraInput = try! AVCaptureDeviceInput(device: device)
-    captureSession.addInput(cameraInput)
+
+      do {
+          let cameraInput = try AVCaptureDeviceInput(device: device)
+          captureSession.addInput(cameraInput)
+      } catch {
+          print("Error adding camera input: \(error)")
+      }
   }
   
   private func showCameraFeed() {
@@ -159,10 +162,16 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 extension ViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        guard let imageData = photo.fileDataRepresentation() else { return }
-        let capturedImage = UIImage(data: imageData)
+        if let error = error {
+            print("Error capturing photo: \(error)")
+            return
+        }
         
-        // Notify the ViewModel
+        guard let imageData = photo.fileDataRepresentation(), let capturedImage = UIImage(data: imageData) else {
+            print("Failed to get image data from photo output.")
+            return
+        }
+        
         DispatchQueue.main.async {
             self.viewModel?.capturedImage = capturedImage
         }

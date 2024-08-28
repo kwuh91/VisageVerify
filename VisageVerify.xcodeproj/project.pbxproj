@@ -79,6 +79,9 @@
 		11FDF86C2C7AB5EF00AD9F4C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */; };
 		11FDF86E2C7AD39800AD9F4C /* CameraTesting2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */; };
 		11FDF8702C7AFCB700AD9F4C /* TakePhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF86F2C7AFCB700AD9F4C /* TakePhotoButton.swift */; };
+		11FDF8732C7E392C00AD9F4C /* CameraTesting3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8722C7E392C00AD9F4C /* CameraTesting3.swift */; };
+		11FDF8752C7E798800AD9F4C /* CoreImageFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */; };
+		11FDF8772C7E79C400AD9F4C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8762C7E79C400AD9F4C /* Testing3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +137,9 @@
 		11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting2.swift; sourceTree = "<group>"; };
 		11FDF86F2C7AFCB700AD9F4C /* TakePhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoButton.swift; sourceTree = "<group>"; };
+		11FDF8722C7E392C00AD9F4C /* CameraTesting3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting3.swift; sourceTree = "<group>"; };
+		11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageFilterView.swift; sourceTree = "<group>"; };
+		11FDF8762C7E79C400AD9F4C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +354,7 @@
 			children = (
 				11E7013F2C44EB6B00631C0A /* Testing.swift */,
 				11391CEE2C602C48003009F8 /* Testing2.swift */,
+				11FDF8762C7E79C400AD9F4C /* Testing3.swift */,
 				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
 				11EB73472C68652000B659EE /* RestrictedArea.swift */,
 			);
@@ -381,6 +388,8 @@
 				11FDF85A2C7A7BCB00AD9F4C /* CameraDesignHelper */,
 				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
 				11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */,
+				11FDF8722C7E392C00AD9F4C /* CameraTesting3.swift */,
+				11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -510,6 +519,7 @@
 				11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */,
 				11B886552C62BD920058CE5C /* TestingBlinking.swift in Sources */,
 				1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */,
+				11FDF8732C7E392C00AD9F4C /* CameraTesting3.swift in Sources */,
 				11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
@@ -538,6 +548,7 @@
 				11EB73482C68652000B659EE /* RestrictedArea.swift in Sources */,
 				1179D8462C41F4670081539C /* VisageVerifyApp.swift in Sources */,
 				11B886532C629FA90058CE5C /* ClosedEye.swift in Sources */,
+				11FDF8772C7E79C400AD9F4C /* Testing3.swift in Sources */,
 				11FDF86A2C7AB1B200AD9F4C /* ViewController.swift in Sources */,
 				11391CE12C5E8E6C003009F8 /* ButtonTestViewStyle.swift in Sources */,
 				11B886612C65BC120058CE5C /* BlinkingEyeAnimationState4.swift in Sources */,
@@ -546,6 +557,7 @@
 				11B886692C67FD4C0058CE5C /* MultipleBlinkingEyes.swift in Sources */,
 				1179D86E2C4218060081539C /* Slogan.swift in Sources */,
 				11B8865F2C65A2270058CE5C /* BlinkingEyeAnimationState3.swift in Sources */,
+				11FDF8752C7E798800AD9F4C /* CoreImageFilterView.swift in Sources */,
 				11391CE92C5EEB8E003009F8 /* SignInButton.swift in Sources */,
 				1179D87F2C42D83A0081539C /* Fireflies.swift in Sources */,
 			);

@@ -69,8 +69,8 @@ struct SingleBlinkingEyeView: View {
                 ClosedEye(mainEyeColor: .black)
             }
         }
-        .onChange(of: isBlinking) { newValue in
-            if newValue {
+        .onChange(of: isBlinking) { 
+            if isBlinking {
                 startBlinkingAnimation()
             }
         }

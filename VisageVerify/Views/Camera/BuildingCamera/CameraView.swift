@@ -29,3 +29,4 @@ struct CameraView: UIViewControllerRepresentable {
         controller.capturePhoto()
     }
 }
+

@@ -30,23 +30,31 @@ struct TakePhotoButton: View {
     @State private var action     = false
     
     var body: some View {
+        let fireflies = FloatingFireflies(quantity: 100)
         ZStack {
-            Rectangle()
-                .frame(height: rectangleHeight)
-                .foregroundStyle(rectangleColor)
-                .overlay(
-                    RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                        .stroke(rectangleBorderColor, lineWidth: rectangleBorderThickness)
-                )
-                .padding(paddingSize)
-            
-            SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
-                                  sectorColor:  Colors.blackish,
-                                  pupilColor:   Colors.boneColor,
-                                  delayBetweenChangingStates: delayBetweenChangingStates,
-                                  isBlinking:   $isBlinking) // Pass the binding here
-                .aspectRatio(0.5, contentMode: .fit)
-                .frame(height: eyeHeight)
+//            Rectangle()
+//                .frame(height: rectangleHeight)
+//                .foregroundStyle(rectangleColor)
+//            
+//                .overlay(
+//                    fireflies
+//                        .mask(
+//                            RoundedRectangle(cornerRadius: rectangleCornerRadius)
+//                                .stroke(lineWidth: rectangleBorderThickness)
+//                                .padding(paddingSize)
+//                        )
+//                )
+
+            fireflies
+                .mask(
+                    SingleBlinkingEyeView(mainEyeColor: Colors.boneColor,
+                                          sectorColor:  Colors.blackish,
+                                          pupilColor:   Colors.boneColor,
+                                          delayBetweenChangingStates: delayBetweenChangingStates,
+                                          isBlinking:   $isBlinking) // Pass the binding here
+            )
+            .aspectRatio(0.5, contentMode: .fit)
+            .frame(height: eyeHeight)
         }
         .scaleEffect(action ? 0.95 : 1)
         .animation(.spring(duration: delayBetweenChangingStates * 8), value: action)
@@ -65,6 +73,6 @@ struct TakePhotoButton: View {
         Colors.blackish
             .ignoresSafeArea()
         
-        TakePhotoButton(rectangleColor: Colors.blackish, rectangleHeight: 80, rectangleBorderColor: Colors.boneColor, rectangleBorderThickness: 4, rectangleCornerRadius: 16, mainEyeColor: Colors.boneColor, sectorColor: Colors.blackish, pupilColor: Colors.boneColor, eyeHeight: 200, paddingSize: 10, delayBetweenChangingStates: 0.015)
+        TakePhotoButton(rectangleColor: Colors.blackish, rectangleHeight: 80, rectangleBorderColor: Colors.boneColor, rectangleBorderThickness: 3, rectangleCornerRadius: 16, mainEyeColor: Colors.boneColor, sectorColor: Colors.blackish, pupilColor: Colors.boneColor, eyeHeight: 180, paddingSize: 1, delayBetweenChangingStates: 0.015)
     }
 }

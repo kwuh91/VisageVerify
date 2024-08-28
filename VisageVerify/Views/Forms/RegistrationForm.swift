@@ -75,6 +75,7 @@ struct RegistrationForm: View {
                                 }
                                 .textContentType(.givenName)
                                 .autocapitalization(.words)
+                                .foregroundStyle(Colors.blackish)
                                 .underlineTextField(
                                     color: registrationFormModel.invalidRealName.isEmpty
                                                 ? color
@@ -154,6 +155,7 @@ struct RegistrationForm: View {
                                 }
                                 .textContentType(.emailAddress)
                                 .autocapitalization(.none)
+                                .foregroundStyle(Colors.blackish)
                                 .underlineTextField(
                                     color: registrationFormModel.invalidEmail.isEmpty
                                                 ? color
@@ -193,6 +195,7 @@ struct RegistrationForm: View {
                                         Text("Password").foregroundColor(Colors.blackish)
                                     }
                                     .textContentType(.newPassword)
+                                    .foregroundStyle(Colors.blackish)
                                     .underlineTextField(
                                         color: registrationFormModel.invalidPassword.isEmpty
                                                     ? color
@@ -231,6 +234,7 @@ struct RegistrationForm: View {
                                         Text("Repeat Password").foregroundColor(Colors.blackish)
                                     }
                                     .textContentType(.newPassword)
+                                    .foregroundStyle(Colors.blackish)
                                     .underlineTextField(
                                         color: registrationFormModel.invalidCheckPassword.isEmpty
                                                     ? color
@@ -278,7 +282,10 @@ struct RegistrationForm: View {
                         }
                         .offset(y: ((geometry.size.height + geometry.safeAreaInsets.top) / 9.5))
                         .navigationDestination(isPresented: $readyToNavigate) {
-                            Testing2(registrationFormModel: registrationFormModel)
+                            // Testing2(registrationFormModel: registrationFormModel)
+                            
+                            CameraTesting3()
+                            // CameraTesting3(registrationFormModel: registrationFormModel)
                         }
                         // animation for enabling continue button
                         .animation(.spring,
