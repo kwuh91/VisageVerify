@@ -121,21 +121,24 @@ struct RegistrationCameraScreen: View {
                         HStack {
                             
                             // Back button
-                            Button(action: {
-                                if cameraViewModel.capturedImage != nil {
-                                    cameraViewModel.capturedImage = nil
-                                }
-                                dismiss() // Dismiss the view when tapped
-                            }) {
-                                fireflies
-                                    .mask(
-                                        Image(systemName: "arrowtriangle.left")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(height: geometry.size.height / 15)
-                                            .font(Font.title.weight(.thin))
-                                    )
-                            }
+//                            Button(action: {
+//                                if cameraViewModel.capturedImage != nil {
+//                                    cameraViewModel.capturedImage = nil
+//                                    debugPrint("cleared photo after 'back' button was pressed")
+//                                }
+//                                viewID = UUID()
+//                                dismiss() // Dismiss the view when tapped
+//                                viewID = UUID()
+//                            }) {
+//                                fireflies
+//                                    .mask(
+//                                        Image(systemName: "arrowtriangle.left")
+//                                            .resizable()
+//                                            .aspectRatio(contentMode: .fit)
+//                                            .frame(height: geometry.size.height / 15)
+//                                            .font(Font.title.weight(.thin))
+//                                    )
+//                            }
                             
                             // take photo button
                             TakePhotoButton(rectangleColor: Colors.blackish, rectangleHeight: 80, rectangleBorderColor: Colors.boneColor, rectangleBorderThickness: 3, rectangleCornerRadius: 16, mainEyeColor: Colors.boneColor, sectorColor: Colors.blackish, pupilColor: Colors.boneColor, eyeHeight: 180, paddingSize: 1, delayBetweenChangingStates: 0.015)
@@ -220,21 +223,24 @@ struct RegistrationCameraScreen: View {
                             instructionsText = "there can only be one face present on the screen"
                         case "no one face":
                             instructionsText = "face was not found"
-                        case "":
-                            instructionsText = "something went wrong"
-                        default:
+                        case "new(): invalid data type 'str'":
+                            instructionsText = "your face is already in the database"
+                        case let str where str.contains("["):
                             print("writing to database: \(faceRecognition.postResult)")
                             registrationFormModel.user.biometry = faceRecognition.postResult
                             registrationFormModel.registerUser()
                             debugPrint("registered user!")
                             
                             readyToNavigate.toggle()
+                        default:
+                            instructionsText = "something went wrong (\(faceRecognition.postResult))"
                     }
                 }
             }
-//            .onAppear() {
-//                viewID = UUID()
-//            }
+            .onAppear() {
+                viewID = UUID()
+                debugPrint("screen refreshed")
+            }
         }
     }
 }
