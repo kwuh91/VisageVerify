@@ -219,21 +219,32 @@ struct RegistrationCameraScreen: View {
                 
                 .onChange(of: faceRecognition.postResult) {
                     switch faceRecognition.postResult {
-                        case "too many faces":
+                        case 401:
                             instructionsText = "there can only be one face present on the screen"
-                        case "no one face":
+                        case 402:
                             instructionsText = "face was not found"
-                        case "new(): invalid data type 'str'":
+                        case 403:
                             instructionsText = "your face is already in the database"
-                        case let str where str.contains("["):
-                            print("writing to database: \(faceRecognition.postResult)")
-                            registrationFormModel.user.biometry = faceRecognition.postResult
-                            registrationFormModel.registerUser()
-                            debugPrint("registered user!")
-                            
-                            readyToNavigate.toggle()
+                        case 405, 406:
+                            instructionsText = "error"
                         default:
-                            instructionsText = "something went wrong (\(faceRecognition.postResult))"
+                            instructionsText = "something went wrong"
+                        
+//                        case "too many faces":
+//                            instructionsText = "there can only be one face present on the screen"
+//                        case "no one face":
+//                            instructionsText = "face was not found"
+//                        case "new(): invalid data type 'str'":
+//                            instructionsText = "your face is already in the database"
+//                        case let str where str.contains("["):
+//                            print("writing to database: \(faceRecognition.postResult)")
+//                            registrationFormModel.user.biometry = faceRecognition.postResult
+//                            registrationFormModel.registerUser()
+//                            debugPrint("registered user!")
+//                            
+//                            readyToNavigate.toggle()
+//                        default:
+//                            instructionsText = "something went wrong (\(faceRecognition.postResult))"
                     }
                 }
             }

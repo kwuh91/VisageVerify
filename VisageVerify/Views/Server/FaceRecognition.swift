@@ -8,7 +8,7 @@
 import SwiftUI
 
 class FaceRecognition: ObservableObject {
-    @Published var postResult: String = ""
+    @Published var postResult: Int = 0
     
     var ip: String
     
@@ -43,7 +43,8 @@ class FaceRecognition: ObservableObject {
         let task = URLSession.shared.uploadTask(with: request, from: body) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.postResult = "Error: \(error.localizedDescription)"
+                    self.postResult = 405
+                    debugPrint("Got error: \(error.localizedDescription)")
                 }
                 debugPrint("1")
                 return
@@ -51,25 +52,34 @@ class FaceRecognition: ObservableObject {
 
             guard let data = data, let response = response as? HTTPURLResponse else {
                 DispatchQueue.main.async {
-                    self.postResult = "No data or response."
+                    self.postResult = 406
+                    debugPrint("No data or response")
                 }
                 debugPrint("2")
                 return
             }
 
-            if response.statusCode == 200 {
-                DispatchQueue.main.async {
-                    debugPrint("Got post result: \(String(decoding: data, as: UTF8.self))")
-                    self.postResult = String(decoding: data, as: UTF8.self)
-                }
-                debugPrint("3")
-            } else {
-                DispatchQueue.main.async {
-                    self.postResult = "Error: \(response.statusCode)"
-                    debugPrint(self.postResult)
-                }
-                debugPrint("4")
+            DispatchQueue.main.async {
+                debugPrint("Got post result: \(String(decoding: data, as: UTF8.self))")
+                debugPrint("With status code: \(response.statusCode)")
+                // self.postResult = String(decoding: data, as: UTF8.self)
+                self.postResult = response.statusCode
             }
+            
+//            switch response.statusCode {
+//                case 200:
+//                    DispatchQueue.main.async {
+//                        debugPrint("Got post result: \(String(decoding: data, as: UTF8.self))")
+//                        self.postResult = String(decoding: data, as: UTF8.self)
+//                    }
+//                    debugPrint("3")
+//                default:
+//                    DispatchQueue.main.async {
+//                        self.postResult = "Error: \(response.statusCode)"
+//                        debugPrint(self.postResult)
+//                    }
+//                    debugPrint("4")
+//            }
         }
         
         debugPrint("5")
