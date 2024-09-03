@@ -11,6 +11,7 @@ struct RegistrationCameraScreen: View {
     @Environment(\.dismiss) private var dismiss
     
     @StateObject private var cameraViewModel: CameraViewModel = .init()
+    @StateObject private var faceRecognition: FaceRecognition = .init(ip: "91.107.123.50")
     
     @ObservedObject var registrationFormModel: RegistrationFormModel
     
@@ -152,12 +153,42 @@ struct RegistrationCameraScreen: View {
                             // next button
                             Button(action: {
                                 if cameraViewModel.capturedImage == nil {
-                                    instructionsText = "take a fucking photo"
+                                    instructionsText = "to proceed, you have to take a photo"
                                     viewID = UUID()
                                     // viewID = UUID()
                                 } else {
                                     print("'next' button tapped")
-                                    readyToNavigate.toggle()
+                                    
+                                    let image: UIImage = cameraViewModel.capturedImage!
+                                    
+                                    debugPrint("original image height: \(image.size.height), width: \(image.size.width)")
+                                    
+                                    let resizedImage: UIImage = FaceRecognition.resizeImage(image:      image,
+                                                                                            targetSize: CGSizeMake(959.0, 1200.0))
+                                    
+                                    debugPrint("new image height: \(resizedImage.size.height), width: \(resizedImage.size.width)")
+                                    
+                                    faceRecognition.registrationScript(url: "http://\(faceRecognition.ip):5000/registration",
+                                                                       image: resizedImage)
+                                    
+                                    // viewID = UUID()
+                                    
+//                                    switch faceRecognition.postResult {
+//                                        case "too many faces":
+//                                            instructionsText = "there can only be one face present on the screen"
+//                                        case "no one face":
+//                                            instructionsText = "face was not found"
+//                                        case "":
+//                                            instructionsText = "something went wrong"
+//                                        default:
+//                                            print("writing to database: \(faceRecognition.postResult)")
+//                                            registrationFormModel.user.biometry = faceRecognition.postResult
+//                                            registrationFormModel.registerUser()
+//                                            debugPrint("registered user!")
+//                                            
+//                                            readyToNavigate.toggle()
+//                                    }
+                                    // viewID = UUID()
                                 }
                             }) {
                                 fireflies
@@ -170,7 +201,7 @@ struct RegistrationCameraScreen: View {
                                     )
                             }
                              .navigationDestination(isPresented: $readyToNavigate) {
-                                FloatingFireflies(quantity: 5)
+                                // FloatingFireflies(quantity: 5)
                                  Testing2(registrationFormModel: registrationFormModel)
                             }
                         }
@@ -182,6 +213,24 @@ struct RegistrationCameraScreen: View {
                 }
                 .animation(.spring, value: chaosMode)
                 .navigationBarBackButtonHidden(true) // Hide the default back button
+                
+                .onChange(of: faceRecognition.postResult) {
+                    switch faceRecognition.postResult {
+                        case "too many faces":
+                            instructionsText = "there can only be one face present on the screen"
+                        case "no one face":
+                            instructionsText = "face was not found"
+                        case "":
+                            instructionsText = "something went wrong"
+                        default:
+                            print("writing to database: \(faceRecognition.postResult)")
+                            registrationFormModel.user.biometry = faceRecognition.postResult
+                            registrationFormModel.registerUser()
+                            debugPrint("registered user!")
+                            
+                            readyToNavigate.toggle()
+                    }
+                }
             }
 //            .onAppear() {
 //                viewID = UUID()

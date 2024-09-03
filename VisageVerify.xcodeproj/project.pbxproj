@@ -83,6 +83,7 @@
 		11FDF8752C7E798800AD9F4C /* CoreImageFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */; };
 		11FDF8772C7E79C400AD9F4C /* Testing3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8762C7E79C400AD9F4C /* Testing3.swift */; };
 		11FDF8792C7F8CEB00AD9F4C /* CameraTesting4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8782C7F8CEA00AD9F4C /* CameraTesting4.swift */; };
+		11FDF87D2C80FECD00AD9F4C /* FaceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF87C2C80FECD00AD9F4C /* FaceRecognition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageFilterView.swift; sourceTree = "<group>"; };
 		11FDF8762C7E79C400AD9F4C /* Testing3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing3.swift; sourceTree = "<group>"; };
 		11FDF8782C7F8CEA00AD9F4C /* CameraTesting4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting4.swift; sourceTree = "<group>"; };
+		11FDF87C2C80FECD00AD9F4C /* FaceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRecognition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 		1179D8582C41FE270081539C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11FDF87B2C80FEB000AD9F4C /* Server */,
 				11FDF8572C7A5BD800AD9F4C /* Camera */,
 				1162C0E72C72B01100CB5B7D /* Forms */,
 				11D1A92C2C6968DD000AF8A8 /* Eyes */,
@@ -423,6 +426,14 @@
 			path = CameraTesting;
 			sourceTree = "<group>";
 		};
+		11FDF87B2C80FEB000AD9F4C /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				11FDF87C2C80FECD00AD9F4C /* FaceRecognition.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -525,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FDF87D2C80FECD00AD9F4C /* FaceRecognition.swift in Sources */,
 				11391CE32C5E8E8B003009F8 /* FireflyCircleButtonStyle.swift in Sources */,
 				11FDF8702C7AFCB700AD9F4C /* TakePhotoButton.swift in Sources */,
 				11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */,

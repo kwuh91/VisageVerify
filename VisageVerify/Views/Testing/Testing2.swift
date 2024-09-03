@@ -132,6 +132,8 @@ struct Testing2: View {
             Text("email: \(registrationFormModel.user.email)")
             
             Text("pasword: \(registrationFormModel.user.password)")
+
+            Text("biometry: \(registrationFormModel.user.biometry)")
             
             Button("Register") {
                 registrationFormModel.registerUser()

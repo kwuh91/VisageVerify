@@ -16,7 +16,7 @@ struct User {
     var username: String = ""
     var email:    String = ""
     var password: String = ""
-    // TODO: var biometry: ???
+    var biometry: String = ""
 }
 
 // FormModel class conforms to ObservableObject,
@@ -188,8 +188,8 @@ class RegistrationFormModel: ObservableObject {
         let userData: [String: Any] = [
             "realName": user.realName,
             "username": user.username,
-            "email":    user.email
-            // "biometry": user.biometry
+            "email"   : user.email,
+            "biometry": user.biometry
         ]
         
         db.collection("userData").document(userID).setData(userData) { [weak self] error in
