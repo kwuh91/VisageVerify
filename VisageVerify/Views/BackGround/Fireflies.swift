@@ -155,5 +155,5 @@ struct FloatingFireflies: View {
 }
 
 #Preview {
-    FloatingFireflies(quantity: 170)
+    FloatingFireflies(quantity: 50)
 }

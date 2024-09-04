@@ -20,7 +20,7 @@ struct RegistrationCameraScreen: View {
     @State private var instructionsText: String = "take a photo"
     @State private var readyToNavigate: Bool = false
     
-    let fireflies  = FloatingFireflies(quantity: 100)
+    let fireflies = FloatingFireflies(quantity: 100)
     
     var body: some View {
         NavigationStack{
@@ -121,24 +121,27 @@ struct RegistrationCameraScreen: View {
                         HStack {
                             
                             // Back button
-//                            Button(action: {
-//                                if cameraViewModel.capturedImage != nil {
-//                                    cameraViewModel.capturedImage = nil
-//                                    debugPrint("cleared photo after 'back' button was pressed")
-//                                }
-//                                viewID = UUID()
-//                                dismiss() // Dismiss the view when tapped
-//                                viewID = UUID()
-//                            }) {
-//                                fireflies
-//                                    .mask(
-//                                        Image(systemName: "arrowtriangle.left")
-//                                            .resizable()
-//                                            .aspectRatio(contentMode: .fit)
-//                                            .frame(height: geometry.size.height / 15)
-//                                            .font(Font.title.weight(.thin))
-//                                    )
-//                            }
+                            Button(action: {
+                                if cameraViewModel.capturedImage != nil {
+                                    cameraViewModel.capturedImage = nil
+                                    debugPrint("cleared photo after 'back' button was pressed")
+                                }
+                                
+                                // viewID = UUID()
+                                DispatchQueue.main.async {
+                                    self.dismiss() // Dismiss the view when tapped
+                                }
+                                // viewID = UUID()
+                            }) {
+                                fireflies
+                                    .mask(
+                                        Image(systemName: "arrowtriangle.left")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(height: geometry.size.height / 15)
+                                            .font(Font.title.weight(.thin))
+                                    )
+                            }
                             
                             // take photo button
                             TakePhotoButton(rectangleColor: Colors.blackish, rectangleHeight: 80, rectangleBorderColor: Colors.boneColor, rectangleBorderThickness: 3, rectangleCornerRadius: 16, mainEyeColor: Colors.boneColor, sectorColor: Colors.blackish, pupilColor: Colors.boneColor, eyeHeight: 180, paddingSize: 1, delayBetweenChangingStates: 0.015)
@@ -249,8 +252,10 @@ struct RegistrationCameraScreen: View {
                 }
             }
             .onAppear() {
-                viewID = UUID()
-                debugPrint("screen refreshed")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    viewID = UUID()
+                    debugPrint("screen refreshed")
+                }
             }
         }
     }

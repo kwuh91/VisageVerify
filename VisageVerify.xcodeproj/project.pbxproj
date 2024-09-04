@@ -392,7 +392,6 @@
 				11FDF87A2C7FB2DB00AD9F4C /* CameraTesting */,
 				11FDF8602C7AA85600AD9F4C /* BuildingCamera */,
 				11FDF85A2C7A7BCB00AD9F4C /* CameraDesignHelper */,
-				11FDF8722C7E392C00AD9F4C /* RegistrationCameraScreen.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -421,6 +420,7 @@
 				11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */,
 				11FDF86D2C7AD39800AD9F4C /* CameraTesting2.swift */,
 				11FDF8742C7E798800AD9F4C /* CoreImageFilterView.swift */,
+				11FDF8722C7E392C00AD9F4C /* RegistrationCameraScreen.swift */,
 				11FDF8782C7F8CEA00AD9F4C /* CameraTesting4.swift */,
 			);
 			path = CameraTesting;

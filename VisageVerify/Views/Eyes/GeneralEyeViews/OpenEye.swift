@@ -210,11 +210,11 @@ struct OpenEye: View {
 #Preview {
     VStack(spacing: -150) {
 
-        Image(systemName: "eye.fill")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: 157.5)
-            .font(Font.title.weight(.thin))
+//        Image(systemName: "eye.fill")
+//            .resizable()
+//            .aspectRatio(contentMode: .fit)
+//            .frame(height: 157.5)
+//            .font(Font.title.weight(.thin))
     
         OpenEye(mainEyeColor: .black, 
                 sectorColor:  .white,

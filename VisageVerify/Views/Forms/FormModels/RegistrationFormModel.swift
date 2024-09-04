@@ -195,9 +195,9 @@ class RegistrationFormModel: ObservableObject {
         db.collection("userData").document(userID).setData(userData) { [weak self] error in
             if let error {
                 self?.errorMessage = "Failed to store user data: \(error.localizedDescription)"
-            } else {
-                self?.errorMessage = "User registered successfully."
-            }
+            } // else {
+//                self?.errorMessage = "User registered successfully."
+//            }
         }
     }
     
