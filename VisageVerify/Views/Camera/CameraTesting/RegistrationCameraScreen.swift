@@ -127,11 +127,9 @@ struct RegistrationCameraScreen: View {
                                     debugPrint("cleared photo after 'back' button was pressed")
                                 }
                                 
-                                // viewID = UUID()
                                 DispatchQueue.main.async {
                                     self.dismiss() // Dismiss the view when tapped
                                 }
-                                // viewID = UUID()
                             }) {
                                 fireflies
                                     .mask(
@@ -161,7 +159,6 @@ struct RegistrationCameraScreen: View {
                                 if cameraViewModel.capturedImage == nil {
                                     instructionsText = "to proceed, you have to take a photo"
                                     viewID = UUID()
-                                    // viewID = UUID()
                                 } else {
                                     print("'next' button tapped")
                                     
@@ -174,27 +171,7 @@ struct RegistrationCameraScreen: View {
                                     
                                     debugPrint("new image height: \(resizedImage.size.height), width: \(resizedImage.size.width)")
                                     
-                                    faceRecognition.registrationScript(url: "http://\(faceRecognition.ip):5000/registration",
-                                                                       image: resizedImage)
-                                    
-                                    // viewID = UUID()
-                                    
-//                                    switch faceRecognition.postResult {
-//                                        case "too many faces":
-//                                            instructionsText = "there can only be one face present on the screen"
-//                                        case "no one face":
-//                                            instructionsText = "face was not found"
-//                                        case "":
-//                                            instructionsText = "something went wrong"
-//                                        default:
-//                                            print("writing to database: \(faceRecognition.postResult)")
-//                                            registrationFormModel.user.biometry = faceRecognition.postResult
-//                                            registrationFormModel.registerUser()
-//                                            debugPrint("registered user!")
-//                                            
-//                                            readyToNavigate.toggle()
-//                                    }
-                                    // viewID = UUID()
+                                    faceRecognition.registrationScript(image: resizedImage)
                                 }
                             }) {
                                 fireflies
@@ -232,22 +209,6 @@ struct RegistrationCameraScreen: View {
                             instructionsText = "error"
                         default:
                             instructionsText = "something went wrong"
-                        
-//                        case "too many faces":
-//                            instructionsText = "there can only be one face present on the screen"
-//                        case "no one face":
-//                            instructionsText = "face was not found"
-//                        case "new(): invalid data type 'str'":
-//                            instructionsText = "your face is already in the database"
-//                        case let str where str.contains("["):
-//                            print("writing to database: \(faceRecognition.postResult)")
-//                            registrationFormModel.user.biometry = faceRecognition.postResult
-//                            registrationFormModel.registerUser()
-//                            debugPrint("registered user!")
-//                            
-//                            readyToNavigate.toggle()
-//                        default:
-//                            instructionsText = "something went wrong (\(faceRecognition.postResult))"
                     }
                 }
             }

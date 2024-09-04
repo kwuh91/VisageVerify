@@ -16,10 +16,12 @@ class FaceRecognition: ObservableObject {
         self.ip = ip
     }
     
-    func registrationScript(url: String, image: UIImage) {
+    func registrationScript(image: UIImage) {
         debugPrint("Entered script func")
         
-        guard let url = URL(string: url),
+        // "http://\(self.ip):5000/registration"
+        
+        guard let url = URL(string: "http://\(self.ip):5000/registration"),
               let imageData = image.jpegData(compressionQuality: 1.0) else {
             print("Invalid URL or failed to convert image to data")
             return
@@ -113,7 +115,6 @@ class FaceRecognition: ObservableObject {
         return newImage!
     }
 }
-
 
 
 extension Data {

@@ -35,7 +35,7 @@ extension Color {
 }
 
 struct Colors {
-    
+    // #fffcf2
     static var boneColor: Color {
         Color(red: 255/255, green: 252/255, blue: 242/255)
     }
@@ -47,7 +47,7 @@ struct Colors {
     static var grayish: Color {
         Color(red: 64/255, green: 61/255, blue: 57/255)
     }
-    
+    // #252422
     static var blackish: Color {
         Color(red: 37/255, green: 36/255, blue: 34/255)
     }

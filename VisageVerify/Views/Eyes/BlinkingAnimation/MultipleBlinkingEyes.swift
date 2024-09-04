@@ -155,6 +155,8 @@ struct MultipleBlinkingEyes: View {
     // is equivalent to:
     // @StateObject private var initialScreenViewSignInButtonTapState: SignInButtonTapState = .init()
     
+    @StateObject private var faceRecognition: FaceRecognition = .init(ip: "91.107.123.50")
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -191,6 +193,9 @@ struct MultipleBlinkingEyes: View {
                         }
                     }
                     
+//                    faceRecognition.registrationScript(url: "http://\(faceRecognition.ip):5000/registration",
+//                                                       image: resizedImage)
+                
                     // Reset the state if needed
                     // initialScreenViewSignInButtonTapState.isButtonTapped = false
             }

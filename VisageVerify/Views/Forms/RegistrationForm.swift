@@ -293,7 +293,7 @@ struct RegistrationForm: View {
                         .navigationDestination(isPresented: $readyToNavigate) {
                             // Testing2(registrationFormModel: registrationFormModel)
                             
-                            let _ = debugPrint("\(registrationFormModel.user.realName), \(registrationFormModel.user.username), \(registrationFormModel.user.email), \(registrationFormModel.user.password), \(registrationFormModel.user.biometry)")
+                            // let _ = debugPrint("\(registrationFormModel.user.realName), \(registrationFormModel.user.username), \(registrationFormModel.user.email), \(registrationFormModel.user.password), \(registrationFormModel.user.biometry)")
                             
                             RegistrationCameraScreen(registrationFormModel: registrationFormModel)
                             // CameraTesting3(registrationFormModel: registrationFormModel)
