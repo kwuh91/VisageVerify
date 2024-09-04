@@ -7,12 +7,15 @@
 
 import SwiftUI
 import PhotosUI
+import FirebaseStorage
 
 struct ProfilePictureView: View {
-    @State private var profileImage: Image? = Image(systemName: "person.crop.circle.fill") // Replace with your default image
+    @State private var profileImage: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
 
+    @ObservedObject var registrationFormModel: RegistrationFormModel
+    
     var width:    CGFloat
     var height:   CGFloat
     // var position: CGPoint
@@ -39,14 +42,58 @@ struct ProfilePictureView: View {
                     }
             }
         }
+        // initial profile image logic
+        .onAppear {
+            let storageRef = Storage.storage().reference()
+            let imageRef = storageRef.child("profile-pictures/\(registrationFormModel.user.username)-profilePicture.png")
+
+            imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("Error downloading image: \(error)")
+                    self.profileImage = Image(systemName: "person.crop.circle.fill") // set the default profile image
+                } else if let data = data, let uiImage = UIImage(data: data) {
+                    print("Setting image from the database")
+                    self.profileImage = Image(uiImage: uiImage) // set profile image from the database
+                }
+            }
+        }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $inputImage)
         }
     }
 
     func loadImage() {
-        guard let inputImage = inputImage else { return }
+        guard let inputImage = self.inputImage else { return }
         profileImage = Image(uiImage: inputImage)
+        
+        // load profile picture to firebase storage
+        let storageRef = Storage.storage().reference()
+        let imagesRef = storageRef.child("profile-pictures")
+
+        if let uploadData = self.inputImage?.pngData() {
+            imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").putData(uploadData, metadata: nil) { (metadata, error) in
+              guard let metadata = metadata else {
+                  debugPrint("an error1 has ocurred: \(String(describing: error?.localizedDescription))")
+                return
+              }
+              // Metadata contains file metadata such as size, content-type, and download URL.
+            debugPrint("Saved image to firebase storage")
+            }
+        }
+        
+//        // get the image URL
+//        imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").downloadURL { (url, error) in
+//          guard let downloadURL = url else {
+//              debugPrint("an error2 has ocurred: \(String(describing: error?.localizedDescription))")
+//            return
+//          }
+//            
+//        // Now you can save the downloadURL to Firestore
+//        registrationFormModel.updateUserProfileImage(imageURL: downloadURL)
+//            
+//        }
+
+
     }
 
     func requestPhotoLibraryAccess() {
@@ -107,11 +154,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
 }
 
-#Preview {
-    ZStack {
-        Colors.boneColor
-            .ignoresSafeArea()
-        
-        ProfilePictureView(width: 200, height: 200)
-    }
-}
+//#Preview {
+//    ZStack {
+//        Colors.boneColor
+//            .ignoresSafeArea()
+//        
+//        ProfilePictureView(width: 200, height: 200)
+//    }
+//}

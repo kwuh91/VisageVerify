@@ -185,7 +185,8 @@ struct RegistrationCameraScreen: View {
                             }
                              .navigationDestination(isPresented: $readyToNavigate) {
                                 // FloatingFireflies(quantity: 5)
-                                 Testing2(registrationFormModel: registrationFormModel)
+                                 // Testing2(registrationFormModel: registrationFormModel)
+                                 ProfileScreen(registrationFormModel: registrationFormModel)
                             }
                         }
                         .shadow(color: .black, radius: 5)
@@ -197,8 +198,8 @@ struct RegistrationCameraScreen: View {
                 .animation(.spring, value: chaosMode)
                 .navigationBarBackButtonHidden(true) // Hide the default back button
                 
-                .onChange(of: faceRecognition.postResult) {
-                    switch faceRecognition.postResult {
+                .onChange(of: faceRecognition.postResultStatusCode) {
+                    switch faceRecognition.postResultStatusCode {
                         case 401:
                             instructionsText = "there can only be one face present on the screen"
                         case 402:
@@ -207,13 +208,20 @@ struct RegistrationCameraScreen: View {
                             instructionsText = "your face is already in the database"
                         case 405, 406:
                             instructionsText = "error"
+                        case 200:
+                            print("writing to database: \(faceRecognition.postResult)")
+                            registrationFormModel.user.biometry = faceRecognition.postResult
+                            registrationFormModel.registerUser()
+                            debugPrint("registered user!")
+                            
+                            readyToNavigate.toggle()
                         default:
                             instructionsText = "something went wrong"
                     }
                 }
             }
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     viewID = UUID()
                     debugPrint("screen refreshed")
                 }

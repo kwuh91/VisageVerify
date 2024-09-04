@@ -17,6 +17,7 @@ struct User {
     var email:    String = ""
     var password: String = ""
     var biometry: String = ""
+    // var imageURL: String = ""
 }
 
 // FormModel class conforms to ObservableObject,
@@ -39,6 +40,8 @@ class RegistrationFormModel: ObservableObject {
     @Published var invalidEmail         = ""
     @Published var invalidPassword      = ""
     @Published var invalidCheckPassword = ""
+    
+    // @Published var userUID = ""
     
     @Published var errorMessage: String? {
         // Print `errorMessage` if `errorMessage` is changed.
@@ -176,6 +179,8 @@ class RegistrationFormModel: ObservableObject {
                 return
             }
             
+            // self?.userUID = userID
+            
             // Storing additional user data in Firestore.
             self?.storeUserData(userID: userID)
         }
@@ -190,6 +195,7 @@ class RegistrationFormModel: ObservableObject {
             "username": user.username,
             "email"   : user.email,
             "biometry": user.biometry
+            // "imageURL": user.imageURL
         ]
         
         db.collection("userData").document(userID).setData(userData) { [weak self] error in
@@ -200,6 +206,19 @@ class RegistrationFormModel: ObservableObject {
 //            }
         }
     }
+    
+    // Function for updating user data in Firestore
+//    func updateUserProfileImage(imageURL: URL) {
+//        db.collection("userData").document(self.userUID).updateData([
+//            "imageURL": imageURL.absoluteString
+//        ]) { err in
+//            if let err = err {
+//                print("Error updating profile image in firestore: \(err.localizedDescription)")
+//            } else {
+//                print("Profile image successfully updated in firestore")
+//            }
+//        }
+//    }
     
     // Function to check if value is/isn't in database
     private func doesValueExist(collectionName: String,

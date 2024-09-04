@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileScreen: View {
+    @ObservedObject var registrationFormModel: RegistrationFormModel
+    
     @State var settingsIsTapped: Bool = false
     
     var body: some View {
@@ -34,7 +36,7 @@ struct ProfileScreen: View {
                     print("settings button tapped")
                     settingsIsTapped.toggle()
                 } label: {
-                    Image(systemName: "gear")
+                    Image(systemName: "gearshape")
                         .resizable()
                         .scaledToFill()
                         .rotationEffect(Angle(degrees: settingsIsTapped ? 720 : 0))
@@ -48,14 +50,14 @@ struct ProfileScreen: View {
                 }
                 
                 // user name
-                PrettyText(text: "Username",
+                PrettyText(text: registrationFormModel.user.username,
                            color: Colors.blackish,
                            fontSize: (geometry.size.height + geometry.safeAreaInsets.top) / 20)
                     .position(CGPoint(x: geometry.size.width / 2,
                                       y: (geometry.size.height + geometry.safeAreaInsets.top) / 2.9))
                 
                 // real name
-                PrettyText(text: "Real Name", 
+                PrettyText(text: registrationFormModel.user.realName, 
                            color: Colors.blackish,
                            fontSize: (geometry.size.height + geometry.safeAreaInsets.top) / 30)
                     .position(CGPoint(x: geometry.size.width / 2,
@@ -72,7 +74,8 @@ struct ProfileScreen: View {
                                       y: (geometry.size.height + geometry.safeAreaInsets.top) / 1.5))
                 
                 // profile image
-                ProfilePictureView(width: geometry.size.width / 3.5,
+                ProfilePictureView(registrationFormModel: registrationFormModel,
+                                   width: geometry.size.width / 3.5,
                                    height: geometry.size.width / 3.5)
 //                    .frame(width:  geometry.size.width / 3.5,
 //                           height: geometry.size.width / 3.5)
@@ -80,10 +83,13 @@ struct ProfileScreen: View {
                     .position(CGPoint(x: geometry.size.width / 2,
                                       y: (geometry.size.height + geometry.safeAreaInsets.top) / 4.5))
             }
+            .navigationBarBackButtonHidden(true) // Hide the default back button
         }
     }
 }
 
 #Preview {
-    ProfileScreen()
+    @ObservedObject var registrationFormModel: RegistrationFormModel = .init()
+
+    return ProfileScreen(registrationFormModel: registrationFormModel)
 }
