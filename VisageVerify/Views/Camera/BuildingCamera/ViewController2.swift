@@ -1,16 +1,15 @@
 //
-//  ViewController.swift
+//  ViewController2.swift
 //  VisageVerify
 //
-//  Created by Nikita Ochkin on 25.08.2024.
+//  Created by Nikita Ochkin on 05.09.2024.
 //
-//  Following this tutorial: https://medium.com/onfido-tech/live-face-tracking-on-ios-using-vision-framework-adf8a1799233
 
 import UIKit
 import AVFoundation
 import Vision
 
-class ViewController: UIViewController {
+class ViewController2: UIViewController {
 
   // MARK: - Variables
   
@@ -19,6 +18,8 @@ class ViewController: UIViewController {
   private let videoDataOutput = AVCaptureVideoDataOutput()
   private let captureSession  = AVCaptureSession()
   private let photoOutput     = AVCapturePhotoOutput()
+    
+  var capturedPhoto: Bool = false
     
   // Using `lazy` keyword because the `captureSession` needs to be loaded before we can use the preview layer.
   private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -98,6 +99,11 @@ class ViewController: UIViewController {
       DispatchQueue.main.async {
         if let results = vnRequest.results as? [VNFaceObservation], results.count > 0 {
           // print("✅ Detected \(results.count) faces!")
+            if !self.capturedPhoto {
+                self.capturePhoto() // take photo if face detected
+                self.capturedPhoto = true
+                debugPrint("Took photo")
+            }
           self.handleFaceDetectionResults(observedFaces: results)
         } else {
           // print("❌ No face was detected")
@@ -149,7 +155,7 @@ class ViewController: UIViewController {
 
 // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
 
-extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension ViewController2: AVCaptureVideoDataOutputSampleBufferDelegate {
   
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
     
@@ -163,7 +169,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
   
 }
 
-extension ViewController: AVCapturePhotoCaptureDelegate {
+extension ViewController2: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             print("Error capturing photo: \(error)")

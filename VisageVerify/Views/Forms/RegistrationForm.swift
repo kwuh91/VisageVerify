@@ -32,6 +32,8 @@ struct RegistrationForm: View {
     
     @State private var isBlinking = false
     
+    @State private var resetView = false
+    
     let color:              Color = Colors.blackish
     let bottomPadding:      CGFloat = 10
     let fontName:           String = "ArsenalSC-Regular"
@@ -318,6 +320,12 @@ struct RegistrationForm: View {
                 }
             }
         }
+//        .onAppear() {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                resetView.toggle()
+//                debugPrint("RegistrationForm screen refreshed")
+//            }
+//        }
     }
 }
     

@@ -95,6 +95,7 @@ struct RegistrationCameraScreen: View {
                                        height: geometry.size.width * 0.85)
                                 .clipShape(Circle())
                                 .shadow(color: chaosMode ? Colors.blackish : .black, radius: 10)
+                                // .opacity(0)
                         }
                         
                         // Text
@@ -171,7 +172,7 @@ struct RegistrationCameraScreen: View {
                                     
                                     debugPrint("new image height: \(resizedImage.size.height), width: \(resizedImage.size.width)")
                                     
-                                    faceRecognition.registrationScript(image: resizedImage)
+                                    faceRecognition.callScript(script: "registration", image: resizedImage)
                                 }
                             }) {
                                 fireflies
@@ -223,7 +224,7 @@ struct RegistrationCameraScreen: View {
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     viewID = UUID()
-                    debugPrint("screen refreshed")
+                    debugPrint("RegistrationCameraScreen screen refreshed")
                 }
             }
         }

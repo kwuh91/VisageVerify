@@ -31,3 +31,24 @@ struct CameraView: UIViewControllerRepresentable {
         controller.capturePhoto()
     }
 }
+
+struct CameraView2: UIViewControllerRepresentable {
+    @ObservedObject var viewModel: CameraViewModel
+    
+    let controller2 = ViewController2()
+    
+    func makeUIViewController(context: Context) -> ViewController2 {
+        controller2.viewModel = viewModel
+        return controller2
+    }
+
+    func updateUIViewController(_ uiViewController: ViewController2, context: Context) {}
+    
+    func resetCapture() {
+        controller2.capturedPhoto = false
+    }
+    
+    func getCaptureStatus() -> Bool {
+        return controller2.capturedPhoto
+    }
+}

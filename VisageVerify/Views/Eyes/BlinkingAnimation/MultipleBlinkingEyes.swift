@@ -150,6 +150,12 @@ struct MultipleBlinkingEyes: View {
     
     @State private var eyes:   [Eye] = []
     @State private var action: Bool  = false
+    @State private var showingAlert = false
+    // @State private var readyToNavigate: Bool = false
+    
+    // @State private var resetView = false
+    
+    @State private var alertMessage: String = ""
     
     @StateObject private var initialScreenViewSignInButtonTapState = SignInButtonTapState()
     // is equivalent to:
@@ -157,30 +163,93 @@ struct MultipleBlinkingEyes: View {
     
     @StateObject private var faceRecognition: FaceRecognition = .init(ip: "91.107.123.50")
     
+    @ObservedObject private var registrationFormModel: RegistrationFormModel = .init()
+    @StateObject private var cameraViewModel2: CameraViewModel = .init()
+    @State private var initializeCamera = false
+    
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState)
-                
-                generateEyes()
-            }
-            .onAppear {
-                eyes = (0..<quantity).map { _ in
-                    Eye(
-                        position: CGPoint(
-                            x: CGFloat.random(in: 0...geometry.size.width),
-                            y: CGFloat.random(in: 0...geometry.size.height + geometry.safeAreaInsets.top)
-                        ),
+       // NavigationStack {
+            let cameraView2 = CameraView2(viewModel: cameraViewModel2)
+            
+            GeometryReader { geometry in
+                ZStack {
+                    InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState)
+                    
+                    // initialize camera
+                    if initializeCamera {
+                        cameraView2
+                            .opacity(0)
+                        let _ = debugPrint("Initialized camera")
                         
-                        size: CGFloat.random(in: intervalForRandomSize),
-                        
-                        anchor: UnitPoint(
-                            x: CGFloat.random(in: 0...1),
-                            y: CGFloat.random(in: 0...1))
-                    )
+                            // work with photo
+                            if let takenPhoto = cameraViewModel2.capturedImage {
+                                
+                               // if cameraView2.getCaptureStatus() {
+                                let _ = debugPrint("photo taken")
+                                
+                                // let _ = debugPrint("original image height: \(takenPhoto.size.height), width: \(takenPhoto.size.width)")
+                                
+                                let resizedImage: UIImage = FaceRecognition.resizeImage(image:      takenPhoto,
+                                                                                        targetSize: CGSizeMake(959.0, 1200.0))
+                                
+                                // let _ = debugPrint("new image height: \(resizedImage.size.height), width: \(resizedImage.size.width)")
+                                
+                                let _ = faceRecognition.callScript(script: "recognition", image: resizedImage)
+                                
+//                                // reset camera view
+//                                let _ = initializeCamera = false
+                                
+                                // reset captured photo
+                                let _ = cameraViewModel2.capturedImage = nil
+                                
+                            } else {
+                                let _ = debugPrint("couldn't take photo")
+                            }
+                     //   }
+                    }
+
+                    
+                    generateEyes()
                 }
-            }
-            .onChange(of: initialScreenViewSignInButtonTapState.isButtonTapped) {
+                
+                .onAppear {
+                    eyes = (0..<quantity).map { _ in
+                        Eye(
+                            position: CGPoint(
+                                x: CGFloat.random(in: 0...geometry.size.width),
+                                y: CGFloat.random(in: 0...geometry.size.height + geometry.safeAreaInsets.top)
+                            ),
+                            
+                            size: CGFloat.random(in: intervalForRandomSize),
+                            
+                            anchor: UnitPoint(
+                                x: CGFloat.random(in: 0...1),
+                                y: CGFloat.random(in: 0...1))
+                        )
+                    }
+                }
+                
+                .alert(alertMessage, isPresented: $showingAlert) {
+                    Button("Got it!", role: .cancel) {
+                        // showingAlert.toggle()
+                        
+                        // reset sign in button
+                        initialScreenViewSignInButtonTapState.isButtonTapped.toggle()
+                        
+                        // reset status code
+                        faceRecognition.postResultStatusCode = -1
+                        
+
+                        
+                        // reset capture
+                        cameraView2.resetCapture()
+                    }
+                }
+                
+                .onChange(of: initialScreenViewSignInButtonTapState.isButtonTapped) {
+                    // initialize camera
+                    initializeCamera.toggle()
+                    
                     action.toggle()
                     for index in eyes.indices {
                         let delay = CGFloat.random(in: intervalForRandomDelayBeforeAppearing)
@@ -192,16 +261,49 @@ struct MultipleBlinkingEyes: View {
                             }
                         }
                     }
-                    
-//                    faceRecognition.registrationScript(url: "http://\(faceRecognition.ip):5000/registration",
-//                                                       image: resizedImage)
                 
+                    
                     // Reset the state if needed
                     // initialScreenViewSignInButtonTapState.isButtonTapped = false
+                }
+                
+                .onChange(of: faceRecognition.postResultStatusCode) {
+                    switch faceRecognition.postResultStatusCode {
+                        case 404:
+                            debugPrint("Current showingAlert state: \(showingAlert)")
+                            alertMessage = "You are not registered"
+                            showingAlert.toggle()
+                        case 405, 406:
+                            alertMessage = "an error has occurred"
+                            showingAlert.toggle()
+                        case 500:
+                            alertMessage = "internal server error"
+                            showingAlert.toggle()
+                        case 200:
+                        registrationFormModel.populateWithUserData(userID: faceRecognition.postResult) {
+                            // resetView.toggle()
+                            alertMessage = "we good, \(registrationFormModel.user.username) (\(registrationFormModel.user.realName))"
+                            showingAlert.toggle()
+                        }
+                        case -1:
+                            debugPrint("in -1")
+                            alertMessage = ""
+                        default:
+                            alertMessage = "something went wrong"
+                            showingAlert.toggle()
+                    }
+                }
+                
+//                .navigationDestination(isPresented: $readyToNavigate) {
+//                   // FloatingFireflies(quantity: 5)
+//                    // Testing2(registrationFormModel: registrationFormModel)
+//                    ProfileScreen(registrationFormModel: registrationFormModel)
+//               }
             }
-        }
+       // }
+        // .scrollContentBackground(.hidden)
     }
-    
+        
     @ViewBuilder func generateEyes() -> some View {
         GeometryReader { geometry in
             ForEach(eyes.indices, id: \.self) { index in
@@ -228,6 +330,7 @@ struct MultipleBlinkingEyes: View {
     }
 }
 
+    
 #Preview {
     MultipleBlinkingEyes(quantity:     70,
                          mainEyeColor: Colors.blackish,

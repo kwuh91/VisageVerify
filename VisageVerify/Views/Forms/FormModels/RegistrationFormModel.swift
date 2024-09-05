@@ -186,7 +186,30 @@ class RegistrationFormModel: ObservableObject {
         }
     }
     
-    // TODO: loginUser
+    func populateWithUserData(userID: String, completion: @escaping () -> Void) {
+        db.collection("userData").document(userID).getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let data = document.data() {
+                    self.user.realName = data["realName"]  as! String
+                    self.user.username = data["username"]  as! String
+                    self.user.email    = data["email"]     as! String
+                    self.user.biometry = data["biometry"]  as! String
+
+                    print("Real Name: \(self.user.realName)")
+                    print("User Name: \(self.user.username)")
+                    print("Email: \(self.user.email)")
+                    print("Biometry: \(self.user.biometry)")
+                    
+                    // Call the completion handler once the data has been populated
+                    completion()
+                } else {
+                    print("User does not exist")
+                }
+            } else {
+                print("Error fetching document: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
+    }
     
     // Function for storing additional user data in Firestore.
     private func storeUserData(userID: String) {

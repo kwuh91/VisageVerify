@@ -18,6 +18,7 @@
 		11391CEC2C5FF83D003009F8 /* swiftCat.png in Resources */ = {isa = PBXBuildFile; fileRef = 11391CEB2C5FF83D003009F8 /* swiftCat.png */; };
 		11391CEF2C602C48003009F8 /* Testing2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CEE2C602C48003009F8 /* Testing2.swift */; };
 		11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11391CF12C616D0A003009F8 /* OpenEye.swift */; };
+		116234602C89E3420099145F /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162345F2C89E3420099145F /* ViewController2.swift */; };
 		1162C0E12C725D4600CB5B7D /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162C0E02C725D4500CB5B7D /* MainScreen.swift */; };
 		1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162C0E32C72635400CB5B7D /* RegistrationFormModel.swift */; };
 		1162C0E62C72639600CB5B7D /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162C0E52C72639600CB5B7D /* RegistrationForm.swift */; };
@@ -75,6 +76,7 @@
 		11FC404E2C88741700269312 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC404D2C88741700269312 /* ProfileScreen.swift */; };
 		11FC40542C88851A00269312 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC40532C88851A00269312 /* ProfilePictureView.swift */; };
 		11FC40582C8890F400269312 /* qr-code.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FC40572C8890F400269312 /* qr-code.png */; };
+		11FC405A2C8904FA00269312 /* Testing5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC40592C8904FA00269312 /* Testing5.swift */; };
 		11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */; };
 		11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */; };
 		11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */; };
@@ -101,6 +103,7 @@
 		11391CEB2C5FF83D003009F8 /* swiftCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swiftCat.png; sourceTree = "<group>"; };
 		11391CEE2C602C48003009F8 /* Testing2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing2.swift; sourceTree = "<group>"; };
 		11391CF12C616D0A003009F8 /* OpenEye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEye.swift; sourceTree = "<group>"; };
+		1162345F2C89E3420099145F /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1162C0E02C725D4500CB5B7D /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		1162C0E32C72635400CB5B7D /* RegistrationFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormModel.swift; sourceTree = "<group>"; };
 		1162C0E52C72639600CB5B7D /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		11FC404D2C88741700269312 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		11FC40532C88851A00269312 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
 		11FC40572C8890F400269312 /* qr-code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr-code.png"; sourceTree = "<group>"; };
+		11FC40592C8904FA00269312 /* Testing5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing5.swift; sourceTree = "<group>"; };
 		11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting.swift; sourceTree = "<group>"; };
 		11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexagon.swift; sourceTree = "<group>"; };
 		11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonFigure.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 				11FDF8762C7E79C400AD9F4C /* Testing3.swift */,
 				11B886542C62BD920058CE5C /* TestingBlinking.swift */,
 				11EB73472C68652000B659EE /* RestrictedArea.swift */,
+				11FC40592C8904FA00269312 /* Testing5.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 			children = (
 				11FDF8692C7AB1B200AD9F4C /* ViewController.swift */,
 				11FDF86B2C7AB5EF00AD9F4C /* CameraView.swift */,
+				1162345F2C89E3420099145F /* ViewController2.swift */,
 			);
 			path = BuildingCamera;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				1162C0E42C72635400CB5B7D /* RegistrationFormModel.swift in Sources */,
 				11FDF8732C7E392C00AD9F4C /* RegistrationCameraScreen.swift in Sources */,
 				11FC40542C88851A00269312 /* ProfilePictureView.swift in Sources */,
+				11FC405A2C8904FA00269312 /* Testing5.swift in Sources */,
 				11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */,
 				1179D8572C41FCC40081539C /* InitialScreen.swift in Sources */,
 				1137CE732C437ED9008E67A0 /* Colors.swift in Sources */,
@@ -578,6 +585,7 @@
 				1137CE712C4378CC008E67A0 /* StaticTheme.swift in Sources */,
 				11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */,
 				11FDF8792C7F8CEB00AD9F4C /* CameraTesting4.swift in Sources */,
+				116234602C89E3420099145F /* ViewController2.swift in Sources */,
 				11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */,
 				1179D85B2C41FE490081539C /* EyeSF.swift in Sources */,
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,

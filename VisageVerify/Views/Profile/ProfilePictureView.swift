@@ -72,7 +72,7 @@ struct ProfilePictureView: View {
 
         if let uploadData = self.inputImage?.pngData() {
             imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").putData(uploadData, metadata: nil) { (metadata, error) in
-              guard let metadata = metadata else {
+              guard let _ = metadata else {
                   debugPrint("an error1 has ocurred: \(String(describing: error?.localizedDescription))")
                 return
               }

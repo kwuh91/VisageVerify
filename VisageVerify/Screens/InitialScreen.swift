@@ -112,7 +112,7 @@ struct InitialScreen: View {
                 .scaleEffect(scale ? 4 : 1) // increase the button
                 .opacity(hideSignUpButton ? 0 : 1)           // fade it out
                 .onTapGesture {
-                    if !blockTapGesture {
+                    if !signInButtonTapState.isButtonTapped {
                         RegistrationFormViewBackButtonTapState.isButtonTapped += 1
                         
                         print("InitialScreen: \(RegistrationFormViewBackButtonTapState.isButtonTapped)")
@@ -124,7 +124,7 @@ struct InitialScreen: View {
                     .opacity(hideInitialScreen ? 0 : 1)
                     .offset(y: -100)
                     .onTapGesture {
-                        blockTapGesture.toggle()
+                        // blockTapGesture.toggle()
                         signInButtonTapState.isButtonTapped.toggle()
                         
                         // debug message
