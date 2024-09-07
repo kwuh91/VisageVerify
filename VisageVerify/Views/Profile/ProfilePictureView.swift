@@ -14,6 +14,9 @@ struct ProfilePictureView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
 
+    // @State private var alertMessage: String = ""
+    // @State private var showingAlert: Bool = false
+    
     @ObservedObject var registrationFormModel: RegistrationFormModel
     
     var width:    CGFloat
@@ -45,9 +48,12 @@ struct ProfilePictureView: View {
         // initial profile image logic
         .onAppear {
             let storageRef = Storage.storage().reference()
+            
+            let _ = debugPrint("searching for \(registrationFormModel.user.username) profile pic")
+            
             let imageRef = storageRef.child("profile-pictures/\(registrationFormModel.user.username)-profilePicture.png")
 
-            imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            imageRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
                 if let error = error {
                     print("Error downloading image: \(error)")
                     self.profileImage = Image(systemName: "person.crop.circle.fill") // set the default profile image
@@ -60,6 +66,9 @@ struct ProfilePictureView: View {
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $inputImage)
         }
+//        .alert(alertMessage, isPresented: $showingAlert) {
+//            Button("Got it!", role: .cancel) {}
+//        }
     }
 
     func loadImage() {
@@ -71,6 +80,16 @@ struct ProfilePictureView: View {
         let imagesRef = storageRef.child("profile-pictures")
 
         if let uploadData = self.inputImage?.pngData() {
+            // Check if the image size exceeds the maximum size
+            let maxSize = 20 * 1024 * 1024 // 20 MB
+            if uploadData.count > maxSize {
+                // Handle the error, e.g., show an alert to the user
+                print("Image size exceeds the maximum allowed size of \(maxSize) bytes")
+//                alertMessage = "Image size (\(uploadData.count / 1024 / 1024) MB) exceeds the maximum allowed size of \(maxSize / 1024 / 1024) MB"
+//                showingAlert.toggle()
+                return
+            }
+            
             imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").putData(uploadData, metadata: nil) { (metadata, error) in
               guard let _ = metadata else {
                   debugPrint("an error1 has ocurred: \(String(describing: error?.localizedDescription))")
@@ -132,10 +151,23 @@ struct ImagePicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let uiImage = info[.originalImage] as? UIImage {
-                parent.image = uiImage
+                // Check if the image size exceeds the maximum size
+                let maxSize = 20 * 1024 * 1024 // 20 MB
+                if let imageData = uiImage.pngData(), imageData.count > maxSize {
+                    // Image size exceeds the maximum allowed size, show an alert and don't update the image
+                    let alert = UIAlertController(title: "Image Too Large", message: "The selected image (\(imageData.count / 1024 / 1024) MB) exceeds the maximum allowed size of 20 MB.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        // Your action goes here
+                        // For example, you can dismiss the image picker here
+                        picker.dismiss(animated: true, completion: nil)
+                    }))
+                    picker.present(alert, animated: true, completion: nil)
+                } else {
+                    // Image size is within the allowed limit, update the image
+                    parent.image = uiImage
+                    parent.presentationMode.wrappedValue.dismiss()
+                }
             }
-
-            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 

@@ -151,6 +151,7 @@ struct MultipleBlinkingEyes: View {
     @State private var eyes:   [Eye] = []
     @State private var action: Bool  = false
     @State private var showingAlert = false
+    @State private var readyToNavigate = false
     // @State private var readyToNavigate: Bool = false
     
     // @State private var resetView = false
@@ -163,7 +164,9 @@ struct MultipleBlinkingEyes: View {
     
     @StateObject private var faceRecognition: FaceRecognition = .init(ip: "91.107.123.50")
     
-    @ObservedObject private var registrationFormModel: RegistrationFormModel = .init()
+    @StateObject private var registrationFormData = RegistrationFormData()
+    
+    // @ObservedObject private var registrationFormModel: RegistrationFormModel = .init()
     @StateObject private var cameraViewModel2: CameraViewModel = .init()
     @State private var initializeCamera = false
     
@@ -173,7 +176,7 @@ struct MultipleBlinkingEyes: View {
             
             GeometryReader { geometry in
                 ZStack {
-                    InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState)
+                    InitialScreen(signInButtonTapState: initialScreenViewSignInButtonTapState,                           registrationFormData: registrationFormData)
                     
                     // initialize camera
                     if initializeCamera {
@@ -249,23 +252,33 @@ struct MultipleBlinkingEyes: View {
                 .onChange(of: initialScreenViewSignInButtonTapState.isButtonTapped) {
                     // initialize camera
                     initializeCamera.toggle()
-                    
+
+                    let dispatchGroup = DispatchGroup()
+
+                    // action 1
                     action.toggle()
                     for index in eyes.indices {
                         let delay = CGFloat.random(in: intervalForRandomDelayBeforeAppearing)
+                        dispatchGroup.enter()
                         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                            withAnimation(
-                                animation
-                            ) {
+                            withAnimation(animation) {
                                 eyes[index].scale = action ? 1 : 0
                             }
+                            dispatchGroup.leave()
                         }
                     }
-                
-                    
-                    // Reset the state if needed
-                    // initialScreenViewSignInButtonTapState.isButtonTapped = false
+
+                    dispatchGroup.notify(queue: .main) {
+                        // action 2
+                        if readyToNavigate {
+                            initialScreenViewSignInButtonTapState.readyToNavigate = true
+                        }
+
+                        // Reset the state if needed
+                        // initialScreenViewSignInButtonTapState.isButtonTapped = false
+                    }
                 }
+
                 
                 .onChange(of: faceRecognition.postResultStatusCode) {
                     switch faceRecognition.postResultStatusCode {
@@ -280,10 +293,24 @@ struct MultipleBlinkingEyes: View {
                             alertMessage = "internal server error"
                             showingAlert.toggle()
                         case 200:
-                        registrationFormModel.populateWithUserData(userID: faceRecognition.postResult) {
+                        registrationFormData.registrationFormModel.populateWithUserData(userID: faceRecognition.postResult) {
                             // resetView.toggle()
-                            alertMessage = "we good, \(registrationFormModel.user.username) (\(registrationFormModel.user.realName))"
-                            showingAlert.toggle()
+                            
+                            readyToNavigate = true
+                            
+                            // reset sign in button
+                            initialScreenViewSignInButtonTapState.isButtonTapped.toggle()
+                            
+                            // reset status code
+                            faceRecognition.postResultStatusCode = -1
+                            
+                            // reset capture
+                            cameraView2.resetCapture()
+                            
+                            // initialScreenViewSignInButtonTapState.readyToNavigate = true
+                            
+//                            alertMessage = "we good, \(registrationFormData.registrationFormModel.user.username) (\(registrationFormData.registrationFormModel.user.realName))"
+//                            showingAlert.toggle()
                         }
                         case -1:
                             debugPrint("in -1")
