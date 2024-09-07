@@ -13,15 +13,11 @@ struct ProfilePictureView: View {
     @State private var profileImage: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-
-    // @State private var alertMessage: String = ""
-    // @State private var showingAlert: Bool = false
     
     @ObservedObject var registrationFormModel: RegistrationFormModel
     
     var width:    CGFloat
     var height:   CGFloat
-    // var position: CGPoint
     
     var body: some View {
         VStack {
@@ -39,7 +35,6 @@ struct ProfilePictureView: View {
                     .foregroundStyle(Colors.boneColor)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Colors.boneColor, lineWidth: 4))
-                // .shadow(radius: 10)
                     .onTapGesture {
                         requestPhotoLibraryAccess()
                     }
@@ -66,9 +61,6 @@ struct ProfilePictureView: View {
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $inputImage)
         }
-//        .alert(alertMessage, isPresented: $showingAlert) {
-//            Button("Got it!", role: .cancel) {}
-//        }
     }
 
     func loadImage() {
@@ -85,8 +77,6 @@ struct ProfilePictureView: View {
             if uploadData.count > maxSize {
                 // Handle the error, e.g., show an alert to the user
                 print("Image size exceeds the maximum allowed size of \(maxSize) bytes")
-//                alertMessage = "Image size (\(uploadData.count / 1024 / 1024) MB) exceeds the maximum allowed size of \(maxSize / 1024 / 1024) MB"
-//                showingAlert.toggle()
                 return
             }
             
@@ -99,20 +89,6 @@ struct ProfilePictureView: View {
             debugPrint("Saved image to firebase storage")
             }
         }
-        
-//        // get the image URL
-//        imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").downloadURL { (url, error) in
-//          guard let downloadURL = url else {
-//              debugPrint("an error2 has ocurred: \(String(describing: error?.localizedDescription))")
-//            return
-//          }
-//            
-//        // Now you can save the downloadURL to Firestore
-//        registrationFormModel.updateUserProfileImage(imageURL: downloadURL)
-//            
-//        }
-
-
     }
 
     func requestPhotoLibraryAccess() {
@@ -157,8 +133,6 @@ struct ImagePicker: UIViewControllerRepresentable {
                     // Image size exceeds the maximum allowed size, show an alert and don't update the image
                     let alert = UIAlertController(title: "Image Too Large", message: "The selected image (\(imageData.count / 1024 / 1024) MB) exceeds the maximum allowed size of 20 MB.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                        // Your action goes here
-                        // For example, you can dismiss the image picker here
                         picker.dismiss(animated: true, completion: nil)
                     }))
                     picker.present(alert, animated: true, completion: nil)

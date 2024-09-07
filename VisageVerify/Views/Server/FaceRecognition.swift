@@ -20,11 +20,9 @@ class FaceRecognition: ObservableObject {
     func callScript(script: String, image: UIImage) {
         debugPrint("Entered script func")
         
-        // "http://\(self.ip):5000/registration"
-        
         guard let url = URL(string: "http://\(self.ip):5000/\(script)"),
               let imageData = image.jpegData(compressionQuality: 1.0) else {
-            print("Invalid URL or failed to convert image to data")
+              print("Invalid URL or failed to convert image to data")
             return
         }
 
@@ -49,7 +47,7 @@ class FaceRecognition: ObservableObject {
                     self.postResultStatusCode = 405
                     debugPrint("Got error: \(error.localizedDescription)")
                 }
-                debugPrint("1")
+                // debugPrint("1")
                 return
             }
 
@@ -58,35 +56,19 @@ class FaceRecognition: ObservableObject {
                     self.postResultStatusCode = 406
                     debugPrint("No data or response")
                 }
-                debugPrint("2")
+                // debugPrint("2")
                 return
             }
 
             DispatchQueue.main.async {
                 debugPrint("Got post result: \(String(decoding: data, as: UTF8.self))")
                 debugPrint("With status code: \(response.statusCode)")
-                // self.postResult = String(decoding: data, as: UTF8.self)
                 self.postResultStatusCode = response.statusCode
                 self.postResult = String(decoding: data, as: UTF8.self)
             }
-            
-//            switch response.statusCode {
-//                case 200:
-//                    DispatchQueue.main.async {
-//                        debugPrint("Got post result: \(String(decoding: data, as: UTF8.self))")
-//                        self.postResult = String(decoding: data, as: UTF8.self)
-//                    }
-//                    debugPrint("3")
-//                default:
-//                    DispatchQueue.main.async {
-//                        self.postResult = "Error: \(response.statusCode)"
-//                        debugPrint(self.postResult)
-//                    }
-//                    debugPrint("4")
-//            }
         }
         
-        debugPrint("5")
+        // debugPrint("5")
         
         task.resume()
     }

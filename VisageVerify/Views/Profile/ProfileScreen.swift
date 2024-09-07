@@ -29,7 +29,6 @@ struct ProfileScreen: View {
                     .foregroundStyle(Colors.boneColor)
                     .position(CGPoint(x: geometry.size.width / 2,
                                       y: (geometry.size.height + geometry.safeAreaInsets.top) / 0.85))
-                    // .opacity(0.3)
                 
                 // settings
                 Button {
@@ -77,9 +76,6 @@ struct ProfileScreen: View {
                 ProfilePictureView(registrationFormModel: registrationFormModel,
                                    width: geometry.size.width / 3.5,
                                    height: geometry.size.width / 3.5)
-//                    .frame(width:  geometry.size.width / 3.5,
-//                           height: geometry.size.width / 3.5)
-//                    .foregroundStyle(.red)
                     .position(CGPoint(x: geometry.size.width / 2,
                                       y: (geometry.size.height + geometry.safeAreaInsets.top) / 4.5))
             }
