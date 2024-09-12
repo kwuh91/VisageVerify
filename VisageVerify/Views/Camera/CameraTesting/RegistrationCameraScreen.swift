@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseStorage
 
 struct RegistrationCameraScreen: View {
     @Environment(\.dismiss) private var dismiss
@@ -170,6 +171,21 @@ struct RegistrationCameraScreen: View {
                                     let resizedImage: UIImage = FaceRecognition.resizeImage(image:      image,
                                                                                             targetSize: CGSizeMake(959.0, 1200.0))
                                     
+                                    // upload image to storage
+//                                    if let compressedImageData = resizedImage.jpegData(compressionQuality: 0.5) {
+//                                        uploadCompressedImageToFirebase(imageData: compressedImageData,
+//                                                                        imageName: "\(registrationFormModel.user.username)-biometry-image") { imageURL in
+//                                            if let url = imageURL {
+//                                                registrationFormModel.user.imageURL = url
+//                                                debugPrint("image url uploaded successfully!")
+//                                            } else {
+//                                                debugPrint("failed to upload iamge url to db")
+//                                            }
+//                                        }
+//                                    } else {
+//                                        debugPrint("failed to compress image")
+//                                    }
+                                    
                                     debugPrint("new image height: \(resizedImage.size.height), width: \(resizedImage.size.width)")
                                     
                                     faceRecognition.callScript(script: "registration", image: resizedImage)
@@ -212,10 +228,28 @@ struct RegistrationCameraScreen: View {
                         case 200:
                             print("writing to database: \(faceRecognition.postResult)")
                             registrationFormModel.user.biometry = faceRecognition.postResult
-                            registrationFormModel.registerUser()
-                            debugPrint("registered user!")
+                        
+                            // upload image to storage and register user
+                            let image: UIImage = cameraViewModel.capturedImage!
                             
-                            readyToNavigate.toggle()
+                            if let compressedImageData = image.jpegData(compressionQuality: 1) {
+                                uploadImageToFirebase(imageData: compressedImageData,
+                                                      imageName: "\(registrationFormModel.user.username)-biometry-image") { imageURL in
+                                    if let url = imageURL {
+                                        registrationFormModel.user.imageURL = url
+                                        debugPrint("image url uploaded successfully! \(registrationFormModel.user.imageURL)")
+                                        
+                                        registrationFormModel.registerUser()
+                                        debugPrint("registered user!")
+                                        
+                                        readyToNavigate.toggle()
+                                    } else {
+                                        debugPrint("failed to upload image url to db")
+                                    }
+                                }
+                            } else {
+                                debugPrint("failed to compress image")
+                            }
                         default:
                             instructionsText = "something went wrong"
                     }
@@ -225,6 +259,37 @@ struct RegistrationCameraScreen: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     viewID = UUID()
                     debugPrint("RegistrationCameraScreen screen refreshed")
+                }
+            }
+        }
+    }
+
+    func uploadImageToFirebase(imageData: Data, imageName: String, completion: @escaping (String?) -> Void) {
+        // Reference to Firebase Storage
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        // Create a reference to the file you want to upload
+        let imageRef = storageRef.child("biometry-images/\(imageName).jpg")
+        
+        // Upload the compressed image data
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Error uploading image: \(error)")
+                completion(nil)
+                return
+            }
+            
+            // Get download URL for the uploaded image
+            imageRef.downloadURL { (url, error) in
+                if let error = error {
+                    print("Error getting download URL: \(error)")
+                    completion(nil)
+                } else if let downloadURL = url?.absoluteString {
+                    completion(downloadURL)  // Return the download URL
                 }
             }
         }

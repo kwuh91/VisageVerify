@@ -17,7 +17,7 @@ struct User {
     var email:    String = ""
     var password: String = ""
     var biometry: String = ""
-    // var imageURL: String = ""
+    var imageURL: String = ""
 }
 
 // FormModel class conforms to ObservableObject,
@@ -190,15 +190,17 @@ class RegistrationFormModel: ObservableObject {
         db.collection("userData").document(userID).getDocument { (document, error) in
             if let document = document, document.exists {
                 if let data = document.data() {
-                    self.user.realName = data["realName"]  as! String
-                    self.user.username = data["username"]  as! String
-                    self.user.email    = data["email"]     as! String
-                    self.user.biometry = data["biometry"]  as! String
+                    self.user.realName = data["realName"] as! String
+                    self.user.username = data["username"] as! String
+                    self.user.email    = data["email"]    as! String
+                    self.user.biometry = data["biometry"] as! String
+                    self.user.imageURL = data["imageURL"] as! String
 
                     print("Real Name: \(self.user.realName)")
                     print("User Name: \(self.user.username)")
                     print("Email: \(self.user.email)")
-                    print("Biometry: \(self.user.biometry)")
+                    // print("Biometry: \(self.user.biometry)")
+                    print("Image Data: \(self.user.imageURL)")
                     
                     // Call the completion handler once the data has been populated
                     completion()
@@ -213,12 +215,14 @@ class RegistrationFormModel: ObservableObject {
     
     // Function for storing additional user data in Firestore.
     private func storeUserData(userID: String) {
+        debugPrint("about to store this imageURL in db: \(user.imageURL)")
+        
         let userData: [String: Any] = [
-            "realName": user.realName,
-            "username": user.username,
-            "email"   : user.email,
-            "biometry": user.biometry
-            // "imageURL": user.imageURL
+            "realName":  user.realName,
+            "username":  user.username,
+            "email"   :  user.email,
+            "biometry":  user.biometry,
+            "imageURL":  user.imageURL
         ]
         
         db.collection("userData").document(userID).setData(userData) { [weak self] error in

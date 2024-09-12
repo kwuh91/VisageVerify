@@ -46,7 +46,7 @@ struct ProfilePictureView: View {
             
             let _ = debugPrint("searching for \(registrationFormModel.user.username) profile pic")
             
-            let imageRef = storageRef.child("profile-pictures/\(registrationFormModel.user.username)-profilePicture.png")
+            let imageRef = storageRef.child("profile-pictures/\(registrationFormModel.user.username)-profilePicture.jpg")
 
             imageRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
                 if let error = error {
@@ -71,7 +71,7 @@ struct ProfilePictureView: View {
         let storageRef = Storage.storage().reference()
         let imagesRef = storageRef.child("profile-pictures")
 
-        if let uploadData = self.inputImage?.pngData() {
+        if let uploadData = self.inputImage?.jpegData(compressionQuality: 0.5) {
             // Check if the image size exceeds the maximum size
             let maxSize = 20 * 1024 * 1024 // 20 MB
             if uploadData.count > maxSize {
@@ -80,7 +80,10 @@ struct ProfilePictureView: View {
                 return
             }
             
-            imagesRef.child("\(registrationFormModel.user.username)-profilePicture.png").putData(uploadData, metadata: nil) { (metadata, error) in
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            imagesRef.child("\(registrationFormModel.user.username)-profilePicture.jpg").putData(uploadData, metadata: metadata) { (metadata, error) in
               guard let _ = metadata else {
                   debugPrint("an error1 has ocurred: \(String(describing: error?.localizedDescription))")
                 return
@@ -129,7 +132,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let uiImage = info[.originalImage] as? UIImage {
                 // Check if the image size exceeds the maximum size
                 let maxSize = 20 * 1024 * 1024 // 20 MB
-                if let imageData = uiImage.pngData(), imageData.count > maxSize {
+                if let imageData = uiImage.jpegData(compressionQuality: 0.5), imageData.count > maxSize {
                     // Image size exceeds the maximum allowed size, show an alert and don't update the image
                     let alert = UIAlertController(title: "Image Too Large", message: "The selected image (\(imageData.count / 1024 / 1024) MB) exceeds the maximum allowed size of 20 MB.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in

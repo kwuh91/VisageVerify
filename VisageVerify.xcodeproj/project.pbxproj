@@ -77,6 +77,7 @@
 		11FC404E2C88741700269312 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC404D2C88741700269312 /* ProfileScreen.swift */; };
 		11FC40542C88851A00269312 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC40532C88851A00269312 /* ProfilePictureView.swift */; };
 		11FC405A2C8904FA00269312 /* Testing5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FC40592C8904FA00269312 /* Testing5.swift */; };
+		11FDA38A2C9370BD001129C8 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDA3892C9370BD001129C8 /* QRCodeGenerator.swift */; };
 		11FDF8592C7A5C0F00AD9F4C /* CameraTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */; };
 		11FDF85C2C7A7BE800AD9F4C /* Hexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */; };
 		11FDF85F2C7A85E500AD9F4C /* HexagonFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */; };
@@ -142,6 +143,7 @@
 		11FC404D2C88741700269312 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		11FC40532C88851A00269312 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
 		11FC40592C8904FA00269312 /* Testing5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing5.swift; sourceTree = "<group>"; };
+		11FDA3892C9370BD001129C8 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		11FDF8582C7A5C0F00AD9F4C /* CameraTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTesting.swift; sourceTree = "<group>"; };
 		11FDF85B2C7A7BE800AD9F4C /* Hexagon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexagon.swift; sourceTree = "<group>"; };
 		11FDF85E2C7A85E500AD9F4C /* HexagonFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonFigure.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		1179D8582C41FE270081539C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11FDA3882C93709D001129C8 /* QR */,
 				11FC40522C88850A00269312 /* Profile */,
 				11FDF87B2C80FEB000AD9F4C /* Server */,
 				11FDF8572C7A5BD800AD9F4C /* Camera */,
@@ -406,6 +409,14 @@
 				11FC404D2C88741700269312 /* ProfileScreen.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		11FDA3882C93709D001129C8 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				11FDA3892C9370BD001129C8 /* QRCodeGenerator.swift */,
+			);
+			path = QR;
 			sourceTree = "<group>";
 		};
 		11FDF8572C7A5BD800AD9F4C /* Camera */ = {
@@ -586,6 +597,7 @@
 				11391CF22C616D0A003009F8 /* OpenEye.swift in Sources */,
 				11FDF8792C7F8CEB00AD9F4C /* CameraTesting4.swift in Sources */,
 				116234602C89E3420099145F /* ViewController2.swift in Sources */,
+				11FDA38A2C9370BD001129C8 /* QRCodeGenerator.swift in Sources */,
 				11B8865C2C62DA350058CE5C /* BlinkingEyeAnimationState2.swift in Sources */,
 				1179D85B2C41FE490081539C /* EyeSF.swift in Sources */,
 				1179D8702C4218850081539C /* PrettyText.swift in Sources */,
