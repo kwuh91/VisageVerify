@@ -12,13 +12,13 @@ struct QRCodeGenerator {
     private let context = CIContext()
     private let filter  = CIFilter.qrCodeGenerator()
     
-    func generateQRCode(from string: String..., size: CGFloat = 300) -> UIImage? {
-        let combinedString = string.joined(separator: ",")
-        let base64String = combinedString.data(using: .utf8)?.base64EncodedString() ?? ""
+    func generateQRCode(from string: String, size: CGFloat = 300) -> UIImage? {
+        // let combinedString = string.joined(separator: ",")
+        // let base64String = combinedString.data(using: .utf8)?.base64EncodedString() ?? ""
         
-        let _ = debugPrint("setting \(base64String) as qr")
+        // let _ = debugPrint("setting \(base64String) as qr")
         
-        let data = Data(base64String.utf8)
+        let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")
         
         if let outputImage = filter.outputImage {

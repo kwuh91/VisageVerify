@@ -68,9 +68,7 @@ struct ProfileScreen: View {
                 // qr-code
                 
                 
-                if let qrCode = qrCodeGenerator.generateQRCode(from: registrationFormModel.user.realName,
-                                                                     registrationFormModel.user.email,
-                                                                     registrationFormModel.user.username) {
+                if let qrCode = qrCodeGenerator.generateQRCode(from: "http://91.107.123.50:5000/user/\(registrationFormModel.user.username)") {
                     Image(uiImage: qrCode)
                         .resizable()
                         .scaledToFill()
