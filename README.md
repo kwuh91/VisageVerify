@@ -1,6 +1,6 @@
 # VisageVerify
 
-![VisageVerify Logo](extra/logo.png)
+![VisageVerify Logo](extra/logo.PNG)
 
 ## Table of Contents
 
@@ -24,11 +24,11 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 ## Screenshots
 
 ![Screenshot 1](extra/main.PNG)
-![Screenshot 2](extra/scan.png)
-![Screenshot 3](extra/registration.png)
-![Screenshot 4](extra/photo1.png)
-![Screenshot 5](extra/photo2.png)
-![Screenshot 6](extra/profile.png)
+![Screenshot 2](extra/scan.PNG)
+![Screenshot 3](extra/registration.PNG)
+![Screenshot 4](extra/photo1.PNG)
+![Screenshot 5](extra/photo2.PNG)
+![Screenshot 6](extra/profile.PNG)
 
 ## Animation Showcase
 
