@@ -1,7 +1,5 @@
 # VisageVerify
 
-![VisageVerify Logo](extra/logo.PNG)
-
 ## Table of Contents
 
 - [About](#about)
@@ -23,12 +21,17 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 
 ## Screenshots
 
-![Screenshot 1](extra/main.PNG)
-![Screenshot 2](extra/scan.PNG)
-![Screenshot 3](extra/registration.PNG)
-![Screenshot 4](extra/photo1.PNG)
-![Screenshot 5](extra/photo2.PNG)
-![Screenshot 6](extra/profile.PNG)
+<div align="center">
+  <img src="extra/main.PNG" alt="main screen" width="200" style="margin: 10px;"/>
+  <img src="extra/scan.PNG" alt="mid scanning animation" width="200" style="margin: 10px;"/>
+  <img src="extra/registration.PNG" alt="registration screen" width="200" style="margin: 10px;"/>
+</div>
+
+<div align="center">
+  <img src="extra/photo1.PNG" alt="photo screen1" width="200"/>
+  <img src="extra/photo2.PNG" alt="photo screen2" width="200"/>
+  <img src="extra/profile.PNG" alt="profile screen" width="200"/>
+</div>
 
 ## Animation Showcase
 
@@ -36,8 +39,12 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 
 **Note:** The GIFs below do not represent the actual animation speed.
 
+<br>
+
 Some of the animations are showcased in my two other side-projects:
+
 https://github.com/kwuh91/Animated-SwiftUI-EyeBlinking
+
 https://github.com/kwuh91/Animated-SwiftUI-Background
 
 ## Contact
