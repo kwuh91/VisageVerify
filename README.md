@@ -22,16 +22,23 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 ## Screenshots
 
 <div align="center">
-  <img src="extra/main.PNG" alt="main screen" width="200" style="margin: 10px;"/>
-  <img src="extra/scan.PNG" alt="mid scanning animation" width="200" style="margin: 10px;"/>
-  <img src="extra/registration.PNG" alt="registration screen" width="200" style="margin: 10px;"/>
+  <img src="extra/initial.PNG" alt="initial screen" width="300" align="center"/>
 </div>
 
-<div align="center">
-  <img src="extra/photo1.PNG" alt="photo screen1" width="200"/>
-  <img src="extra/photo2.PNG" alt="photo screen2" width="200"/>
-  <img src="extra/profile.PNG" alt="profile screen" width="200"/>
-</div>
+<br>
+
+<table align="center">
+  <tr>
+    <td><img src="extra/main.PNG" alt="main screen" width="200"/></td>
+    <td style="padding: 0 100px;"><img src="extra/scan.PNG" alt="mid scanning animation" width="200"/></td>
+    <td><img src="extra/registration.PNG" alt="registration screen" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="extra/photo1.PNG" alt="main screen" width="200"/></td>
+    <td style="padding: 0 100px;"><img src="extra/photo2.PNG" alt="mid scanning animation" width="200"/></td>
+    <td><img src="extra/profile.PNG" alt="registration screen" width="200"/></td>
+  </tr>
+</table>
 
 ## Animation Showcase
 
