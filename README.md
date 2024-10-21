@@ -23,7 +23,7 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 
 ## Screenshots
 
-![Screenshot 1](extra/main.png)
+![Screenshot 1](extra/main.PNG)
 ![Screenshot 2](extra/scan.png)
 ![Screenshot 3](extra/registration.png)
 ![Screenshot 4](extra/photo1.png)
