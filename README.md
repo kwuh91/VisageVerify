@@ -1,6 +1,6 @@
 # VisageVerify
 
-![VisageVerify Logo](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/logo.png)
+![VisageVerify Logo](extra/logo.png)
 
 ## Table of Contents
 
@@ -23,12 +23,12 @@ VisageVerify is a mobile application built with SwiftUI, a passion project that 
 
 ## Screenshots
 
-![Screenshot 1]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/main.png))
-![Screenshot 2]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/scan.png))
-![Screenshot 3]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/registration.png))
-![Screenshot 4]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/photo1.png))
-![Screenshot 5]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/photo2.png))
-![Screenshot 6]([path/to/screenshot1.png](https://raw.githubusercontent.com/kwuh91/VisageVerify/master/extra/profile.png))
+![Screenshot 1](extra/main.png)
+![Screenshot 2](extra/scan.png)
+![Screenshot 3](extra/registration.png)
+![Screenshot 4](extra/photo1.png)
+![Screenshot 5](extra/photo2.png)
+![Screenshot 6](extra/profile.png)
 
 ## Animation Showcase
 
